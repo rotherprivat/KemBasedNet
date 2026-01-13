@@ -267,14 +267,41 @@ namespace Rotherprivat.PqCrypto.Cryptography
             DecapsulateImplementation(ciphertext, sharedSecret);
         }
 
+        /// <summary>
+        /// Implementation of ExportPrvateKey logic in derived class
+        /// </summary>
+        /// <param name="privateKey"></param>
+        /// <exclude/>
         protected abstract void ExportPrvateKeyImplementation(Span<byte> privateKey);
 
+        /// <summary>
+        /// Implementation of ExportEncapsulationKey logic in derived class
+        /// </summary>
+        /// <param name="keyBuffer"></param>
+        /// <exclude/>
         protected abstract void ExportEncapsulationKeyImplementation(Span<byte> keyBuffer);
 
+        /// <summary>
+        /// Implementation of Encapsulate logic in derived class
+        /// </summary>
+        /// <param name="ciphertext"></param>
+        /// <param name="sharedSecret"></param>
+        /// <exclude/>
         protected abstract void EncapsulateImplementation(Span<byte> ciphertext, Span<byte> sharedSecret);
 
+        /// <summary>
+        /// Implementation of Decapsulate logic in derived class
+        /// </summary>
+        /// <param name="ciphertext"></param>
+        /// <param name="sharedSecret"></param>
+        /// <exclude/>
         protected abstract void DecapsulateImplementation(ReadOnlySpan<byte> ciphertext, Span<byte> sharedSecret);
 
+        /// <summary>
+        /// Hidden consturctor
+        /// </summary>
+        /// <param name="algorithm"></param>
+        /// <exclude/>
         protected CompositeMLKem(CompositeMLKemAlgorithm algorithm)
         {
             Algorithm = algorithm;
@@ -307,6 +334,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         #region IDisposable
         private bool disposedValue;
 
+        /// <exclude/>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)

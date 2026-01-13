@@ -11,6 +11,7 @@ using System.Text;
 
 namespace Rotherprivat.PqCrypto.Cryptography
 {
+    /// <exclude />
     public class CompositeMLKemImplementation : CompositeMLKem
     {
         private MLKem? _MLKem = null;
@@ -58,6 +59,10 @@ namespace Rotherprivat.PqCrypto.Cryptography
 
         }
 
+        /// <summary>
+        /// Hidden Cosntructor
+        /// </summary>
+        /// <param name="algorithm"></param>
         protected CompositeMLKemImplementation(CompositeMLKemAlgorithm algorithm)
         : base(algorithm)
         {
