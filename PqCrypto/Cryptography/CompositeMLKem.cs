@@ -57,13 +57,10 @@ namespace Rotherprivat.PqCrypto.Cryptography
         {
             // Requires ReadOnlMemory<T>
             var pckcs8Info = Pkcs8PrivateKeyInfo.Decode(pkcs8, out _);
-            var oid = pckcs8Info?.AlgorithmId.Value;
-
-            if (oid == null)
+            var oid = (pckcs8Info?.AlgorithmId.Value) ?? 
                 throw new CryptographicException("Failed to parse PKCS#8.");
 
-            var algorithm = CompositeMLKemAlgorithm.FromOid(oid);
-            if (algorithm == null)
+            var algorithm = CompositeMLKemAlgorithm.FromOid(oid) ??
                 throw new CryptographicException("Invalid algorithm ID.");
 
             var privateKey = pckcs8Info!.PrivateKeyBytes;
@@ -93,13 +90,10 @@ namespace Rotherprivat.PqCrypto.Cryptography
         public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, byte[] pkcs8)
         {
             var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(passwordBytes, pkcs8, out _);
-            var oid = pckcs8Info?.AlgorithmId.Value;
-
-            if (oid == null)
+            var oid = (pckcs8Info?.AlgorithmId.Value) ??
                 throw new CryptographicException("Failed to parse PKCS#8.");
 
-            var algorithm = CompositeMLKemAlgorithm.FromOid(oid);
-            if (algorithm == null)
+            var algorithm = CompositeMLKemAlgorithm.FromOid(oid) ??
                 throw new CryptographicException("Invalid algorithm ID.");
 
             var privateKey = pckcs8Info!.PrivateKeyBytes;
@@ -117,13 +111,10 @@ namespace Rotherprivat.PqCrypto.Cryptography
         public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, byte[] pkcs8)
         {
             var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _);
-            var oid = pckcs8Info?.AlgorithmId.Value;
-
-            if (oid == null)
+            var oid = pckcs8Info?.AlgorithmId.Value ??
                 throw new CryptographicException("Failed to parse PKCS#8.");
 
-            var algorithm = CompositeMLKemAlgorithm.FromOid(oid);
-            if (algorithm == null)
+            var algorithm = CompositeMLKemAlgorithm.FromOid(oid) ??
                 throw new CryptographicException("Invalid algorithm ID.");
 
             var privateKey = pckcs8Info!.PrivateKeyBytes;
@@ -141,13 +132,10 @@ namespace Rotherprivat.PqCrypto.Cryptography
         public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(string password, byte[] pkcs8)
         {
             var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _);
-            var oid = pckcs8Info?.AlgorithmId.Value;
-
-            if (oid == null)
+            var oid = pckcs8Info?.AlgorithmId.Value??
                 throw new CryptographicException("Failed to parse PKCS#8.");
 
-            var algorithm = CompositeMLKemAlgorithm.FromOid(oid);
-            if (algorithm == null)
+            var algorithm = CompositeMLKemAlgorithm.FromOid(oid) ??
                 throw new CryptographicException("Invalid algorithm ID.");
 
             var privateKey = pckcs8Info!.PrivateKeyBytes;
@@ -447,6 +435,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <exclude/>
         protected abstract void DecapsulateImplementation(ReadOnlySpan<byte> ciphertext, Span<byte> sharedSecret);
 
+#pragma warning disable IDE0290
         /// <summary>
         /// Hidden consturctor
         /// </summary>
@@ -456,7 +445,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         {
             Algorithm = algorithm;
         }
-
+#pragma warning restore IDE0290
         private AsnWriter ExportSubjectPublicKeyInfoAsAsn()
         {
             int keyLength = Algorithm.ECPublicKeySizeInBytes +

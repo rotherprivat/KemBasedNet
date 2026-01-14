@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿using System.Formats.Asn1;
+using System.Security.Cryptography;
+using System.Security.Cryptography.Pkcs;
 
 namespace Rotherprivat.PqCrypto.Cryptography
 {
@@ -6,7 +8,6 @@ namespace Rotherprivat.PqCrypto.Cryptography
     {
         private enum KemType
         {
-            Undefined = 0,
             MLKem,
             CompositeMLKem
         };
@@ -20,6 +21,14 @@ namespace Rotherprivat.PqCrypto.Cryptography
             };
         }
 
+        public static HybridMlKem GenerateKey(CompositeMLKemAlgorithm compositeMLKemAlgorithm)
+        {
+            return new HybridMlKem()
+            {
+                _CompositeMlKem = CompositeMLKem.GenerateKey(compositeMLKemAlgorithm)
+            };
+        }
+
         public static HybridMlKem ImportSubjectPublicKeyInfo(byte[] publicKey)
         {  
             switch (GetKemTypeFromSubjectPublicKeyInfo(publicKey))
@@ -30,6 +39,11 @@ namespace Rotherprivat.PqCrypto.Cryptography
 #pragma warning disable SYSLIB5006
                         _PlainMlKem = MLKem.ImportSubjectPublicKeyInfo(publicKey)
 #pragma warning restore SYSLIB5006
+                    };
+                case KemType.CompositeMLKem:
+                    return new HybridMlKem()
+                    {
+                        _CompositeMlKem = CompositeMLKem.ImportSubjectPublicKeyInfo(publicKey)
                     };
                 default:
                     throw new CryptographicException("Invalid public key");
@@ -47,6 +61,11 @@ namespace Rotherprivat.PqCrypto.Cryptography
                         _PlainMlKem = MLKem.ImportPkcs8PrivateKey(privateKey)
 #pragma warning restore SYSLIB5006
                     };
+                case KemType.CompositeMLKem:
+                    return new HybridMlKem()
+                    {
+                        _CompositeMlKem = CompositeMLKem.ImportPkcs8PrivateKey(privateKey)
+                    };
                 default:
                     throw new CryptographicException("Invalid public key");
             }
@@ -61,6 +80,11 @@ namespace Rotherprivat.PqCrypto.Cryptography
 #pragma warning disable SYSLIB5006
                 return _PlainMlKem.ExportSubjectPublicKeyInfo();
 #pragma warning restore SYSLIB5006
+            }
+
+            if (_CompositeMlKem != null)
+            {
+                return _CompositeMlKem.ExportSubjectPublicKeyInfo();
             }
 
             throw new CryptographicException("Invalid key configuration"); 
@@ -126,25 +150,43 @@ namespace Rotherprivat.PqCrypto.Cryptography
         {
             cipherText = key = [];
             _PlainMlKem?.Encapsulate(out cipherText, out key);
-            // _CompositeMlKem?.Encapsulate(out cipherText, out key);
+            _CompositeMlKem?.Encapsulate(out cipherText, out key);
         }
 
         private byte[]? Decapsulate(byte[] ciphertext)
         {
-            if(_PlainMlKem != null)
+            if (_PlainMlKem != null)
                 return _PlainMlKem.Decapsulate(ciphertext);
+
+            if (_CompositeMlKem != null)
+                return _CompositeMlKem.Decapsulate(ciphertext);
 
             return null;
         }
 
         private static KemType GetKemTypeFromSubjectPublicKeyInfo(byte[] publicKey)
         {
-            return KemType.MLKem;
+            var asn1 = new AsnReader(publicKey, AsnEncodingRules.DER);
+            var asnPk = asn1.ReadSequence();
+            var ObjectId = asnPk.ReadSequence();
+            var oid = ObjectId.ReadObjectIdentifier();
+
+            if (CompositeMLKemAlgorithm.FromOid(oid) != null)
+                return KemType.CompositeMLKem;
+            else
+                return KemType.MLKem;
         }
 
-        private static KemType GetKemTypeFromPkcs8PrivateKey(byte[] publicKey)
+        private static KemType GetKemTypeFromPkcs8PrivateKey(byte[] pkcs8)
         {
-            return KemType.MLKem;
+            var pckcs8Info = Pkcs8PrivateKeyInfo.Decode(pkcs8, out _);
+            var oid = pckcs8Info?.AlgorithmId.Value ??
+                throw new CryptographicException("Invalid PKCS#8 data");
+
+            if (CompositeMLKemAlgorithm.FromOid(oid) != null)
+                return KemType.CompositeMLKem;
+            else
+                return KemType.MLKem;
         }
 
 
