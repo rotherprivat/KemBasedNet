@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Rotherprivat.PqCrypto.Cryptography
+﻿namespace Rotherprivat.PqCrypto.Cryptography
 {
     /// <summary>
     /// Encrypted data and parameters for decryption

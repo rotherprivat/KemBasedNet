@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.Contracts;
-using System.Formats.Asn1;
+﻿using System.Formats.Asn1;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Pkcs;
-using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 // standards:
 // doc: https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html
@@ -15,20 +9,52 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Rotherprivat.PqCrypto.Cryptography
 {
+    /// <summary>
+    /// <para>
+    ///   Keys and algorithm implementation of the CompositeMLKem, a composed traditional and 
+    ///   ML-KEM post quantum key exchange algorithm
+    /// </para>
+    /// <para>
+    ///   <a href="https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html">Documentation on GitHub</a>
+    /// </para>
+    /// <para>
+    ///   <a href="https://github.com/lamps-wg/draft-composite-kem">Repo on GitHub</a>
+    /// </para>
+    /// </summary>
     public abstract class CompositeMLKem : IDisposable
     {
+        /// <summary>
+        /// Algorithm description
+        /// </summary>
         public CompositeMLKemAlgorithm  Algorithm { get; }
 
+        /// <summary>
+        /// Generate new keys for ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="algorithm">Algorithm description</param>
+        /// <returns>keys and algorithm implementation</returns>
         public static CompositeMLKem GenerateKey(CompositeMLKemAlgorithm algorithm)
         {
             return CompositeMLKemImplementation.GenerateKeyImplementation(algorithm);
         }
 
+        /// <summary>
+        /// Import private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="algorithm">Algorithm description</param>
+        /// <param name="privateKey">private key</param>
+        /// <returns>keys and algorithm implementation</returns>
         public static CompositeMLKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, byte[] privateKey)
         {
             return CompositeMLKemImplementation.ImportPrivateKeyImplementation(algorithm, privateKey);
         }
 
+        /// <summary>
+        /// Import private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="pkcs8">PKCS#8 encoded private key</param>
+        /// <returns>keys and algorithm implementation</returns>
+        /// <exception cref="CryptographicException"></exception>
         public static CompositeMLKem ImportPkcs8PrivateKey(byte[] pkcs8)
         {
             // Requires ReadOnlMemory<T>
@@ -47,12 +73,25 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return CompositeMLKemImplementation.ImportPrivateKeyImplementation(algorithm, privateKey.Span);
         }
 
+        /// <summary>
+        /// Import private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="pkcs8">PKCS#8 encoded private key</param>
+        /// <returns>keys and algorithm implementation</returns>
+        /// <exception cref="CryptographicException"></exception>
         public static CompositeMLKem ImportPkcs8PrivateKey(ReadOnlySpan<byte> pkcs8)
         {
             // Copy to Array ...
             return ImportPkcs8PrivateKey(pkcs8.ToArray());
         }
 
+        /// <summary>
+        /// Import private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="passwordBytes">password</param>
+        /// <param name="pkcs8">PKCS#8 encoded private key</param>
+        /// <returns>keys and algorithm implementation</returns>
+        /// <exception cref="CryptographicException"></exception>
         public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, byte[] pkcs8)
         {
             var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(passwordBytes, pkcs8, out _);
@@ -70,6 +109,13 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return CompositeMLKemImplementation.ImportPrivateKeyImplementation(algorithm, privateKey.Span);
         }
 
+        /// <summary>
+        /// Import private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="password">password</param>
+        /// <param name="pkcs8">PKCS#8 encoded private key</param>
+        /// <returns>keys and algorithm implementation</returns>
+        /// <exception cref="CryptographicException"></exception>
         public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, byte[] pkcs8)
         {
             var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _);
@@ -87,6 +133,13 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return CompositeMLKemImplementation.ImportPrivateKeyImplementation(algorithm, privateKey.Span);
         }
 
+        /// <summary>
+        /// Import private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="password">password</param>
+        /// <param name="pkcs8">PKCS#8 encoded private key</param>
+        /// <returns>keys and algorithm implementation</returns>
+        /// <exception cref="CryptographicException"></exception>
         public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(string password, byte[] pkcs8)
         {
             var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _);
@@ -104,16 +157,33 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return CompositeMLKemImplementation.ImportPrivateKeyImplementation(algorithm, privateKey.Span);
         }
 
-        public static CompositeMLKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, byte[] publicKey)
+        /// <summary>
+        /// Import encapsulation keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="algorithm">Algorithm description</param>
+        /// <param name="encapsulationKey">encapsulation- /public- key</param>
+        /// <returns>keys and algorithm implementation</returns>
+        public static CompositeMLKem ImportEncapsulationKey(CompositeMLKemAlgorithm algorithm, byte[] encapsulationKey)
         {
-            return CompositeMLKemImplementation.ImportPublicKeyImplementation(algorithm, publicKey);
+            return CompositeMLKemImplementation.ImportEncapsulationKeyImplementation(algorithm, encapsulationKey);
         }
 
-        public static CompositeMLKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> publicKey)
+        /// <summary>
+        /// Import encapsulation keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="algorithm">Algorithm description</param>
+        /// <param name="encapsulationKey">encapsulation- /public- key</param>
+        /// <returns>keys and algorithm implementation</returns>
+        public static CompositeMLKem ImportEncapsulationKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> encapsulationKey)
         {
-            return CompositeMLKemImplementation.ImportPublicKeyImplementation(algorithm, publicKey);
+            return CompositeMLKemImplementation.ImportEncapsulationKeyImplementation(algorithm, encapsulationKey);
         }
 
+        /// <summary>
+        /// Import encapsulation keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="publicKey">DER encoded encapsulation- /public- key</param>
+        /// <returns>keys and algorithm implementation</returns>
         public static CompositeMLKem ImportSubjectPublicKeyInfo(byte[] publicKey)
         {
             var asn1 = new AsnReader(publicKey, AsnEncodingRules.DER);
@@ -129,37 +199,52 @@ namespace Rotherprivat.PqCrypto.Cryptography
                 throw new CryptographicException("Invalid Algorithm");
 
 
-            return CompositeMLKemImplementation.ImportPublicKeyImplementation(algorithm, publicKeyBytes);
+            return CompositeMLKemImplementation.ImportEncapsulationKeyImplementation(algorithm, publicKeyBytes);
         }
 
+        /// <summary>
+        /// Import encapsulation keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="publicKey">DER encoded encapsulation- /public- key</param>
+        /// <returns>keys and algorithm implementation</returns>
         public static CompositeMLKem ImportSubjectPublicKeyInfo(ReadOnlySpan<byte> publicKey)
         {
             // Copy to Array ...
             return ImportSubjectPublicKeyInfo(publicKey.ToArray());
         }
 
-        public static CompositeMLKem ImportFromPem(string publicKeyPem)
+        /// <summary>
+        /// Import encapsulation keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="pemKey">PEM encoded encapsulation- /public- key</param>
+        /// <returns>keys and algorithm implementation</returns>
+        public static CompositeMLKem ImportFromPem(string pemKey)
         {
-            var pem = PemEncoding.Find(publicKeyPem);
-            var label = publicKeyPem[pem.Label];
+            var pem = PemEncoding.Find(pemKey);
+            var label = pemKey[pem.Label];
             if (label != PemLabels.PublicKey)
                 throw new CryptographicException("Invalid PEM-Type");
 
-            var base64Data = publicKeyPem[pem.Base64Data];
+            var base64Data = pemKey[pem.Base64Data];
 
             var derData = Convert.FromBase64String(base64Data);
 
             return ImportSubjectPublicKeyInfo(derData);
         }
 
-        public static CompositeMLKem ImportFromPem(ReadOnlySpan<char> publicKeyPem)
+        /// <summary>
+        /// Import encapsulation keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="pemKey">PEM encoded encapsulation- /public- key</param>
+        /// <returns>keys and algorithm implementation</returns>
+        public static CompositeMLKem ImportFromPem(ReadOnlySpan<char> pemKey)
         {
-            var pem = PemEncoding.Find(publicKeyPem);
-            var label = publicKeyPem[pem.Label];
+            var pem = PemEncoding.Find(pemKey);
+            var label = pemKey[pem.Label];
             if (label != PemLabels.PublicKey)
                 throw new CryptographicException("Invalid PEM-Type");
 
-            var base64Data = publicKeyPem[pem.Base64Data].ToString();
+            var base64Data = pemKey[pem.Base64Data].ToString();
 
             var derData = Convert.FromBase64String(base64Data);
 
@@ -167,6 +252,10 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return ImportSubjectPublicKeyInfo(derData);
         }
 
+        /// <summary>
+        /// Export private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <returns>private key</returns>
         public byte[] ExportPrivateKey()
         {
             var privateKey = new byte[Algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes + Algorithm.ECPrivateKeyDSizeInBytes];
@@ -174,11 +263,19 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return privateKey;
         }
 
+        /// <summary>
+        /// Export private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="privateKey">private key</param>
         public void ExportPrivateKey(Span<byte> privateKey)
         {
             ExportPrvateKeyImplementation(privateKey);
         }
 
+        /// <summary>
+        /// Export private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <returns>PKCS#8 encoded private key</returns>
         public byte[] ExportPkcs8PrivateKey()
         {
             var privateKey = ExportPrivateKey();
@@ -186,6 +283,12 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return pckcs8Info.Encode();
         }
 
+        /// <summary>
+        /// Export private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="passwordbytes">Password</param>
+        /// <param name="pbeParameters">Password-based encryption (PBE) parameters</param>
+        /// <returns>PKCS#8 encoded private key</returns>
         public byte[] ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordbytes, PbeParameters pbeParameters)
         {
             var privateKey = ExportPrivateKey();
@@ -193,6 +296,12 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return pckcs8Info.Encrypt(passwordbytes, pbeParameters);
         }
 
+        /// <summary>
+        /// Export private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="password">Password</param>
+        /// <param name="pbeParameters">Password-based encryption (PBE) parameters</param>
+        /// <returns>PKCS#8 encoded private key</returns>
         public byte[] ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, PbeParameters pbeParameters)
         {
             var privateKey = ExportPrivateKey();
@@ -200,6 +309,12 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return pckcs8Info.Encrypt(password, pbeParameters);
         }
 
+        /// <summary>
+        /// Export private keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="password">Password</param>
+        /// <param name="pbeParameters">Password-based encryption (PBE) parameters</param>
+        /// <returns>PKCS#8 encoded private key</returns>
         public byte[] ExportEncryptedPkcs8PrivateKey(string password, PbeParameters pbeParameters)
         {
             var privateKey = ExportPrivateKey();
@@ -207,17 +322,10 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return pckcs8Info.Encrypt(password, pbeParameters);
         }
 
-        public byte[] ExportSubjectPublicKeyInfo()
-        {
-            return ExportSubjectPublicKeyInfoAsAsn().Encode();
-        }
-
-        public string ExportSubjectPublicKeyInfoPem()
-        {
-            var buffer = ExportSubjectPublicKeyInfo();
-            return PemEncoding.WriteString(PemLabels.PublicKey, buffer);
-        }
-        
+        /// <summary>
+        /// Export encapsulation keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <returns>Encapsulation- /public- key</returns>
         public byte[] ExportEncapsulationKey()
         {
             int keyLength = Algorithm.ECPublicKeySizeInBytes +
@@ -228,6 +336,11 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return keyBuffer;
         }
 
+        /// <summary>
+        /// Export encapsulation keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <param name="keyBuffer">encapsulation- /public- key</param>
+        /// <exception cref="CryptographicException"></exception>
         public void ExportEncapsulationKey(Span<byte> keyBuffer)
         {
             int keyLength = Algorithm.ECPublicKeySizeInBytes +
@@ -239,6 +352,30 @@ namespace Rotherprivat.PqCrypto.Cryptography
             ExportEncapsulationKeyImplementation(keyBuffer);
         }
 
+        /// <summary>
+        /// Export encapsulation keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <returns>DER encoded encapsulation- /public- key</returns>
+        public byte[] ExportSubjectPublicKeyInfo()
+        {
+            return ExportSubjectPublicKeyInfoAsAsn().Encode();
+        }
+
+        /// <summary>
+        /// Export encapsulation keys of ML-KEM and traditional key exchange algorithms
+        /// </summary>
+        /// <returns>PEM encoded encapsulation- /public- key</returns>
+        public string ExportSubjectPublicKeyInfoPem()
+        {
+            var buffer = ExportSubjectPublicKeyInfo();
+            return PemEncoding.WriteString(PemLabels.PublicKey, buffer);
+        }
+
+        /// <summary>
+        /// Create combined ciphertext and shared secret
+        /// </summary>
+        /// <param name="ciphertext">Combined ciphertext</param>
+        /// <param name="sharedSecret">Combined shared secret</param>
         public void Encapsulate(out byte[] ciphertext, out byte[] sharedSecret)
         {
             var cipherTextLen = Algorithm.ECPublicKeySizeInBytes +
@@ -250,11 +387,21 @@ namespace Rotherprivat.PqCrypto.Cryptography
             Encapsulate(ciphertext, sharedSecret);
         }
 
+        /// <summary>
+        /// Create combined ciphertext and shared secret
+        /// </summary>
+        /// <param name="ciphertext">Combined ciphertext</param>
+        /// <param name="sharedSecret">Combined shared secret</param>
         public void Encapsulate(Span<byte> ciphertext, Span<byte> sharedSecret)
         {
             EncapsulateImplementation(ciphertext, sharedSecret);
         }
 
+        /// <summary>
+        /// Decapsulate the shared secret from ciphertext
+        /// </summary>
+        /// <param name="ciphertext">Combined ciphertext</param>
+        /// <returns>Combined shared secret</returns>
         public byte[] Decapsulate(byte[] ciphertext)
         {
             var sharedSecret = new byte[SHA3_256.HashSizeInBytes];
@@ -262,6 +409,11 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return sharedSecret;
         }
 
+        /// <summary>
+        /// Decapsulate the shared key from combined ciphertext
+        /// </summary>
+        /// <param name="ciphertext">Combined ciphertext</param>
+        /// <param name="sharedSecret">Combined shared secret</param>
         public void Decapsulate(ReadOnlySpan<byte> ciphertext, Span<byte> sharedSecret)
         {
             DecapsulateImplementation(ciphertext, sharedSecret);
