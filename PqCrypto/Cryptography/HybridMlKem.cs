@@ -4,6 +4,15 @@ using System.Security.Cryptography.Pkcs;
 
 namespace Rotherprivat.PqCrypto.Cryptography
 {
+    /// <summary>
+    /// <para>
+    /// Ecnrypt and decrypt data, based on Post Quantum Key exchange algorithms.
+    /// </para>
+    /// - ML-KEM: FIPS 203
+    /// <para>
+    /// - CombinedMLKem <a href="https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html">IETF draft</a>
+    /// </para>
+    /// </summary>
     public class HybridMlKem : IDisposable
     {
         private enum KemType
@@ -189,7 +198,6 @@ namespace Rotherprivat.PqCrypto.Cryptography
                 return KemType.MLKem;
         }
 
-
         private void EnsureValid()
         {
             if (_PlainMlKem == default && _CompositeMlKem == default)
@@ -202,6 +210,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         private MLKem? _PlainMlKem  = default;
         private CompositeMLKem? _CompositeMlKem = default;
 
+#region IDisposable
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
@@ -218,5 +227,6 @@ namespace Rotherprivat.PqCrypto.Cryptography
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+#endregion
     }
 }

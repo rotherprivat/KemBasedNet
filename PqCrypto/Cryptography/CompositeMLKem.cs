@@ -15,7 +15,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
     ///   ML-KEM post quantum key exchange algorithm.
     /// </para>
     /// <para>
-    ///   See IETF standard <a href="https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html">documentation</a>
+    ///   See IETF draft <a href="https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html">documentation</a>
     ///   and <a href="https://github.com/lamps-wg/draft-composite-kem">repository</a> on GitHub.
     /// </para>
     /// </summary>
