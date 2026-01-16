@@ -7,6 +7,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
     /// </summary>
     public class HybridMlKemCipherData
     {
+        #region Properties
         /// <summary>
         /// ML-KEM: CipherText
         /// </summary>
@@ -26,7 +27,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// Encrypted PlainText
         /// </summary>
         public byte[] EncryptedPlainText { get; set; } = [];
+        #endregion
 
+        #region Serialization / Deserialization
         /// <summary>
         /// Serialize as byte buffer
         /// </summary>
@@ -86,7 +89,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
             me.DeserializeImplementation(s);
             return me;
         }
+        #endregion
 
+        #region Private methods
         private void DeserializeImplementation(Stream s)
         {
             using var br = new BinaryReader(s, Encoding.UTF8, true);
@@ -99,5 +104,6 @@ namespace Rotherprivat.PqCrypto.Cryptography
             len = br.ReadInt32();
             EncryptedPlainText = br.ReadBytes(len);
         }
+        #endregion
     }
 }
