@@ -5,7 +5,7 @@ using System.Security.Cryptography.Pkcs;
 namespace Rotherprivat.PqCrypto.Cryptography
 {
     /// <summary>
-    /// Keys and algorithm implementation for ecrypting and decrypting data,
+    /// Keys and algorithm implementation for encrypting and decrypting data,
     /// based on Post Quantum Key exchange algorithms.
     /// <list type="bullet">
     /// <item><description>ML-KEM: <a href="https://csrc.nist.gov/pubs/fips/203/final">FIPS 203</a></description></item>
@@ -16,7 +16,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
     {
         #region Constructors
         /// <summary>
-        /// Consruct encryptor / decryptor using ML-KEM
+        /// Construct encryptor / decryptor using ML-KEM
         /// </summary>
         /// <param name="mlKem">ML-KKEM instance</param>
         public HybridMlKem(MLKem mlKem)
@@ -25,7 +25,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         }
 
         /// <summary>
-        /// Consruct encryptor / decryptor using CompositeMLKKEM
+        /// Construct encryptor / decryptor using CompositeMLKKEM
         /// </summary>
         /// <param name="mlKem">CompositeMLKKEM instance</param>
         public HybridMlKem(CompositeMLKem compositeMLKem) 
@@ -428,7 +428,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// Encrypt plaintext data, using the active key exchange algorithm, as public asymmetric key component
         /// </summary>
         /// <param name="plaintext">plain text data</param>
-        /// <returns>Encrypted data and all public paramters required for decryption</returns>
+        /// <returns>Encrypted data and all public parameters required for decryption</returns>
         public HybridMlKemCipherData? Encrypt(byte[] plaintext)
         {
             EnsureValid();
@@ -456,7 +456,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <summary>
         /// Decrypt  encrypted data using, the active key exchange algorithm, as private asymmetric key component
         /// </summary>
-        /// <param name="cipherData">Encrypted data and all public paramters required for decryption</param>
+        /// <param name="cipherData">Encrypted data and all public parameters required for decryption</param>
         /// <returns>plain text data</returns>
         public byte[] Decrypt(HybridMlKemCipherData cipherData)
         {
@@ -519,31 +519,31 @@ namespace Rotherprivat.PqCrypto.Cryptography
 
         private static KemType GetKemTypeFromPkcs8PrivateKey(byte[] pkcs8)
         {
-            var pckcs8Info = Pkcs8PrivateKeyInfo.Decode(pkcs8, out _) ??
+            var pkcs8Info = Pkcs8PrivateKeyInfo.Decode(pkcs8, out _) ??
                 throw new CryptographicException("Invalid PKCS#8 data");
 
-            return GetKemTypeFromPkcs8Info(pckcs8Info);
+            return GetKemTypeFromPkcs8Info(pkcs8Info);
         }
 
         private static KemType GetKemTypeFromPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, byte[] pkcs8)
         {
-            var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(passwordBytes, pkcs8, out _) ??
+            var pkcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(passwordBytes, pkcs8, out _) ??
                 throw new CryptographicException("Invalid PKCS#8 data");
 
-            return GetKemTypeFromPkcs8Info(pckcs8Info);
+            return GetKemTypeFromPkcs8Info(pkcs8Info);
         }
 
         private static KemType GetKemTypeFromPkcs8PrivateKey(ReadOnlySpan<char> password, byte[] pkcs8)
         {
-            var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _) ??
+            var pkcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _) ??
                            throw new CryptographicException("Invalid PKCS#8 data");
 
-            return GetKemTypeFromPkcs8Info(pckcs8Info);
+            return GetKemTypeFromPkcs8Info(pkcs8Info);
         }
 
-        private static KemType GetKemTypeFromPkcs8Info(Pkcs8PrivateKeyInfo pckcs8Info)
+        private static KemType GetKemTypeFromPkcs8Info(Pkcs8PrivateKeyInfo pkcs8Info)
         {
-            var oid = pckcs8Info.AlgorithmId.Value ??
+            var oid = pkcs8Info.AlgorithmId.Value ??
                 throw new CryptographicException("Invalid PKCS#8 data");
 
             if (CompositeMLKemAlgorithm.FromOid(oid) != null)

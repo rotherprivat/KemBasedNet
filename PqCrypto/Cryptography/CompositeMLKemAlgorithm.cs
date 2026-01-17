@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Rotherprivat.PqCrypto.Cryptography
 {
-    // Algorithms spcified by:
+    // Algorithms specified by:
     // https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html
     // Only a subset is implemented here
 
@@ -64,8 +64,8 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <summary>
         /// Get algorithm definition from OID
         /// </summary>
-        /// <param name="oid"><see cref="Oid">Algoritm OID</see></param>
-        /// <returns>algorithm definition or null, if the oid can not be resolved</returns>
+        /// <param name="oid"><see cref="Oid">Algorithm OID</see></param>
+        /// <returns>Algorithm definition or null, if the oid can not be resolved</returns>
         public static CompositeMLKemAlgorithm? FromOid(string oid) => _Algorithms.FirstOrDefault(x => x.Oid == oid);
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         public string Name { get; }
 
         /// <summary>
-        /// Algoritm OID
+        /// Algorithm OID
         /// </summary>
         public string Oid { get; }
 

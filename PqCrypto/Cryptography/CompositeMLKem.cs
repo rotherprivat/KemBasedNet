@@ -56,14 +56,14 @@ namespace Rotherprivat.PqCrypto.Cryptography
         public static CompositeMLKem ImportPkcs8PrivateKey(byte[] pkcs8)
         {
             // Requires ReadOnlMemory<T>
-            var pckcs8Info = Pkcs8PrivateKeyInfo.Decode(pkcs8, out _);
-            var oid = (pckcs8Info?.AlgorithmId.Value) ?? 
+            var pkcs8Info = Pkcs8PrivateKeyInfo.Decode(pkcs8, out _);
+            var oid = (pkcs8Info?.AlgorithmId.Value) ?? 
                 throw new CryptographicException("Failed to parse PKCS#8.");
 
             var algorithm = CompositeMLKemAlgorithm.FromOid(oid) ??
                 throw new CryptographicException("Invalid algorithm ID.");
 
-            var privateKey = pckcs8Info!.PrivateKeyBytes;
+            var privateKey = pkcs8Info!.PrivateKeyBytes;
 
             return CompositeMLKemImplementation.ImportPrivateKeyImplementation(algorithm, privateKey.Span);
         }
@@ -89,14 +89,14 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <exception cref="CryptographicException"></exception>
         public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, byte[] pkcs8)
         {
-            var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(passwordBytes, pkcs8, out _);
-            var oid = (pckcs8Info?.AlgorithmId.Value) ??
+            var pkcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(passwordBytes, pkcs8, out _);
+            var oid = (pkcs8Info?.AlgorithmId.Value) ??
                 throw new CryptographicException("Failed to parse PKCS#8.");
 
             var algorithm = CompositeMLKemAlgorithm.FromOid(oid) ??
                 throw new CryptographicException("Invalid algorithm ID.");
 
-            var privateKey = pckcs8Info!.PrivateKeyBytes;
+            var privateKey = pkcs8Info!.PrivateKeyBytes;
 
             return CompositeMLKemImplementation.ImportPrivateKeyImplementation(algorithm, privateKey.Span);
         }
@@ -110,14 +110,14 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <exception cref="CryptographicException"></exception>
         public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, byte[] pkcs8)
         {
-            var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _);
-            var oid = pckcs8Info?.AlgorithmId.Value ??
+            var pkcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _);
+            var oid = pkcs8Info?.AlgorithmId.Value ??
                 throw new CryptographicException("Failed to parse PKCS#8.");
 
             var algorithm = CompositeMLKemAlgorithm.FromOid(oid) ??
                 throw new CryptographicException("Invalid algorithm ID.");
 
-            var privateKey = pckcs8Info!.PrivateKeyBytes;
+            var privateKey = pkcs8Info!.PrivateKeyBytes;
 
             return CompositeMLKemImplementation.ImportPrivateKeyImplementation(algorithm, privateKey.Span);
         }
@@ -131,14 +131,14 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <exception cref="CryptographicException"></exception>
         public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(string password, byte[] pkcs8)
         {
-            var pckcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _);
-            var oid = pckcs8Info?.AlgorithmId.Value??
+            var pkcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _);
+            var oid = pkcs8Info?.AlgorithmId.Value??
                 throw new CryptographicException("Failed to parse PKCS#8.");
 
             var algorithm = CompositeMLKemAlgorithm.FromOid(oid) ??
                 throw new CryptographicException("Invalid algorithm ID.");
 
-            var privateKey = pckcs8Info!.PrivateKeyBytes;
+            var privateKey = pkcs8Info!.PrivateKeyBytes;
 
             return CompositeMLKemImplementation.ImportPrivateKeyImplementation(algorithm, privateKey.Span);
         }
@@ -245,7 +245,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         public byte[] ExportPrivateKey()
         {
             var privateKey = new byte[Algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes + Algorithm.ECPrivateKeyDSizeInBytes];
-            ExportPrvateKeyImplementation(privateKey);
+            ExportPrivateKeyImplementation(privateKey);
             return privateKey;
         }
 
@@ -255,7 +255,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="privateKey">private key</param>
         public void ExportPrivateKey(Span<byte> privateKey)
         {
-            ExportPrvateKeyImplementation(privateKey);
+            ExportPrivateKeyImplementation(privateKey);
         }
 
         /// <summary>
@@ -265,21 +265,21 @@ namespace Rotherprivat.PqCrypto.Cryptography
         public byte[] ExportPkcs8PrivateKey()
         {
             var privateKey = ExportPrivateKey();
-            var pckcs8Info = new Pkcs8PrivateKeyInfo(new Oid(Algorithm.Oid), null, privateKey);
-            return pckcs8Info.Encode();
+            var pkcs8Info = new Pkcs8PrivateKeyInfo(new Oid(Algorithm.Oid), null, privateKey);
+            return pkcs8Info.Encode();
         }
 
         /// <summary>
         /// Export private keys of ML-KEM and traditional key exchange algorithms
         /// </summary>
-        /// <param name="passwordbytes">Password</param>
+        /// <param name="passwordBytes">Password</param>
         /// <param name="pbeParameters">Password-based encryption (PBE) parameters</param>
         /// <returns>PKCS#8 encoded private key</returns>
-        public byte[] ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordbytes, PbeParameters pbeParameters)
+        public byte[] ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, PbeParameters pbeParameters)
         {
             var privateKey = ExportPrivateKey();
-            var pckcs8Info = new Pkcs8PrivateKeyInfo(new Oid(Algorithm.Oid), null, privateKey);
-            return pckcs8Info.Encrypt(passwordbytes, pbeParameters);
+            var pkcs8Info = new Pkcs8PrivateKeyInfo(new Oid(Algorithm.Oid), null, privateKey);
+            return pkcs8Info.Encrypt(passwordBytes, pbeParameters);
         }
 
         /// <summary>
@@ -291,8 +291,8 @@ namespace Rotherprivat.PqCrypto.Cryptography
         public byte[] ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, PbeParameters pbeParameters)
         {
             var privateKey = ExportPrivateKey();
-            var pckcs8Info = new Pkcs8PrivateKeyInfo(new Oid(Algorithm.Oid), null, privateKey);
-            return pckcs8Info.Encrypt(password, pbeParameters);
+            var pkcs8Info = new Pkcs8PrivateKeyInfo(new Oid(Algorithm.Oid), null, privateKey);
+            return pkcs8Info.Encrypt(password, pbeParameters);
         }
 
         /// <summary>
@@ -304,8 +304,8 @@ namespace Rotherprivat.PqCrypto.Cryptography
         public byte[] ExportEncryptedPkcs8PrivateKey(string password, PbeParameters pbeParameters)
         {
             var privateKey = ExportPrivateKey();
-            var pckcs8Info = new Pkcs8PrivateKeyInfo(new Oid(Algorithm.Oid), null, privateKey);
-            return pckcs8Info.Encrypt(password, pbeParameters);
+            var pkcs8Info = new Pkcs8PrivateKeyInfo(new Oid(Algorithm.Oid), null, privateKey);
+            return pkcs8Info.Encrypt(password, pbeParameters);
         }
 
         /// <summary>
@@ -406,11 +406,11 @@ namespace Rotherprivat.PqCrypto.Cryptography
         }
 
         /// <summary>
-        /// Implementation of ExportPrvateKey logic in derived class
+        /// Implementation of ExportPrivateKey logic in derived class
         /// </summary>
         /// <param name="privateKey"></param>
         /// <exclude/>
-        protected abstract void ExportPrvateKeyImplementation(Span<byte> privateKey);
+        protected abstract void ExportPrivateKeyImplementation(Span<byte> privateKey);
 
         /// <summary>
         /// Implementation of ExportEncapsulationKey logic in derived class
@@ -437,7 +437,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
 
 #pragma warning disable IDE0290
         /// <summary>
-        /// Hidden consturctor
+        /// Hidden constructor
         /// </summary>
         /// <param name="algorithm"></param>
         /// <exclude/>

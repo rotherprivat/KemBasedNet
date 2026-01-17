@@ -26,7 +26,7 @@ namespace Rotherprivat.PqTest.Cryptography
 
         [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void CompositeMLKemRoundtripExchangeKey_pcks8(CompositeMLKemAlgorithm algorithm)
+        public void CompositeMLKemRoundtripExchangeKey_pkcs8(CompositeMLKemAlgorithm algorithm)
         {
             using var keyMaterial = CompositeMLKem.GenerateKey(algorithm);
 
@@ -46,7 +46,7 @@ namespace Rotherprivat.PqTest.Cryptography
 
         [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void CompositeMLKemRoundtripExchangeKey_pcks8encrypted(CompositeMLKemAlgorithm algorithm)
+        public void CompositeMLKemRoundtripExchangeKey_pkcs8encrypted(CompositeMLKemAlgorithm algorithm)
         {
             using var keyMaterial = CompositeMLKem.GenerateKey(algorithm);
 
@@ -137,7 +137,7 @@ namespace Rotherprivat.PqTest.Cryptography
 
         [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void CompositMLKemDecapsulate_Vectors(CompositeMLKemAlgorithm algorithm)
+        public void CompositeMLKemDecapsulate_Vectors(CompositeMLKemAlgorithm algorithm)
         {
             if (null == _TestVector)
                 throw new InvalidOperationException("NoTestData");

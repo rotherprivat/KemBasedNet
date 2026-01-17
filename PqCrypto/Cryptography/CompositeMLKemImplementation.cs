@@ -7,14 +7,14 @@ namespace Rotherprivat.PqCrypto.Cryptography
     public class CompositeMLKemImplementation : CompositeMLKem
     {
         private MLKem? _MLKem = null;
-        private ECDiffieHellman? _ECDh = null;
+        private ECDiffieHellman? _ECDH = null;
 
         internal static CompositeMLKem GenerateKeyImplementation(CompositeMLKemAlgorithm algorithm)
         {
             return new CompositeMLKemImplementation(algorithm)
                 {
                     _MLKem = MLKem.GenerateKey(algorithm.MLKemAlgorithm),
-                    _ECDh = ECDiffieHellman.Create(algorithm.ECCurve)
+                    _ECDH = ECDiffieHellman.Create(algorithm.ECCurve)
                 };
         }
 
@@ -31,7 +31,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return new CompositeMLKemImplementation(algorithm)
             {
                 _MLKem = mlKem,
-                _ECDh = ecdh
+                _ECDH = ecdh
             };
         }
 
@@ -46,13 +46,13 @@ namespace Rotherprivat.PqCrypto.Cryptography
             return new CompositeMLKemImplementation(algorithm)
             {
                 _MLKem = MLKem.ImportEncapsulationKey(algorithm.MLKemAlgorithm, mlKemEncapsulationKey),
-                _ECDh = ECDiffieHellman.Create(ecParams)
+                _ECDH = ECDiffieHellman.Create(ecParams)
             };
 
         }
 
         /// <summary>
-        /// Hidden Cosntructor
+        /// Hidden Constructor
         /// </summary>
         /// <param name="algorithm"></param>
         protected CompositeMLKemImplementation(CompositeMLKemAlgorithm algorithm)
@@ -60,14 +60,14 @@ namespace Rotherprivat.PqCrypto.Cryptography
         {
         }
 
-        protected override void ExportPrvateKeyImplementation(Span<byte> privateKey)
+        protected override void ExportPrivateKeyImplementation(Span<byte> privateKey)
         {
             EnsureValid();
 
             var mlKemSeed = privateKey[..Algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes];
             _MLKem.ExportPrivateSeed(mlKemSeed);
 
-            var ecPriv = _ECDh.ExportECPrivateKeyD();
+            var ecPriv = _ECDH.ExportECPrivateKeyD();
             var p = privateKey[Algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes..];
             ecPriv.CopyTo(p);
         }
@@ -79,7 +79,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
 
             _MLKem.ExportEncapsulationKey(p);
 
-            var ecdhParameters = _ECDh.ExportParameters(false);
+            var ecdhParameters = _ECDH.ExportParameters(false);
             ecdhParameters.Validate();
             var tradPK = keyBuffer[Algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes..];
             tradPK[0] = 0x04;
@@ -96,7 +96,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
             
             // generate traditional ephemeral key and traditional shared secret
             using var ecEphemeralKey = ECDiffieHellman.Create(Algorithm.ECCurve);
-            var ecKey = ecEphemeralKey.DeriveRawSecretAgreement(_ECDh.PublicKey);
+            var ecKey = ecEphemeralKey.DeriveRawSecretAgreement(_ECDH.PublicKey);
 
             // ML-KEM get ciphertext and KL-KEM shared secret
             byte[] mlKemKey = new byte[Algorithm.MLKemAlgorithm.SharedSecretSizeInBytes];
@@ -113,7 +113,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
             p = tradCT.Slice(Algorithm.ECPointValueSizeInBytes + 1, Algorithm.ECPointValueSizeInBytes);
             ecParam.Q.Y.CopyTo(p);
 
-            var ecdhParameters = _ECDh.ExportParameters(false);
+            var ecdhParameters = _ECDH.ExportParameters(false);
             ecdhParameters.Validate();
 
             // combine ML-KEM- and traditional shared secret
@@ -137,8 +137,8 @@ namespace Rotherprivat.PqCrypto.Cryptography
             using var ecEphemeralKey = ECDiffieHellman.Create(tradCT);
 
             // get traditional shared secret
-            var tradKey = _ECDh.DeriveRawSecretAgreement(ecEphemeralKey.PublicKey);
-            var tradPK = _ECDh.ExportParameters(false);
+            var tradKey = _ECDH.DeriveRawSecretAgreement(ecEphemeralKey.PublicKey);
+            var tradPK = _ECDH.ExportParameters(false);
             tradPK.Validate();
 
             // combine ML-KEM- and traditional shared secret
@@ -150,18 +150,18 @@ namespace Rotherprivat.PqCrypto.Cryptography
             if (disposing)
             {
                 _MLKem?.Dispose();
-                _ECDh?.Dispose();
+                _ECDH?.Dispose();
             }
             _MLKem = null;
-            _ECDh = null;
+            _ECDH = null;
             base.Dispose(disposing);
         }
 
 
-        [MemberNotNull(nameof(_MLKem), nameof(_ECDh))]
+        [MemberNotNull(nameof(_MLKem), nameof(_ECDH))]
         private void EnsureValid()
         {
-            if (_MLKem == null || _ECDh == null)
+            if (_MLKem == null || _ECDH == null)
                 throw new CryptographicException("Not initialized.");
         }
 

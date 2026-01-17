@@ -8,7 +8,7 @@ using Rotherprivat.PqCrypto.Cryptography;
 namespace Rotherprivat.PqTest.Cryptography
 {
     [TestClass]
-    public sealed class TestCrypotgraphyHybridMlKem
+    public sealed class TestCryptographyHybridMlKem
     {
         private static IEnumerable<object[]> MlKemAlgorithms => TestAlgorithms.MlKemAlgorithms;
 
