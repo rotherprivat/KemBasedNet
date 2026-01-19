@@ -8,11 +8,11 @@ This project provides a .NET implementation of the Post Quantum Crypto algorithm
 
 ## CompositeMLKem
 
-The "CompositeMLKem" algorithm is specified by the [IETF draft](https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html) and the implementation and interfaces are aligned to the [.NET ML-KEM implementation "System.Security.Cryptograpy.MLKem"](https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem).
+The "CompositMLKem" algorithm is specified by the [IETF draft](https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html) and the implementation and interfaces are aligned to the [.NET ML-KEM implementation "System.Security.Cryptograpy.MLKem"](https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem).
 It implements a composition of the Post Quantum ML-KEM algorithm and a traditional KEM algorithm.
 
 Classes:
-- CompositeMLKem
+- CompositMLKem
 - CompositeMLKemAlgorithm
 
 ### Motivation
@@ -50,15 +50,14 @@ This version only provides the following algorithm combinations:
 | MLKEM1024-ECDH-P384-SHA3-256 | ML-KEM-1024 | ECDH, secp384r1 | SHA3-256 |
 | MLKEM1024-ECDH-P521-SHA3-256 | ML-KEM-1024 | ECDH, secp521r1 | SHA3-256 |
 
+
 ### How to use
 
-The "CompositeMLKem" class will be used in the same way as the .NET MLKem calss.
+The "CompositMLKem" class will be used in the same way as the .NET MLKem calss.
 
-Roles:
-- Alice: Initiator of communication, owner of private key
+- Alice: Initiator of communication
 - Bob: Communication partner
 
-Workflow:
 1. Alice: Generate the key material according to the required combined algorithm (Alice). The private key should be handled confidentially by Alice.
 2. Provide Bob, your communication partner, with the encapsulation key (public key)
 3. Bob: Generate the local copy of the shared secret and a ciphertext (Encapsulation). The shared key should be handled confidentially by Bob.
@@ -67,19 +66,18 @@ Workflow:
 6. Alice and Bob can use the shared secret to encrypt and decrypt exchanged messages.
 
 ```C#
-// Generate the key material
 var algorithm = CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3;
 using var alice = CompositeMLKem.GenerateKey(algorithm);
 
 var derPublicKey = alice.ExportSubjectPublicKeyInfo();
 
-// Forward derPublicKey to Bob
+// Forward derPublicKeyto Bob
 using var bob = CompositeMLKem.ImportSubjectPublicKeyInfo(derPublicKey);
 
 bob.Encapsulate(out var ciphertext, out var bobsSecret);
 // Bob will use bobsSecret
 
-// Forward ciphertext to Alice
+// Forward ciphertext to Bob
 var aliceSecret = alice.Decapsulate(ciphertext);
 // Alice will use aliceSecret
 ```
@@ -88,61 +86,14 @@ C# code example
 
 ## HybridMlKem
 
-This class provides a convenient schema for Post Quantum safe data encryption and decryption using private- / public- keys, like [ECIES]( https://en.wikipedia.org/wiki/Integrated_Encryption_Scheme#Formal_description_of_ECIES) which is specified for traditional ECDH algorithms.
-
-The "HybridMlKem" schema is implemented on top of one of the following Key-Exchange algorithms:
-- [.NET ML-KEM implementation "System.Security.Cryptograpy.MLKem"](https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem)
-- [CompositeMLKem](#compositemlkem)
-
-and [AES-GCM]( https://datatracker.ietf.org/doc/html/rfc5288) for data encryption.
-
 ### Motivation
 
-Private-/public-key based data encryption, on top of Key-Exchange algorithms, is a little bit tricky. This class is one way to implement this schema. 
+### Description
 
 ### Restrictions
 
-The algorithms are standard algorithms, but encryption-/decryption-schema is not aligned with any standard like S/MIME.
-
 ### How to use
-
-The "HybridMlKem" class is intended to be used as follows:
-
-Roles:
-- Alice: Decrypt data, owner of private key
-- Bob: Encrypt data
-
-Workflow:
-1. Alice: Generate the key material according to the required algorithm (Alice). The private key should be handled confidentially by Alice.
-2. Provide Bob with the encapsulation key (public key)
-3. Bob: Encrypts the data, by using his encapsulation key
-4. Forward the encrypted data and parameters for decryption to Alice. (HybridMlKemCipherData)
-5. Alice: Decrypts the encrypted data by using her private key, and the parameters for decryption received from Bob.
-
-```C#
-string message = "The quick brown fox jumps over the lazy dog.";
-
-// Generate the key material
-var algorithm = CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3;
-using var alice = HybridMlKem.GenerateKey(algorithm);
-
-var derPublicKey = alice.ExportSubjectPublicKeyInfo();
-
-// Forward derPublicKey to Bob
-using var bob = HybridMlKem.ImportSubjectPublicKeyInfo(derPublicKey);
-
-// Encrypt message by using public key
-var encryptedDataBlock = bob.Encrypt(Encoding.UTF8.GetBytes(message))?.Serialize();
-
-// Forward encryptedDataBlock (encrypted message and parameters for decryption) to Alice
-
-// Decrypt message by using private key
-var decryptedBuffer = alice.Decrypt(HybridMlKemCipherData.Deserialize(encryptedDataBlock));
-var decryptedMessage = Encoding.UTF8.GetString(decryptedBuffer);
-```
-
-C# code example
 
 ## Tests
 
-## Exemples
+## Examples
