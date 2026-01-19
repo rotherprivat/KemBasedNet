@@ -98,7 +98,7 @@ and [AES-GCM]( https://datatracker.ietf.org/doc/html/rfc5288) for data encryptio
 
 ### Motivation
 
-Private-/public-key based data encryption, on top of Key-Exchange algorithms, is a little bit tricky. This class is one way to implement this schema. 
+Private-/public-key based data encryption, on top of Key-Exchange algorithms, is a little bit tricky. This class is one way to implement this in an encryption-/decryption-schema. 
 
 ### Restrictions
 
@@ -143,6 +143,35 @@ var decryptedMessage = Encoding.UTF8.GetString(decryptedBuffer);
 
 C# code example
 
-## Tests
+## PQTest.Cryptography
 
-## Exemples
+### TestCompositeMLKem
+
+_01_DecapsulateByTestVectors is verifying:
+- ImportPrivateKey
+- Combining algorithm
+- Decapsulate
+	
+_02_ExportPkcs8PrivateKeyByTestVectors is verifying:
+- ExportPkcs8PrivateKey
+
+_03_ImportPkcs8PrivateKeyByTestVectors is verifying:
+- ImportPkcs8PrivateKey
+		
+_04_ExportEncapsulationKeyByVectorsis is verifying:
+- ExportEncapsulationKey
+- ExportSubjectPublicKeyInfo
+- ExportSubjectPublicKeyInfoPem
+
+_05_RoundtripExchangeKeyPkcs8Der is verifying:
+- Encapsulate
+- ImportSubjectPublicKeyInfo
+
+_06_RoundtripExchangeKeyPkcs8EncryptedPem is verifying:
+- ImportFromPem
+- ExportEncryptedPkcs8PrivateKey
+- ImportEncryptedPkcs8PrivateKey
+
+## PQTest.Examles
+
+

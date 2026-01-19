@@ -16,7 +16,6 @@ namespace Rotherprivat.PqTest.Cryptography
         private TestVector? _TestVector;
         private static IEnumerable<object[]> CompositeMlKemAlgorithms => TestAlgorithms.CompositeMlKemAlgorithms;
 
-
         [TestInitialize]
         public void Init()
         {
@@ -26,49 +25,28 @@ namespace Rotherprivat.PqTest.Cryptography
 
         [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void CompositeMLKemRoundtripExchangeKey_pkcs8(CompositeMLKemAlgorithm algorithm)
+        public void _01_DecapsulateByTestVectors(CompositeMLKemAlgorithm algorithm)
         {
-            using var keyMaterial = CompositeMLKem.GenerateKey(algorithm);
+            if (null == _TestVector)
+                throw new InvalidOperationException("NoTestData");
 
+            string id = "id-" + algorithm.Name;
+            var testData = _TestVector.tests[id] ??
+                throw new InvalidOperationException("requested TestData missing");
 
-            var derPublicKey = keyMaterial.ExportSubjectPublicKeyInfo();
-            var pkcs8Key = keyMaterial.ExportPkcs8PrivateKey();
+            var privateKey = Convert.FromBase64String(testData.dk);
+            var cyphertext = Convert.FromBase64String(testData.c);
+            var key = Convert.FromBase64String(testData.k);
 
-            using var alice = CompositeMLKem.ImportPkcs8PrivateKey(pkcs8Key);
-            using var bob = CompositeMLKem.ImportSubjectPublicKeyInfo(derPublicKey);
+            using var compositeMLKem = CompositeMLKem.ImportPrivateKey(algorithm, privateKey);
 
-            bob.Encapsulate(out var ciphertext, out var bobsSecret);
-
-            var aliceSecret = alice.Decapsulate(ciphertext);
-
-            Assert.IsTrue(bobsSecret.SequenceEqual(aliceSecret), "Key exchange failed, the shared keys are different");
+            var decapsulatedKey = compositeMLKem.Decapsulate(cyphertext);
+            Assert.IsTrue(key.SequenceEqual(decapsulatedKey), $"Test vector {testData.tcId} compare shared key failed");
         }
 
         [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void CompositeMLKemRoundtripExchangeKey_pkcs8encrypted(CompositeMLKemAlgorithm algorithm)
-        {
-            using var keyMaterial = CompositeMLKem.GenerateKey(algorithm);
-
-
-            // PEM uses DER and plain public Key
-            var derPublicKey = keyMaterial.ExportSubjectPublicKeyInfoPem();
-            var pkcs8Key = keyMaterial.ExportEncryptedPkcs8PrivateKey("secret", new PbeParameters(PbeEncryptionAlgorithm.Aes256Cbc, HashAlgorithmName.SHA256, 210000));
-
-            using var alice = CompositeMLKem.ImportEncryptedPkcs8PrivateKey("secret", pkcs8Key);
-            using var bob = CompositeMLKem.ImportFromPem(derPublicKey);
-
-            bob.Encapsulate(out var ciphertext, out var bobsSecret);
-
-            var aliceSecret = alice.Decapsulate(ciphertext);
-
-            Assert.IsTrue(bobsSecret.SequenceEqual(aliceSecret), "Key exchange failed, the shared keys are different");
-        }
-
-
-        [TestMethod]
-        [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void TestCompositeMLKemPkcs8_1_Vectors(CompositeMLKemAlgorithm algorithm)
+        public void _02_ExportPkcs8PrivateKeyByTestVectors(CompositeMLKemAlgorithm algorithm)
         {
             if (null == _TestVector)
                 throw new InvalidOperationException("NoTestData");
@@ -81,15 +59,14 @@ namespace Rotherprivat.PqTest.Cryptography
             var refPkcs8 = Convert.FromBase64String(testData.dk_pkcs8);
 
             using var compositeMLKem = CompositeMLKem.ImportPrivateKey(algorithm, refDk);
-            var rawPkcs8 = compositeMLKem.ExportPkcs8PrivateKey ();
+            var rawPkcs8 = compositeMLKem.ExportPkcs8PrivateKey();
 
             Assert.IsTrue(refPkcs8.SequenceEqual(rawPkcs8), $"Test vector {testData.tcId} compare dk_pkcs8 from DK failed");
         }
 
-
         [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void TestCompositeMLKemPkcs8_2_Vectors(CompositeMLKemAlgorithm algorithm)
+        public void _03_ImportPkcs8PrivateKeyByTestVectors(CompositeMLKemAlgorithm algorithm)
         {
             if (null == _TestVector)
                 throw new InvalidOperationException("NoTestData");
@@ -109,7 +86,7 @@ namespace Rotherprivat.PqTest.Cryptography
 
         [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void CompositeMLKemExportEncapsulationKey_Vectors(CompositeMLKemAlgorithm algorithm) 
+        public void _04_ExportEncapsulationKeyByVectors(CompositeMLKemAlgorithm algorithm)
         {
             if (null == _TestVector)
                 throw new InvalidOperationException("NoTestData");
@@ -123,37 +100,67 @@ namespace Rotherprivat.PqTest.Cryptography
 
             using var compositeMLKem = CompositeMLKem.ImportPrivateKey(algorithm, privateKey);
             var rawEk = compositeMLKem.ExportEncapsulationKey();
-            
-            //?? string pemEk = compositeMLKem.ExportSubjectPublicKeyInfoPem();
 
             Assert.IsTrue(refEk.SequenceEqual(rawEk), $"Test vector {testData.tcId} compare EK from DK failed");
 
             // Get DER encoded public key from certificate in in test vector.
             using var cer = X509CertificateLoader.LoadCertificate(Convert.FromBase64String(testData.x5c));
+
             var refDerEk = cer.PublicKey.ExportSubjectPublicKeyInfo();
+
             var derEk = compositeMLKem.ExportSubjectPublicKeyInfo();
+
             Assert.IsTrue(refDerEk.SequenceEqual(derEk), $"Test vector {testData.tcId} compare derEK from DK failed");
+
+            string pemEk = compositeMLKem.ExportSubjectPublicKeyInfoPem();
+            var pem = PemEncoding.Find(pemEk);
+            string label = pemEk[pem.Label];
+            string base64data = pemEk[pem.Base64Data];
+
+            var derEkFromPem = Convert.FromBase64String(base64data);
+            Assert.AreEqual("PUBLIC KEY", label, $"Test vector {testData.tcId} unexpected PEM Label");
+            Assert.IsTrue(refDerEk.SequenceEqual(derEkFromPem), $"Test vector {testData.tcId} compare derEK from DK failed");
+        }
+
+
+        [TestMethod]
+        [DynamicData(nameof(CompositeMlKemAlgorithms))]
+        public void _05_RoundtripExchangeKeyPkcs8Der(CompositeMLKemAlgorithm algorithm)
+        {
+            using var keyMaterial = CompositeMLKem.GenerateKey(algorithm);
+
+            var derPublicKey = keyMaterial.ExportSubjectPublicKeyInfo();
+            var pkcs8Key = keyMaterial.ExportPkcs8PrivateKey();
+
+            using var alice = CompositeMLKem.ImportPkcs8PrivateKey(pkcs8Key);
+            using var bob = CompositeMLKem.ImportSubjectPublicKeyInfo(derPublicKey);
+
+            bob.Encapsulate(out var ciphertext, out var bobsSecret);
+
+            var aliceSecret = alice.Decapsulate(ciphertext);
+
+            Assert.IsTrue(bobsSecret.SequenceEqual(aliceSecret), "Key exchange failed, the shared keys are different");
         }
 
         [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void CompositeMLKemDecapsulate_Vectors(CompositeMLKemAlgorithm algorithm)
+        public void _06_RoundtripExchangeKeyPkcs8EncryptedPem(CompositeMLKemAlgorithm algorithm)
         {
-            if (null == _TestVector)
-                throw new InvalidOperationException("NoTestData");
+            using var keyMaterial = CompositeMLKem.GenerateKey(algorithm);
 
-            string id = "id-" + algorithm.Name;
-            var testData = _TestVector.tests[id]?? 
-                throw new InvalidOperationException("requested TestData missing");
 
-            var privateKey = Convert.FromBase64String(testData.dk);
-            var cyphertext = Convert.FromBase64String(testData.c);
-            var key = Convert.FromBase64String(testData.k);
+            // PEM uses DER and plain public Key
+            var derPublicKey = keyMaterial.ExportSubjectPublicKeyInfoPem();
+            var pkcs8Key = keyMaterial.ExportEncryptedPkcs8PrivateKey("secret", new PbeParameters(PbeEncryptionAlgorithm.Aes256Cbc, HashAlgorithmName.SHA256, 210000));
 
-            using var compositeMLKem = CompositeMLKem.ImportPrivateKey(algorithm, privateKey);
+            using var alice = CompositeMLKem.ImportEncryptedPkcs8PrivateKey("secret", pkcs8Key);
+            using var bob = CompositeMLKem.ImportFromPem(derPublicKey);
 
-            var decapsulatedKey = compositeMLKem.Decapsulate(cyphertext);
-            Assert.IsTrue(key.SequenceEqual(decapsulatedKey), $"Test vector {testData.tcId} compare shared key failed");
+            bob.Encapsulate(out var ciphertext, out var bobsSecret);
+
+            var aliceSecret = alice.Decapsulate(ciphertext);
+
+            Assert.IsTrue(bobsSecret.SequenceEqual(aliceSecret), "Key exchange failed, the shared keys are different");
         }
     }
 }
