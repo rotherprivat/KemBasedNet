@@ -142,36 +142,3 @@ var decryptedMessage = Encoding.UTF8.GetString(decryptedBuffer);
 ```
 
 C# code example
-
-## PQTest.Cryptography
-
-### TestCompositeMLKem
-
-_01_DecapsulateByTestVectors is verifying:
-- ImportPrivateKey
-- Combining algorithm
-- Decapsulate
-	
-_02_ExportPkcs8PrivateKeyByTestVectors is verifying:
-- ExportPkcs8PrivateKey
-
-_03_ImportPkcs8PrivateKeyByTestVectors is verifying:
-- ImportPkcs8PrivateKey
-		
-_04_ExportEncapsulationKeyByVectorsis is verifying:
-- ExportEncapsulationKey
-- ExportSubjectPublicKeyInfo
-- ExportSubjectPublicKeyInfoPem
-
-_05_RoundtripExchangeKeyPkcs8Der is verifying:
-- Encapsulate
-- ImportSubjectPublicKeyInfo
-
-_06_RoundtripExchangeKeyPkcs8EncryptedPem is verifying:
-- ImportFromPem
-- ExportEncryptedPkcs8PrivateKey
-- ImportEncryptedPkcs8PrivateKey
-
-## PQTest.Examles
-
-

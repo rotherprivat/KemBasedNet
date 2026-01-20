@@ -122,10 +122,38 @@ namespace Rotherprivat.PqTest.Cryptography
             Assert.IsTrue(refDerEk.SequenceEqual(derEkFromPem), $"Test vector {testData.tcId} compare derEK from DK failed");
         }
 
+        [TestMethod]
+        [DynamicData(nameof(CompositeMlKemAlgorithms))]
+        public void _05_EncapsulateVectors(CompositeMLKemAlgorithm algorithm)
+        {
+            if (null == _TestVector)
+                throw new InvalidOperationException("NoTestData");
+
+            string id = "id-" + algorithm.Name;
+            var testData = _TestVector.tests[id] ??
+                throw new InvalidOperationException("requested TestData missing");
+
+            var privateKey = Convert.FromBase64String(testData.dk);
+            var encapsulationKey = Convert.FromBase64String(testData.ek);
+
+            using var bob = CompositeMLKem.ImportEncapsulationKey(algorithm, encapsulationKey);
+            Assert.IsNotNull(bob, $"Test vector {testData.tcId} import ImportEncapsulationKey failed.");
+            
+            bob.Encapsulate(out var ciphertext, out var bobsSecret);
+
+            // Encapsulate generates random different results on every call, so it can not be
+            // validated by the test vectors. But we make sure that it works with the keys from the test vectors.
+
+            using var alice = CompositeMLKem.ImportPrivateKey(algorithm, privateKey);
+            Assert.IsNotNull(alice, $"Test vector {testData.tcId} import ImportPrivateKey failed.");
+
+            var aliceSecret = alice.Decapsulate(ciphertext);
+            Assert.IsTrue(bobsSecret.SequenceEqual(aliceSecret), "Key exchange failed, the shared keys are different");
+        }
 
         [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void _05_RoundtripExchangeKeyPkcs8Der(CompositeMLKemAlgorithm algorithm)
+        public void _06_RoundtripExchangeKeyPkcs8Der(CompositeMLKemAlgorithm algorithm)
         {
             using var keyMaterial = CompositeMLKem.GenerateKey(algorithm);
 
@@ -144,7 +172,7 @@ namespace Rotherprivat.PqTest.Cryptography
 
         [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
-        public void _06_RoundtripExchangeKeyPkcs8EncryptedPem(CompositeMLKemAlgorithm algorithm)
+        public void _07_RoundtripExchangeKeyPkcs8EncryptedPem(CompositeMLKemAlgorithm algorithm)
         {
             using var keyMaterial = CompositeMLKem.GenerateKey(algorithm);
 
