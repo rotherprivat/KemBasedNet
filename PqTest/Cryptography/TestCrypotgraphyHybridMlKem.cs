@@ -21,7 +21,7 @@ namespace Rotherprivat.PqTest.Cryptography
             // Generate ML-Kem Key
             using var kem = CompositeMLKem.GenerateKey(algorithm);
 
-            using var hybridMlKem = new HybridMlKem(kem, true);
+            using var hybridMlKem = new HybridMLKem(kem, true);
 
             expectedBuffer = kem.ExportPrivateKey();
             actualBuffer = hybridMlKem.ExportPrivateKey();
@@ -55,7 +55,7 @@ namespace Rotherprivat.PqTest.Cryptography
             // Generate ML-Kem Key
             using var kem = MLKem.GenerateKey(algorithm);
 
-            using var hybridMlKem = new HybridMlKem(kem, true);
+            using var hybridMlKem = new HybridMLKem(kem, true);
 
             expectedBuffer =  kem.ExportPrivateSeed();
             actualBuffer = hybridMlKem.ExportPrivateKey();
@@ -92,14 +92,14 @@ namespace Rotherprivat.PqTest.Cryptography
 
             // Private key
             expectedBuffer = kem.ExportPrivateKey();
-            using (var hybrid = HybridMlKem.ImportPrivateKey(algorithm, expectedBuffer))
+            using (var hybrid = HybridMLKem.ImportPrivateKey(algorithm, expectedBuffer))
             {
                 actualBuffer = hybrid.ExportPrivateKey();
             }
             Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportPrivateKey failed");
 
             buffer = kem.ExportPkcs8PrivateKey();
-            using (var hybrid = HybridMlKem.ImportPkcs8PrivateKey(buffer))
+            using (var hybrid = HybridMLKem.ImportPkcs8PrivateKey(buffer))
             {
                 actualBuffer = hybrid.ExportPrivateKey();
             }
@@ -107,21 +107,21 @@ namespace Rotherprivat.PqTest.Cryptography
 
             // Public key
             expectedBuffer = kem.ExportEncapsulationKey();
-            using (var hybrid = HybridMlKem.ImportEncapsulationKey(algorithm, expectedBuffer))
+            using (var hybrid = HybridMLKem.ImportEncapsulationKey(algorithm, expectedBuffer))
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
             Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportEncapsulationKey failed");
 
             buffer = kem.ExportSubjectPublicKeyInfo();
-            using (var hybrid = HybridMlKem.ImportSubjectPublicKeyInfo(buffer))
+            using (var hybrid = HybridMLKem.ImportSubjectPublicKeyInfo(buffer))
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
             Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportSubjectPublicKeyInfo failed");
 
             var pem = kem.ExportSubjectPublicKeyInfoPem();
-            using (var hybrid = HybridMlKem.ImportFromPem(pem))
+            using (var hybrid = HybridMLKem.ImportFromPem(pem))
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
@@ -142,14 +142,14 @@ namespace Rotherprivat.PqTest.Cryptography
 
             // Private key
             expectedBuffer = kem.ExportPrivateSeed();
-            using (var hybrid = HybridMlKem.ImportPrivateKey(algorithm, expectedBuffer))
+            using (var hybrid = HybridMLKem.ImportPrivateKey(algorithm, expectedBuffer))
             {
                 actualBuffer = hybrid.ExportPrivateKey();
             }
             Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportPrivateKey failed");
 
             buffer = kem.ExportPkcs8PrivateKey();
-            using (var hybrid = HybridMlKem.ImportPkcs8PrivateKey(buffer))
+            using (var hybrid = HybridMLKem.ImportPkcs8PrivateKey(buffer))
             {
                 actualBuffer = hybrid.ExportPrivateKey();
             }
@@ -157,21 +157,21 @@ namespace Rotherprivat.PqTest.Cryptography
 
             // Public key
             expectedBuffer = kem.ExportEncapsulationKey();
-            using (var hybrid = HybridMlKem.ImportEncapsulationKey(algorithm, expectedBuffer))
+            using (var hybrid = HybridMLKem.ImportEncapsulationKey(algorithm, expectedBuffer))
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
             Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportEncapsulationKey failed");
 
             buffer = kem.ExportSubjectPublicKeyInfo();
-            using (var hybrid = HybridMlKem.ImportSubjectPublicKeyInfo(buffer))
+            using (var hybrid = HybridMLKem.ImportSubjectPublicKeyInfo(buffer))
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
             Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportSubjectPublicKeyInfo failed");
 
             var pem = kem.ExportSubjectPublicKeyInfoPem();
-            using (var hybrid = HybridMlKem.ImportFromPem(pem))
+            using (var hybrid = HybridMLKem.ImportFromPem(pem))
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
@@ -192,7 +192,7 @@ namespace Rotherprivat.PqTest.Cryptography
             // and the size of ciphertext is well known for ML-KEM
             var algorithm = MLKemAlgorithm.MLKem1024;
 
-            using var hybrid = HybridMlKem.GenerateKey(algorithm);
+            using var hybrid = HybridMLKem.GenerateKey(algorithm);
             var cipher = hybrid.Encrypt(messageBytes);
 
             Assert.IsNotNull(cipher, "Encrypt failed.");
@@ -206,7 +206,7 @@ namespace Rotherprivat.PqTest.Cryptography
             var buffer = cipher.Serialize();
             
             // Serialize / Deserialize and compare
-            var actualCipher = HybridMlKemCipherData.Deserialize(buffer);
+            var actualCipher = HybridMLKemCipherData.Deserialize(buffer);
 
             Assert.AreEqual(cipher.CipherText, actualCipher.CipherText, ByteArrayComparer.Comparer, "CipherText differs.");
             Assert.AreEqual(cipher.GcmNonce, actualCipher.GcmNonce, ByteArrayComparer.Comparer, "GcmNonce differs.");
@@ -222,18 +222,18 @@ namespace Rotherprivat.PqTest.Cryptography
             byte[] pkcs8Key;
             string pemPublicKey;
 
-            using (var key = HybridMlKem.GenerateKey(algorithm))
+            using (var key = HybridMLKem.GenerateKey(algorithm))
             {
                 pkcs8Key = key.ExportEncryptedPkcs8PrivateKey("secret", new PbeParameters(PbeEncryptionAlgorithm.Aes256Cbc, HashAlgorithmName.SHA256, 210000));
                 pemPublicKey = key.ExportSubjectPublicKeyInfoPem();
             }
 
-            using var bob = HybridMlKem.ImportFromPem(pemPublicKey);
+            using var bob = HybridMLKem.ImportFromPem(pemPublicKey);
             var cipher = bob.Encrypt(Encoding.UTF8.GetBytes(message));
 
             Assert.IsNotNull(cipher, $"{algorithm.Name}: Encrypt failed.");
 
-            using var alice = HybridMlKem.ImportEncryptedPkcs8PrivateKey("secret", pkcs8Key);
+            using var alice = HybridMLKem.ImportEncryptedPkcs8PrivateKey("secret", pkcs8Key);
 
 
             var decryptedBytes = alice.Decrypt(cipher);
@@ -250,18 +250,18 @@ namespace Rotherprivat.PqTest.Cryptography
             byte[] pkcs8Key;
             string pemPublicKey;
 
-            using (var key = HybridMlKem.GenerateKey(algorithm))
+            using (var key = HybridMLKem.GenerateKey(algorithm))
             {
                 pkcs8Key = key.ExportEncryptedPkcs8PrivateKey("secret", new PbeParameters(PbeEncryptionAlgorithm.Aes256Cbc, HashAlgorithmName.SHA256, 210000));
                 pemPublicKey = key.ExportSubjectPublicKeyInfoPem();
             }
 
-            using var bob = HybridMlKem.ImportFromPem(pemPublicKey);
+            using var bob = HybridMLKem.ImportFromPem(pemPublicKey);
             var cipher = bob.Encrypt(Encoding.UTF8.GetBytes(message));
 
             Assert.IsNotNull(cipher, $"{algorithm.Name}: Encrypt failed.");
 
-            using var alice = HybridMlKem.ImportEncryptedPkcs8PrivateKey("secret", pkcs8Key);
+            using var alice = HybridMLKem.ImportEncryptedPkcs8PrivateKey("secret", pkcs8Key);
 
 
             var decryptedBytes = alice.Decrypt(cipher);

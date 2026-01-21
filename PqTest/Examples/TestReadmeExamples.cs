@@ -38,12 +38,12 @@ namespace Rotherprivat.PqTest.Examples
 
             // Generate the key material
             var algorithm = CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3;
-            using var alice = HybridMlKem.GenerateKey(algorithm);
+            using var alice = HybridMLKem.GenerateKey(algorithm);
 
             var derPublicKey = alice.ExportSubjectPublicKeyInfo();
 
             // Forward derPublicKey to Bob
-            using var bob = HybridMlKem.ImportSubjectPublicKeyInfo(derPublicKey);
+            using var bob = HybridMLKem.ImportSubjectPublicKeyInfo(derPublicKey);
 
             // Encrypt message by using public key
             var encryptedDataBlock = bob.Encrypt(Encoding.UTF8.GetBytes(message))?.Serialize();
@@ -53,7 +53,7 @@ namespace Rotherprivat.PqTest.Examples
             // Forward encryptedDataBlock (encrypted message and parameters for decryption) to Alice
 
             // Decrypt message by using private key
-            var decryptedBuffer = alice.Decrypt(HybridMlKemCipherData.Deserialize(encryptedDataBlock));
+            var decryptedBuffer = alice.Decrypt(HybridMLKemCipherData.Deserialize(encryptedDataBlock));
             var decryptedMessage = Encoding.UTF8.GetString(decryptedBuffer);
 
             Assert.AreEqual(message, decryptedMessage, "original and decrypted message are different");

@@ -12,7 +12,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
     /// <item><description>CombinedMLKem: <a href="https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html">IETF draft</a></description></item>
     /// </list>
     /// </summary>
-    public class HybridMlKem : IDisposable
+    public class HybridMLKem : IDisposable
     {
         #region Constructors
         /// <summary>
@@ -20,7 +20,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// </summary>
         /// <param name="mlKem">ML-KKEM instance</param>
         /// <param name="dontDispose">Avoid disposing the Key-Exchange class, if attached to an external managed instance</param>
-        public HybridMlKem(MLKem mlKem, bool dontDispose = false)
+        public HybridMLKem(MLKem mlKem, bool dontDispose = false)
         {
             _PlainMlKem = mlKem;
             _DontDispose = dontDispose;
@@ -31,7 +31,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// </summary>
         /// <param name="mlKem">CompositeMLKKEM instance</param>
         /// <param name="dontDispose">Avoid disposing the Key-Exchange class, if attached to an external managed instance</param>
-        public HybridMlKem(CompositeMLKem compositeMLKem, bool dontDispose = false) 
+        public HybridMLKem(CompositeMLKem compositeMLKem, bool dontDispose = false) 
         {
             _CompositeMlKem  = compositeMLKem;
             _DontDispose = dontDispose;
@@ -44,9 +44,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// </summary>
         /// <param name="mLKemAlgorithm">ML-KEM algorithm</param>
         /// <returns>encryptor / decryptor instance</returns>
-        public static HybridMlKem GenerateKey(MLKemAlgorithm mLKemAlgorithm)
+        public static HybridMLKem GenerateKey(MLKemAlgorithm mLKemAlgorithm)
         {
-            return new HybridMlKem(MLKem.GenerateKey(mLKemAlgorithm));
+            return new HybridMLKem(MLKem.GenerateKey(mLKemAlgorithm));
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// </summary>
         /// <param name="compositeMLKemAlgorithm">CompositeMLKKEM algorithm</param>
         /// <returns>encryptor / decryptor instance</returns>
-        public static HybridMlKem GenerateKey(CompositeMLKemAlgorithm compositeMLKemAlgorithm)
+        public static HybridMLKem GenerateKey(CompositeMLKemAlgorithm compositeMLKemAlgorithm)
         {
-            return new HybridMlKem(CompositeMLKem.GenerateKey(compositeMLKemAlgorithm));
+            return new HybridMLKem(CompositeMLKem.GenerateKey(compositeMLKemAlgorithm));
         }
 
         /// <summary>
@@ -65,13 +65,13 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="publicKey">DER encoded public key</param>
         /// <returns>encryptor / decryptor instance</returns>
         /// <exception cref="CryptographicException"></exception>
-        public static HybridMlKem ImportSubjectPublicKeyInfo(byte[] publicKey)
+        public static HybridMLKem ImportSubjectPublicKeyInfo(byte[] publicKey)
         {
 #pragma warning disable SYSLIB5006
             return GetKemTypeFromSubjectPublicKeyInfo(publicKey) switch
             {
-                KemType.MLKem => new HybridMlKem(MLKem.ImportSubjectPublicKeyInfo(publicKey)),
-                KemType.CompositeMLKem => new HybridMlKem(CompositeMLKem.ImportSubjectPublicKeyInfo(publicKey)),
+                KemType.MLKem => new HybridMLKem(MLKem.ImportSubjectPublicKeyInfo(publicKey)),
+                KemType.CompositeMLKem => new HybridMLKem(CompositeMLKem.ImportSubjectPublicKeyInfo(publicKey)),
                 _ => throw new CryptographicException("Invalid key")
             };
 #pragma warning restore SYSLIB5006
@@ -83,9 +83,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="algorithm">ML-KEM algorithm</param>
         /// <param name="privateKey">native private key</param>
         /// <returns>encryptor / decryptor instance</returns>
-        public static HybridMlKem ImportPrivateKey(MLKemAlgorithm algorithm, byte[] privateKey)
+        public static HybridMLKem ImportPrivateKey(MLKemAlgorithm algorithm, byte[] privateKey)
         {
-            return new HybridMlKem(MLKem.ImportPrivateSeed(algorithm, privateKey));
+            return new HybridMLKem(MLKem.ImportPrivateSeed(algorithm, privateKey));
         }
 
         /// <summary>
@@ -94,9 +94,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="algorithm">CompositeMLKem algorithm</param>
         /// <param name="privateKey">native private key</param>
         /// <returns>encryptor / decryptor instance</returns>
-        public static HybridMlKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, byte[] privateKey)
+        public static HybridMLKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, byte[] privateKey)
         {
-            return new HybridMlKem(CompositeMLKem.ImportPrivateKey(algorithm, privateKey));
+            return new HybridMLKem(CompositeMLKem.ImportPrivateKey(algorithm, privateKey));
         }
 
         /// <summary>
@@ -105,13 +105,13 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="pkcs8"></param>
         /// <returns>encryptor / decryptor instance</returns>
         /// <exception cref="CryptographicException"></exception>
-        public static HybridMlKem ImportPkcs8PrivateKey(byte[] pkcs8)
+        public static HybridMLKem ImportPkcs8PrivateKey(byte[] pkcs8)
         {
 #pragma warning disable SYSLIB5006
             return GetKemTypeFromPkcs8PrivateKey(pkcs8) switch
             {
-                KemType.MLKem => new HybridMlKem(MLKem.ImportPkcs8PrivateKey(pkcs8)),
-                KemType.CompositeMLKem => new HybridMlKem(CompositeMLKem.ImportPkcs8PrivateKey(pkcs8)),
+                KemType.MLKem => new HybridMLKem(MLKem.ImportPkcs8PrivateKey(pkcs8)),
+                KemType.CompositeMLKem => new HybridMLKem(CompositeMLKem.ImportPkcs8PrivateKey(pkcs8)),
                 _ => throw new CryptographicException("Invalid key")
             };
 #pragma warning restore SYSLIB5006
@@ -122,7 +122,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// </summary>
         /// <param name="pkcs8">PKCS#8 encoded private key</param>
         /// <returns>encryptor / decryptor instance</returns>
-        public static HybridMlKem ImportPkcs8PrivateKey(ReadOnlySpan<byte> pkcs8)
+        public static HybridMLKem ImportPkcs8PrivateKey(ReadOnlySpan<byte> pkcs8)
         {
             return ImportPkcs8PrivateKey(pkcs8.ToArray());
         }
@@ -134,13 +134,13 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="pkcs8">PKCS#8 encoded private key</param>
         /// <returns>encryptor / decryptor instance</returns>
         /// <exception cref="CryptographicException"></exception>
-        public static HybridMlKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, byte[] pkcs8)
+        public static HybridMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, byte[] pkcs8)
         {
 #pragma warning disable SYSLIB5006
             return GetKemTypeFromPkcs8PrivateKey(passwordBytes, pkcs8) switch
             {
-                KemType.MLKem => new HybridMlKem(MLKem.ImportEncryptedPkcs8PrivateKey(passwordBytes, pkcs8)),
-                KemType.CompositeMLKem => new HybridMlKem(CompositeMLKem.ImportEncryptedPkcs8PrivateKey(passwordBytes, pkcs8)),
+                KemType.MLKem => new HybridMLKem(MLKem.ImportEncryptedPkcs8PrivateKey(passwordBytes, pkcs8)),
+                KemType.CompositeMLKem => new HybridMLKem(CompositeMLKem.ImportEncryptedPkcs8PrivateKey(passwordBytes, pkcs8)),
                 _ => throw new CryptographicException("Invalid key")
             };
 #pragma warning restore SYSLIB5006
@@ -154,13 +154,13 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="pkcs8">PKCS#8 encoded private key</param>
         /// <returns>encryptor / decryptor instance</returns>
         /// <exception cref="CryptographicException"></exception>
-        public static HybridMlKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, byte[] pkcs8)
+        public static HybridMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, byte[] pkcs8)
         {
 #pragma warning disable SYSLIB5006
             return GetKemTypeFromPkcs8PrivateKey(password, pkcs8) switch
             {
-                KemType.MLKem => new HybridMlKem(MLKem.ImportEncryptedPkcs8PrivateKey(password, pkcs8)),
-                KemType.CompositeMLKem => new HybridMlKem(CompositeMLKem.ImportEncryptedPkcs8PrivateKey(password, pkcs8)),
+                KemType.MLKem => new HybridMLKem(MLKem.ImportEncryptedPkcs8PrivateKey(password, pkcs8)),
+                KemType.CompositeMLKem => new HybridMLKem(CompositeMLKem.ImportEncryptedPkcs8PrivateKey(password, pkcs8)),
                 _ => throw new CryptographicException("Invalid key")
             };
 #pragma warning restore SYSLIB5006
@@ -173,7 +173,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="password">Password</param>
         /// <param name="pkcs8">PKCS#8 encoded private key</param>
         /// <returns>encryptor / decryptor instance</returns>
-        public static HybridMlKem ImportEncryptedPkcs8PrivateKey(string password, byte[] pkcs8)
+        public static HybridMLKem ImportEncryptedPkcs8PrivateKey(string password, byte[] pkcs8)
         {
             return ImportEncryptedPkcs8PrivateKey(password.AsSpan(), pkcs8);
         }
@@ -184,9 +184,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="algorithm">ML-KEM algorithm</param>
         /// <param name="encapsulationKey">public / encapsulation key</param>
         /// <returns>encryptor / decryptor</returns>
-        public static HybridMlKem ImportEncapsulationKey(MLKemAlgorithm algorithm, byte[] encapsulationKey)
+        public static HybridMLKem ImportEncapsulationKey(MLKemAlgorithm algorithm, byte[] encapsulationKey)
         {
-            return new HybridMlKem(MLKem.ImportEncapsulationKey(algorithm, encapsulationKey));
+            return new HybridMLKem(MLKem.ImportEncapsulationKey(algorithm, encapsulationKey));
         }
 
 
@@ -196,9 +196,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="algorithm">CompositeMLKem algorithm</param>
         /// <param name="encapsulationKey">public / encapsulation key</param>
         /// <returns>encryptor / decryptor</returns>
-        public static HybridMlKem ImportEncapsulationKey(CompositeMLKemAlgorithm algorithm, byte[] encapsulationKey)
+        public static HybridMLKem ImportEncapsulationKey(CompositeMLKemAlgorithm algorithm, byte[] encapsulationKey)
         {
-            return new HybridMlKem(CompositeMLKem.ImportEncapsulationKey(algorithm, encapsulationKey));
+            return new HybridMLKem(CompositeMLKem.ImportEncapsulationKey(algorithm, encapsulationKey));
         }
 
         /// <summary>
@@ -207,13 +207,13 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="publicKey">DER encoded public key</param>
         /// <returns>encryptor / decryptor instance</returns>
         /// <exception cref="CryptographicException"></exception>
-        public static HybridMlKem ImportSubjectPublicKeyInfo(ReadOnlySpan<byte> publicKey)
+        public static HybridMLKem ImportSubjectPublicKeyInfo(ReadOnlySpan<byte> publicKey)
         {
 #pragma warning disable SYSLIB5006
             return GetKemTypeFromSubjectPublicKeyInfo(publicKey.ToArray()) switch
             {
-                KemType.MLKem => new HybridMlKem(MLKem.ImportSubjectPublicKeyInfo(publicKey)),
-                KemType.CompositeMLKem => new HybridMlKem(CompositeMLKem.ImportSubjectPublicKeyInfo(publicKey)),
+                KemType.MLKem => new HybridMLKem(MLKem.ImportSubjectPublicKeyInfo(publicKey)),
+                KemType.CompositeMLKem => new HybridMLKem(CompositeMLKem.ImportSubjectPublicKeyInfo(publicKey)),
                 _ => throw new CryptographicException("Invalid key")
             };
 #pragma warning restore SYSLIB5006
@@ -225,7 +225,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="pemKey">PEM encoded public key</param>
         /// <returns>encryptor / decryptor instance</returns>
         /// <exception cref="CryptographicException"></exception>
-        public static HybridMlKem ImportFromPem(string pemKey)
+        public static HybridMLKem ImportFromPem(string pemKey)
         {
             var pem = PemEncoding.Find(pemKey);
             var label = pemKey[pem.Label];
@@ -245,7 +245,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="pemKey">PEM encoded public key</param>
         /// <returns>encryptor / decryptor instance</returns>
         /// <exception cref="CryptographicException"></exception>
-        public static HybridMlKem ImportFromPem(ReadOnlySpan<char> pemKey)
+        public static HybridMLKem ImportFromPem(ReadOnlySpan<char> pemKey)
         {
             var pem = PemEncoding.Find(pemKey);
             var label = pemKey[pem.Label];
@@ -433,7 +433,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// </summary>
         /// <param name="plaintext">plain text data</param>
         /// <returns>Encrypted data and all public parameters required for decryption</returns>
-        public HybridMlKemCipherData? Encrypt(byte[] plaintext)
+        public HybridMLKemCipherData? Encrypt(byte[] plaintext)
         {
             EnsureValid();
 
@@ -448,7 +448,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
 
             aes.Encrypt(nonce, plaintext, encryptedPlaintext, tag);
 
-            return new HybridMlKemCipherData()
+            return new HybridMLKemCipherData()
             {
                 CipherText = cipherText,
                 GcmNonce = nonce,
@@ -462,7 +462,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// </summary>
         /// <param name="cipherData">Encrypted data and all public parameters required for decryption</param>
         /// <returns>plain text data</returns>
-        public byte[] Decrypt(HybridMlKemCipherData cipherData)
+        public byte[] Decrypt(HybridMLKemCipherData cipherData)
         {
             EnsureValid();
 

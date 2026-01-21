@@ -62,7 +62,7 @@ namespace Rotherprivat.PqTest.Examples
 
         private static byte[] BobEncryptText(byte[] derPublicKey, string message)
         {
-            using var bob = HybridMlKem.ImportSubjectPublicKeyInfo(derPublicKey);
+            using var bob = HybridMLKem.ImportSubjectPublicKeyInfo(derPublicKey);
             var cipher = bob.Encrypt(Encoding.UTF8.GetBytes(message));
             Assert.IsNotNull(cipher);
 
@@ -71,9 +71,9 @@ namespace Rotherprivat.PqTest.Examples
 
         private static string AliceDecryptText(byte[] pkcs8PrivateKey, byte[] encryptedMessageBytes)
         {
-            using var alice = HybridMlKem.ImportPkcs8PrivateKey(pkcs8PrivateKey);
+            using var alice = HybridMLKem.ImportPkcs8PrivateKey(pkcs8PrivateKey);
 
-            var decryptedPlaintextBytes = alice.Decrypt(HybridMlKemCipherData.Deserialize(encryptedMessageBytes));
+            var decryptedPlaintextBytes = alice.Decrypt(HybridMLKemCipherData.Deserialize(encryptedMessageBytes));
             return Encoding.UTF8.GetString(decryptedPlaintextBytes);
         }
     }

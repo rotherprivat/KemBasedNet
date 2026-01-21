@@ -5,7 +5,7 @@
 ### TestCompositeMLKem
 
 Tests for CompositeMLKem class and implementation. Not all methods tests can be covered by test vectors, 
-but we can verify Key-Import, -Export and Decapsulate by test vectors, the remaining functionality 
+but we can verify key-import, -export and Decapsulate by test vectors, the remaining functionality 
 is tested by round trips (Encapsulate - Decapsulate => Compare the shared secrets).
 
 | Test | Verifys |
@@ -21,7 +21,7 @@ is tested by round trips (Encapsulate - Decapsulate => Compare the shared secret
 ### TestHybridMlKem
 
 Assuming the Key-Exchange algoritms "MLKem" and "CompositeMLKem" as well as the encryption algorithm "AES-GCM" are 
-working well, it should be sufficient to verify Key-Import/-Export and Encapuate-/Decapsulate-calls are 
+working well, it should be sufficient to verify key-import/-export and Encapsulate-/Decapsulate-calls are 
 forwarded to the correct key exchange implementation, the CipherData class and the "AES-GCM" parameter are properly
 assigned.
 

@@ -5,7 +5,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
     /// <summary>
     /// Encrypted data and parameters for decryption
     /// </summary>
-    public class HybridMlKemCipherData
+    public class HybridMLKemCipherData
     {
         #region Properties
         /// <summary>
@@ -68,7 +68,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// </summary>
         /// <param name="buffer">byte buffer</param>
         /// <returns>CipherData object</returns>
-        public static HybridMlKemCipherData  Deserialize(byte[] buffer)
+        public static HybridMLKemCipherData  Deserialize(byte[] buffer)
         {
             using var ms = new MemoryStream(buffer);
             return Deserialize(ms);
@@ -80,12 +80,12 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="s">Readable stream</param>
         /// <returns>CipherData object</returns>
         /// <exception cref="ArgumentException"></exception>
-        public static HybridMlKemCipherData Deserialize(Stream s)
+        public static HybridMLKemCipherData Deserialize(Stream s)
         {
             if (!s.CanRead)
                 throw new ArgumentException("stream not readable");
 
-            var me = new HybridMlKemCipherData();
+            var me = new HybridMLKemCipherData();
             me.DeserializeImplementation(s);
             return me;
         }
