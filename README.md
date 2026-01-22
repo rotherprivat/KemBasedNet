@@ -3,6 +3,8 @@
 This project provides a .NET implementation of the Post Quantum Cryptograpy (**PQC**) algorithm "CompositeMLKem" and 
 a hybrid public-/private-key algorithm for encrypting and decrypting data, based on key exchange algorithms.
 
+[API Documentation](https://rotherprivat.github.io/PqCrypto/)
+
 ## Disclaimer
 
 This library is provided "**as is**", without warranty of any kind, express or implied. The authors 
