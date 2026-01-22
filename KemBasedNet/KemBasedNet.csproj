@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <NoWarn>NETSDK1233</NoWarn>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Rotherprivat.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <AssemblyTitle>KemBasedNet - PQC-algorithms CompositeMLKem for key exchange and HybridMLKem for data-encryption/-decryption</AssemblyTitle>
+    <FileVersion>0.9.0.0</FileVersion>
+    <AssemblyVersion>0.9.0.0</AssemblyVersion>
+    <Version>0.9.0</Version> 
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.1" />
+  </ItemGroup>
+
+</Project>

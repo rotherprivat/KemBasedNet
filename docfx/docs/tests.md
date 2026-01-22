@@ -1,8 +1,8 @@
 # Tests
 
-## PQTest.Cryptography
+## KemBasedNetTest.Cryptography
 
-See folder &lt;PqCrypto&gt;/PqTest/Cryptography
+See folder &lt;KemBased&gt;/KemBasedNetTest/Cryptography
 
 ### TestCompositeMLKem
 

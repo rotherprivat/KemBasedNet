@@ -3,9 +3,9 @@
 These tests provide some examples of how to use the PQC-algorithms offered by the 
 .NET platform and a test of the examples shown in the readme.
 
-## PQTest.Examles
+## KemBasedNet.Examles
 
-See folder &lt;PqCrypto&gt;/PqTest/Examples
+See folder &lt;KemBasedNetTest&gt;/KemBasedNet/Examples
 
 | Class | Purpose |
 | --- | --- |

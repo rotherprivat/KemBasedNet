@@ -4,7 +4,7 @@
     {
       "src": [
         {
-          "src": "../PqCrypto",
+          "src": "../KemBasedNetTest",
           "files": [
             "**/*.csproj"
           ]
@@ -38,8 +38,8 @@
       "modern"
     ],
     "globalMetadata": {
-      "_appName": "PqCrypto",
-      "_appTitle": "PqCrypto",
+      "_appName": "KemBasedNetTest",
+      "_appTitle": "KemBasedNetTest",
       "_enableSearch": true,
       "pdf": false
     }
