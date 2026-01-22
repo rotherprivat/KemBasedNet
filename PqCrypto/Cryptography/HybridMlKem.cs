@@ -427,7 +427,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
         }
         #endregion
 
-        #region Public methods:Encrypt / Decrypt
+        #region Public methods: Encrypt / Decrypt
         /// <summary>
         /// Encrypt plaintext data, using the active key exchange algorithm, as public asymmetric key component
         /// </summary>

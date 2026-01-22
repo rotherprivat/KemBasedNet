@@ -1,7 +1,7 @@
 ﻿# PqCrypto
 
-This project provides a .NET implementation of the Post Quantum Crypto algorithm "CompositeMLKem" and 
-a hybrid public- / private-key algorithm for encrypting and decrypting data, based on key exchange algorithms.
+This project provides a .NET implementation of the Post Quantum Cryptograpy (**PQC**) algorithm "CompositeMLKem" and 
+a hybrid public-/private-key algorithm for encrypting and decrypting data, based on key exchange algorithms.
 
 ## Disclaimer
 
@@ -29,7 +29,7 @@ before production use.
 ## CompositeMLKem
 
 The "CompositeMLKem" algorithm is specified by the [IETF draft](https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html) and the implementation and interfaces are aligned to the [.NET ML-KEM implementation "System.Security.Cryptograpy.MLKem"](https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem).
-It implements a composition of the Post Quantum ML-KEM algorithm and a traditional KEM algorithm.
+It implements a composition of the PQC-algorithm "ML-KEM" and a traditional KEM algorithm.
 
 Classes:
 - CompositeMLKem
@@ -37,8 +37,8 @@ Classes:
 
 ### Motivation
 
-The .NET version 10.0.2 (SDK 10.0.102) provides implementations of the major Post Quantum Cryptography 
-algorithms recommended by NIST:
+The .NET version 10.0.2 (SDK 10.0.102) provides implementations of the major PQC-algorithms
+ recommended by NIST:
 
 | Purpose | Algorithm |
 | --- | --- |
@@ -52,8 +52,8 @@ A composite variant of the "ML-KEM" algorithm is not available.
 
 **Why do we need composite algorithms?**
 
-The Post Quantum Algorithms are very young and not totally trusted and not field proven, therefore it 
-is considered risky to switch totally to new algorithms. Using a composition of Post Quantum and 
+The PQC-algorithms are very young and not totally trusted and not field proven, therefore it 
+is considered risky to switch totally to new algorithms. Using a composition of PQC- and 
 traditional algorithms in the phase of transition will reduce this risk, an attacker needs to break both 
 algorithms, so things won’t get worse.
 
@@ -108,7 +108,9 @@ var aliceSecret = alice.Decapsulate(ciphertext);
 
 ## HybridMLKem
 
-This provides a convenient schema for Post Quantum safe data encryption and decryption using private- / public- keys, like [ECIES]( https://en.wikipedia.org/wiki/Integrated_Encryption_Scheme#Formal_description_of_ECIES) which is specified for traditional ECDH algorithms.
+This provides a convenient scheme for PQC safe data encryption and decryption using private-/public- keys, 
+like [ECIES]( https://en.wikipedia.org/wiki/Integrated_Encryption_Scheme#Formal_description_of_ECIES) which 
+is specified for traditional ECDH algorithms.
 
 The "HybridMLKem" schema is implemented on top of one of the following Key-Exchange algorithms:
 - [.NET ML-KEM implementation "System.Security.Cryptograpy.MLKem"](https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem)

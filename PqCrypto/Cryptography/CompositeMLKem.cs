@@ -12,7 +12,8 @@ namespace Rotherprivat.PqCrypto.Cryptography
     /// <summary>
     /// <para>
     ///   Keys and algorithm implementation of the CompositeMLKem, a composed traditional and 
-    ///   ML-KEM post quantum key exchange algorithm.
+    ///   ML-KEM post quantum key exchange algorithm. The Interface and implementation is analog to the
+    ///   System.Security.Cryptography.MLKem class of the .NET platform.
     /// </para>
     /// <para>
     ///   See IETF draft <a href="https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html">documentation</a>
@@ -21,11 +22,14 @@ namespace Rotherprivat.PqCrypto.Cryptography
     /// </summary>
     public abstract class CompositeMLKem : IDisposable
     {
+        #region Properties
         /// <summary>
         /// Algorithm description
         /// </summary>
         public CompositeMLKemAlgorithm  Algorithm { get; }
+        #endregion
 
+        #region Public methods: Key handling
         /// <summary>
         /// Generate new keys for ML-KEM and traditional key exchange algorithms
         /// </summary>
@@ -356,7 +360,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
             var buffer = ExportSubjectPublicKeyInfo();
             return PemEncoding.WriteString(PemLabels.PublicKey, buffer);
         }
+        #endregion
 
+        #region Public methods: Encapsulate / Decapsulate
         /// <summary>
         /// Create combined ciphertext and shared secret
         /// </summary>
@@ -404,7 +410,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         {
             DecapsulateImplementation(ciphertext, sharedSecret);
         }
+        #endregion
 
+        #region Abstract methods overridden by implementation class
         /// <summary>
         /// Implementation of ExportPrivateKey logic in derived class
         /// </summary>
@@ -434,7 +442,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// <param name="sharedSecret"></param>
         /// <exclude/>
         protected abstract void DecapsulateImplementation(ReadOnlySpan<byte> ciphertext, Span<byte> sharedSecret);
+        #endregion
 
+        #region Hidden constructor
 #pragma warning disable IDE0290
         /// <summary>
         /// Hidden constructor
@@ -445,6 +455,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         {
             Algorithm = algorithm;
         }
+        #endregion
+
+        #region Private implementation, types and fields
 #pragma warning restore IDE0290
         private AsnWriter ExportSubjectPublicKeyInfoAsAsn()
         {
@@ -469,6 +482,7 @@ namespace Rotherprivat.PqCrypto.Cryptography
 
             return asn1;
         }
+        #endregion
 
         #region IDisposable
         private bool disposedValue;

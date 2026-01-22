@@ -29,9 +29,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
     ///   See: <a href="https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html">Composite ML-KEM for use in X.509 Public Key Infrastructure</a>
     /// </para>
     /// </summary>
-
     public sealed class CompositeMLKemAlgorithm
     {
+        #region Difined algorithms
         // specified algorithms
         private static readonly CompositeMLKemAlgorithm[] _Algorithms =
         [
@@ -40,7 +40,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
             new ("MLKEM1024-ECDH-P384-SHA3-256", "MLKEM1024-P384", "1.3.6.1.5.5.7.6.63", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP384),
             new ("MLKEM1024-ECDH-P521-SHA3-256", "MLKEM1024-P521", "1.3.6.1.5.5.7.6.66", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP521)
         ];
+        #endregion
 
+        #region Properties with named algorithms
         /// <summary>
         /// MLKEM768-ECDH-P256-SHA3-256
         /// </summary>
@@ -60,14 +62,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// MLKEM1024-ECDH-P521-SHA3-256
         /// </summary>
         public static CompositeMLKemAlgorithm KMKem1024WithECDhP521Sha3 { get; } = _Algorithms[3];
+        #endregion
 
-        /// <summary>
-        /// Get algorithm definition from OID
-        /// </summary>
-        /// <param name="oid"><see cref="Oid">Algorithm OID</see></param>
-        /// <returns>Algorithm definition or null, if the oid can not be resolved</returns>
-        public static CompositeMLKemAlgorithm? FromOid(string oid) => _Algorithms.FirstOrDefault(x => x.Oid == oid);
-
+        #region Public properies
         /// <summary>
         /// Algorithm Name
         /// </summary>
@@ -77,11 +74,22 @@ namespace Rotherprivat.PqCrypto.Cryptography
         /// Algorithm OID
         /// </summary>
         public string Oid { get; }
+        #endregion
+
+        #region Public methods and overrides
+        /// <summary>
+        /// Get algorithm definition from OID
+        /// </summary>
+        /// <param name="oid"><see cref="Oid">Algorithm OID</see></param>
+        /// <returns>Algorithm definition or null, if the oid can not be resolved</returns>
+        public static CompositeMLKemAlgorithm? FromOid(string oid) => _Algorithms.FirstOrDefault(x => x.Oid == oid);
 
         public override int GetHashCode() => Name.GetHashCode();
 
         public override string ToString() => Name;
+        #endregion
 
+        #region Internal and private propertiies
         internal MLKemAlgorithm MLKemAlgorithm { get; }
 
         internal ECCurve ECCurve { get; }
@@ -105,7 +113,9 @@ namespace Rotherprivat.PqCrypto.Cryptography
             "nistP521" => 82,
             _ => throw new CryptographicException("Invalid EC-Curve")
         };
+        #endregion
 
+        #region Hidden constructor
         private CompositeMLKemAlgorithm(string name, string label, string oid, MLKemAlgorithm mLKemAlgorithm, ECCurve eCCurve)
         {
             Name = name;
@@ -114,5 +124,6 @@ namespace Rotherprivat.PqCrypto.Cryptography
             MLKemAlgorithm = mLKemAlgorithm;
             ECCurve = eCCurve;
         }
+        #endregion
     }
 }

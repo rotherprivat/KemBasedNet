@@ -2,6 +2,8 @@
 
 ## PQTest.Cryptography
 
+See folder &lt;PqCrypto&gt;/PqTest/Cryptography
+
 ### TestCompositeMLKem
 
 Tests for CompositeMLKem class and implementation. Not all methods tests can be covered by test vectors, 
@@ -20,7 +22,7 @@ is tested by round trips (Encapsulate - Decapsulate => Compare the shared secret
 
 ### TestHybridMlKem
 
-Assuming the Key-Exchange algoritms "MLKem" and "CompositeMLKem" as well as the encryption algorithm "AES-GCM" are 
+Assuming the Key-Exchange algorithms "MLKem" and "CompositeMLKem" as well as the encryption algorithm "AES-GCM" are 
 working well, it should be sufficient to verify key-import/-export and Encapsulate-/Decapsulate-calls are 
 forwarded to the correct key exchange implementation, the CipherData class and the "AES-GCM" parameter are properly
 assigned.
@@ -31,3 +33,4 @@ assigned.
 | _02_Import&lt;...&gt; | - ImportPrivateKey<br>- ImportPkcs8PrivateKey<br>- ImportEncapsulationKey<br>- ImportSubjectPublicKeyInfo<br>- ImportSubjectPublicKeyInfoPem |
 | _03_CipherData | - HybridMlKemCipherData, Serialize/Deserialize<br>- Encrypt, "HybridMlKemCipherData" parameter assignment |
 | _04_RoundTrip&lt;...&gt; | - Decrypt |
+
