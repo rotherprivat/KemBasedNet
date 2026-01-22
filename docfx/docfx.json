@@ -4,7 +4,7 @@
     {
       "src": [
         {
-          "src": "../KemBasedNetTest",
+          "src": "../KemBasedNet",
           "files": [
             "**/*.csproj"
           ]
@@ -38,8 +38,8 @@
       "modern"
     ],
     "globalMetadata": {
-      "_appName": "KemBasedNetTest",
-      "_appTitle": "KemBasedNetTest",
+      "_appName": "KemBasedNet",
+      "_appTitle": "KemBasedNet",
       "_enableSearch": true,
       "pdf": false
     }

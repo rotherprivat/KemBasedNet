@@ -1,252 +1,292 @@
 {
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.c.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.c.html",
-    "title": "Property c | KemBasedNetTest",
-    "summary": "Property c Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll c [AllowNull] public string c { get; set; } Property Value string"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Algorithm.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Algorithm.html",
+    "title": "Property Algorithm | KemBasedNet",
+    "summary": "Property Algorithm Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Algorithm Algorithm description public CompositeMLKemAlgorithm Algorithm { get; } Property Value CompositeMLKemAlgorithm"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.dk.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.dk.html",
-    "title": "Property dk | KemBasedNetTest",
-    "summary": "Property dk Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll dk [AllowNull] public string dk { get; set; } Property Value string"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Decapsulate.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Decapsulate.html",
+    "title": "Method Decapsulate | KemBasedNet",
+    "summary": "Method Decapsulate Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Decapsulate(byte[]) Decapsulate the shared secret from ciphertext public byte[] Decapsulate(byte[] ciphertext) Parameters ciphertext byte[] Combined ciphertext Returns byte[] Combined shared secret Decapsulate(ReadOnlySpan<byte>, Span<byte>) Decapsulate the shared key from combined ciphertext public void Decapsulate(ReadOnlySpan<byte> ciphertext, Span<byte> sharedSecret) Parameters ciphertext ReadOnlySpan<byte> Combined ciphertext sharedSecret Span<byte> Combined shared secret"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.dk_pkcs8.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.dk_pkcs8.html",
-    "title": "Property dk_pkcs8 | KemBasedNetTest",
-    "summary": "Property dk_pkcs8 Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll dk_pkcs8 [AllowNull] public string dk_pkcs8 { get; set; } Property Value string"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Dispose.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Dispose.html",
+    "title": "Method Dispose | KemBasedNet",
+    "summary": "Method Dispose Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Dispose() Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. public void Dispose()"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.ek.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.ek.html",
-    "title": "Property ek | KemBasedNetTest",
-    "summary": "Property ek Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll ek [AllowNull] public string ek { get; set; } Property Value string"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Encapsulate.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Encapsulate.html",
+    "title": "Method Encapsulate | KemBasedNet",
+    "summary": "Method Encapsulate Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Encapsulate(out byte[], out byte[]) Create combined ciphertext and shared secret public void Encapsulate(out byte[] ciphertext, out byte[] sharedSecret) Parameters ciphertext byte[] Combined ciphertext sharedSecret byte[] Combined shared secret Encapsulate(Span<byte>, Span<byte>) Create combined ciphertext and shared secret public void Encapsulate(Span<byte> ciphertext, Span<byte> sharedSecret) Parameters ciphertext Span<byte> Combined ciphertext sharedSecret Span<byte> Combined shared secret"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.html",
-    "title": "Class Test | KemBasedNetTest",
-    "summary": "Class Test Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll public class Test Inheritance object Test Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Properties c dk dk_pkcs8 ek k tcId x5c"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey.html",
+    "title": "Method ExportEncapsulationKey | KemBasedNet",
+    "summary": "Method ExportEncapsulationKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportEncapsulationKey() Export encapsulation keys of ML-KEM and traditional key exchange algorithms public byte[] ExportEncapsulationKey() Returns byte[] Encapsulation- /public- key ExportEncapsulationKey(Span<byte>) Export encapsulation keys of ML-KEM and traditional key exchange algorithms public void ExportEncapsulationKey(Span<byte> keyBuffer) Parameters keyBuffer Span<byte> encapsulation- /public- key Exceptions CryptographicException"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.k.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.k.html",
-    "title": "Property k | KemBasedNetTest",
-    "summary": "Property k Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll k [AllowNull] public string k { get; set; } Property Value string"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncryptedPkcs8PrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncryptedPkcs8PrivateKey.html",
+    "title": "Method ExportEncryptedPkcs8PrivateKey | KemBasedNet",
+    "summary": "Method ExportEncryptedPkcs8PrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte>, PbeParameters) Export private keys of ML-KEM and traditional key exchange algorithms public byte[] ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, PbeParameters pbeParameters) Parameters passwordBytes ReadOnlySpan<byte> Password pbeParameters PbeParameters Password-based encryption (PBE) parameters Returns byte[] PKCS#8 encoded private key ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<char>, PbeParameters) Export private keys of ML-KEM and traditional key exchange algorithms public byte[] ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, PbeParameters pbeParameters) Parameters password ReadOnlySpan<char> Password pbeParameters PbeParameters Password-based encryption (PBE) parameters Returns byte[] PKCS#8 encoded private key ExportEncryptedPkcs8PrivateKey(string, PbeParameters) Export private keys of ML-KEM and traditional key exchange algorithms public byte[] ExportEncryptedPkcs8PrivateKey(string password, PbeParameters pbeParameters) Parameters password string Password pbeParameters PbeParameters Password-based encryption (PBE) parameters Returns byte[] PKCS#8 encoded private key"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.tcId.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.tcId.html",
-    "title": "Property tcId | KemBasedNetTest",
-    "summary": "Property tcId Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll tcId [AllowNull] public string tcId { get; set; } Property Value string"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPkcs8PrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPkcs8PrivateKey.html",
+    "title": "Method ExportPkcs8PrivateKey | KemBasedNet",
+    "summary": "Method ExportPkcs8PrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportPkcs8PrivateKey() Export private keys of ML-KEM and traditional key exchange algorithms public byte[] ExportPkcs8PrivateKey() Returns byte[] PKCS#8 encoded private key"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.x5c.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.Test.x5c.html",
-    "title": "Property x5c | KemBasedNetTest",
-    "summary": "Property x5c Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll x5c [AllowNull] public string x5c { get; set; } Property Value string"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey.html",
+    "title": "Method ExportPrivateKey | KemBasedNet",
+    "summary": "Method ExportPrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportPrivateKey() Export private keys of ML-KEM and traditional key exchange algorithms public byte[] ExportPrivateKey() Returns byte[] private key ExportPrivateKey(Span<byte>) Export private keys of ML-KEM and traditional key exchange algorithms public void ExportPrivateKey(Span<byte> privateKey) Parameters privateKey Span<byte> private key"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestAlgorithms.CompositeMlKemAlgorithms.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestAlgorithms.CompositeMlKemAlgorithms.html",
-    "title": "Property CompositeMlKemAlgorithms | KemBasedNetTest",
-    "summary": "Property CompositeMlKemAlgorithms Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll CompositeMlKemAlgorithms public static IEnumerable<object[]> CompositeMlKemAlgorithms { get; } Property Value IEnumerable<object[]>"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportSubjectPublicKeyInfo.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportSubjectPublicKeyInfo.html",
+    "title": "Method ExportSubjectPublicKeyInfo | KemBasedNet",
+    "summary": "Method ExportSubjectPublicKeyInfo Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportSubjectPublicKeyInfo() Export encapsulation keys of ML-KEM and traditional key exchange algorithms public byte[] ExportSubjectPublicKeyInfo() Returns byte[] DER encoded encapsulation- /public- key"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestAlgorithms.MlKemAlgorithms.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestAlgorithms.MlKemAlgorithms.html",
-    "title": "Property MlKemAlgorithms | KemBasedNetTest",
-    "summary": "Property MlKemAlgorithms Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll MlKemAlgorithms public static IEnumerable<object[]> MlKemAlgorithms { get; } Property Value IEnumerable<object[]>"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportSubjectPublicKeyInfoPem.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportSubjectPublicKeyInfoPem.html",
+    "title": "Method ExportSubjectPublicKeyInfoPem | KemBasedNet",
+    "summary": "Method ExportSubjectPublicKeyInfoPem Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportSubjectPublicKeyInfoPem() Export encapsulation keys of ML-KEM and traditional key exchange algorithms public string ExportSubjectPublicKeyInfoPem() Returns string PEM encoded encapsulation- /public- key"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestAlgorithms.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestAlgorithms.html",
-    "title": "Class TestAlgorithms | KemBasedNetTest",
-    "summary": "Class TestAlgorithms Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll public static class TestAlgorithms Inheritance object TestAlgorithms Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Properties CompositeMlKemAlgorithms MlKemAlgorithms"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.GenerateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.GenerateKey.html",
+    "title": "Method GenerateKey | KemBasedNet",
+    "summary": "Method GenerateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll GenerateKey(CompositeMLKemAlgorithm) Generate new keys for ML-KEM and traditional key exchange algorithms public static CompositeMLKem GenerateKey(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm Algorithm description Returns CompositeMLKem keys and algorithm implementation"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem.Init.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem.Init.html",
-    "title": "Method Init | KemBasedNetTest",
-    "summary": "Method Init Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll Init() [TestInitialize] public void Init()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncapsulationKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncapsulationKey.html",
+    "title": "Method ImportEncapsulationKey | KemBasedNet",
+    "summary": "Method ImportEncapsulationKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportEncapsulationKey(CompositeMLKemAlgorithm, byte[]) Import encapsulation keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportEncapsulationKey(CompositeMLKemAlgorithm algorithm, byte[] encapsulationKey) Parameters algorithm CompositeMLKemAlgorithm Algorithm description encapsulationKey byte[] encapsulation- /public- key Returns CompositeMLKem keys and algorithm implementation ImportEncapsulationKey(CompositeMLKemAlgorithm, ReadOnlySpan<byte>) Import encapsulation keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportEncapsulationKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> encapsulationKey) Parameters algorithm CompositeMLKemAlgorithm Algorithm description encapsulationKey ReadOnlySpan<byte> encapsulation- /public- key Returns CompositeMLKem keys and algorithm implementation"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._01_DecapsulateByTestVectors.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._01_DecapsulateByTestVectors.html",
-    "title": "Method _01_DecapsulateByTestVectors | KemBasedNetTest",
-    "summary": "Method _01_DecapsulateByTestVectors Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _01_DecapsulateByTestVectors(CompositeMLKemAlgorithm) [TestMethod] [DynamicData(\"CompositeMlKemAlgorithms\", DynamicDataSourceType.Property)] public void _01_DecapsulateByTestVectors(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncryptedPkcs8PrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncryptedPkcs8PrivateKey.html",
+    "title": "Method ImportEncryptedPkcs8PrivateKey | KemBasedNet",
+    "summary": "Method ImportEncryptedPkcs8PrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte>, byte[]) Import private keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, byte[] pkcs8) Parameters passwordBytes ReadOnlySpan<byte> password pkcs8 byte[] PKCS#8 encoded private key Returns CompositeMLKem keys and algorithm implementation Exceptions CryptographicException ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char>, byte[]) Import private keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, byte[] pkcs8) Parameters password ReadOnlySpan<char> password pkcs8 byte[] PKCS#8 encoded private key Returns CompositeMLKem keys and algorithm implementation Exceptions CryptographicException ImportEncryptedPkcs8PrivateKey(string, byte[]) Import private keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportEncryptedPkcs8PrivateKey(string password, byte[] pkcs8) Parameters password string password pkcs8 byte[] PKCS#8 encoded private key Returns CompositeMLKem keys and algorithm implementation Exceptions CryptographicException"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._02_ExportPkcs8PrivateKeyByTestVectors.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._02_ExportPkcs8PrivateKeyByTestVectors.html",
-    "title": "Method _02_ExportPkcs8PrivateKeyByTestVectors | KemBasedNetTest",
-    "summary": "Method _02_ExportPkcs8PrivateKeyByTestVectors Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _02_ExportPkcs8PrivateKeyByTestVectors(CompositeMLKemAlgorithm) [TestMethod] [DynamicData(\"CompositeMlKemAlgorithms\", DynamicDataSourceType.Property)] public void _02_ExportPkcs8PrivateKeyByTestVectors(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportFromPem.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportFromPem.html",
+    "title": "Method ImportFromPem | KemBasedNet",
+    "summary": "Method ImportFromPem Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportFromPem(string) Import encapsulation keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportFromPem(string pemKey) Parameters pemKey string PEM encoded encapsulation- /public- key Returns CompositeMLKem keys and algorithm implementation ImportFromPem(ReadOnlySpan<char>) Import encapsulation keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportFromPem(ReadOnlySpan<char> pemKey) Parameters pemKey ReadOnlySpan<char> PEM encoded encapsulation- /public- key Returns CompositeMLKem keys and algorithm implementation"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._03_ImportPkcs8PrivateKeyByTestVectors.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._03_ImportPkcs8PrivateKeyByTestVectors.html",
-    "title": "Method _03_ImportPkcs8PrivateKeyByTestVectors | KemBasedNetTest",
-    "summary": "Method _03_ImportPkcs8PrivateKeyByTestVectors Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _03_ImportPkcs8PrivateKeyByTestVectors(CompositeMLKemAlgorithm) [TestMethod] [DynamicData(\"CompositeMlKemAlgorithms\", DynamicDataSourceType.Property)] public void _03_ImportPkcs8PrivateKeyByTestVectors(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportPkcs8PrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportPkcs8PrivateKey.html",
+    "title": "Method ImportPkcs8PrivateKey | KemBasedNet",
+    "summary": "Method ImportPkcs8PrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportPkcs8PrivateKey(byte[]) Import private keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportPkcs8PrivateKey(byte[] pkcs8) Parameters pkcs8 byte[] PKCS#8 encoded private key Returns CompositeMLKem keys and algorithm implementation Exceptions CryptographicException ImportPkcs8PrivateKey(ReadOnlySpan<byte>) Import private keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportPkcs8PrivateKey(ReadOnlySpan<byte> pkcs8) Parameters pkcs8 ReadOnlySpan<byte> PKCS#8 encoded private key Returns CompositeMLKem keys and algorithm implementation Exceptions CryptographicException"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._04_ExportEncapsulationKeyByVectors.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._04_ExportEncapsulationKeyByVectors.html",
-    "title": "Method _04_ExportEncapsulationKeyByVectors | KemBasedNetTest",
-    "summary": "Method _04_ExportEncapsulationKeyByVectors Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _04_ExportEncapsulationKeyByVectors(CompositeMLKemAlgorithm) [TestMethod] [DynamicData(\"CompositeMlKemAlgorithms\", DynamicDataSourceType.Property)] public void _04_ExportEncapsulationKeyByVectors(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportPrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportPrivateKey.html",
+    "title": "Method ImportPrivateKey | KemBasedNet",
+    "summary": "Method ImportPrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportPrivateKey(CompositeMLKemAlgorithm, byte[]) Import private keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, byte[] privateKey) Parameters algorithm CompositeMLKemAlgorithm Algorithm description privateKey byte[] private key Returns CompositeMLKem keys and algorithm implementation"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._05_EncapsulateVectors.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._05_EncapsulateVectors.html",
-    "title": "Method _05_EncapsulateVectors | KemBasedNetTest",
-    "summary": "Method _05_EncapsulateVectors Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _05_EncapsulateVectors(CompositeMLKemAlgorithm) [TestMethod] [DynamicData(\"CompositeMlKemAlgorithms\", DynamicDataSourceType.Property)] public void _05_EncapsulateVectors(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportSubjectPublicKeyInfo.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportSubjectPublicKeyInfo.html",
+    "title": "Method ImportSubjectPublicKeyInfo | KemBasedNet",
+    "summary": "Method ImportSubjectPublicKeyInfo Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportSubjectPublicKeyInfo(byte[]) Import encapsulation keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportSubjectPublicKeyInfo(byte[] publicKey) Parameters publicKey byte[] DER encoded encapsulation- /public- key Returns CompositeMLKem keys and algorithm implementation ImportSubjectPublicKeyInfo(ReadOnlySpan<byte>) Import encapsulation keys of ML-KEM and traditional key exchange algorithms public static CompositeMLKem ImportSubjectPublicKeyInfo(ReadOnlySpan<byte> publicKey) Parameters publicKey ReadOnlySpan<byte> DER encoded encapsulation- /public- key Returns CompositeMLKem keys and algorithm implementation"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._06_RoundtripExchangeKeyPkcs8Der.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._06_RoundtripExchangeKeyPkcs8Der.html",
-    "title": "Method _06_RoundtripExchangeKeyPkcs8Der | KemBasedNetTest",
-    "summary": "Method _06_RoundtripExchangeKeyPkcs8Der Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _06_RoundtripExchangeKeyPkcs8Der(CompositeMLKemAlgorithm) [TestMethod] [DynamicData(\"CompositeMlKemAlgorithms\", DynamicDataSourceType.Property)] public void _06_RoundtripExchangeKeyPkcs8Der(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.html",
+    "title": "Class CompositeMLKem | KemBasedNet",
+    "summary": "Class CompositeMLKem Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Keys and algorithm implementation of the CompositeMLKem, a composed traditional and ML-KEM post quantum key exchange algorithm. The Interface and implementation is analog to the System.Security.Cryptography.MLKem class of the .NET platform. See IETF draft documentation and repository on GitHub. public abstract class CompositeMLKem : IDisposable Inheritance object CompositeMLKem Implements IDisposable Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Properties Algorithm Algorithm description Methods Decapsulate(byte[]) Decapsulate the shared secret from ciphertext Decapsulate(ReadOnlySpan<byte>, Span<byte>) Decapsulate the shared key from combined ciphertext Dispose() Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. Encapsulate(out byte[], out byte[]) Create combined ciphertext and shared secret Encapsulate(Span<byte>, Span<byte>) Create combined ciphertext and shared secret ExportEncapsulationKey() Export encapsulation keys of ML-KEM and traditional key exchange algorithms ExportEncapsulationKey(Span<byte>) Export encapsulation keys of ML-KEM and traditional key exchange algorithms ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte>, PbeParameters) Export private keys of ML-KEM and traditional key exchange algorithms ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<char>, PbeParameters) Export private keys of ML-KEM and traditional key exchange algorithms ExportEncryptedPkcs8PrivateKey(string, PbeParameters) Export private keys of ML-KEM and traditional key exchange algorithms ExportPkcs8PrivateKey() Export private keys of ML-KEM and traditional key exchange algorithms ExportPrivateKey() Export private keys of ML-KEM and traditional key exchange algorithms ExportPrivateKey(Span<byte>) Export private keys of ML-KEM and traditional key exchange algorithms ExportSubjectPublicKeyInfo() Export encapsulation keys of ML-KEM and traditional key exchange algorithms ExportSubjectPublicKeyInfoPem() Export encapsulation keys of ML-KEM and traditional key exchange algorithms GenerateKey(CompositeMLKemAlgorithm) Generate new keys for ML-KEM and traditional key exchange algorithms ImportEncapsulationKey(CompositeMLKemAlgorithm, byte[]) Import encapsulation keys of ML-KEM and traditional key exchange algorithms ImportEncapsulationKey(CompositeMLKemAlgorithm, ReadOnlySpan<byte>) Import encapsulation keys of ML-KEM and traditional key exchange algorithms ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte>, byte[]) Import private keys of ML-KEM and traditional key exchange algorithms ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char>, byte[]) Import private keys of ML-KEM and traditional key exchange algorithms ImportEncryptedPkcs8PrivateKey(string, byte[]) Import private keys of ML-KEM and traditional key exchange algorithms ImportFromPem(ReadOnlySpan<char>) Import encapsulation keys of ML-KEM and traditional key exchange algorithms ImportFromPem(string) Import encapsulation keys of ML-KEM and traditional key exchange algorithms ImportPkcs8PrivateKey(byte[]) Import private keys of ML-KEM and traditional key exchange algorithms ImportPkcs8PrivateKey(ReadOnlySpan<byte>) Import private keys of ML-KEM and traditional key exchange algorithms ImportPrivateKey(CompositeMLKemAlgorithm, byte[]) Import private keys of ML-KEM and traditional key exchange algorithms ImportSubjectPublicKeyInfo(byte[]) Import encapsulation keys of ML-KEM and traditional key exchange algorithms ImportSubjectPublicKeyInfo(ReadOnlySpan<byte>) Import encapsulation keys of ML-KEM and traditional key exchange algorithms"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._07_RoundtripExchangeKeyPkcs8EncryptedPem.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem._07_RoundtripExchangeKeyPkcs8EncryptedPem.html",
-    "title": "Method _07_RoundtripExchangeKeyPkcs8EncryptedPem | KemBasedNetTest",
-    "summary": "Method _07_RoundtripExchangeKeyPkcs8EncryptedPem Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _07_RoundtripExchangeKeyPkcs8EncryptedPem(CompositeMLKemAlgorithm) [TestMethod] [DynamicData(\"CompositeMlKemAlgorithms\", DynamicDataSourceType.Property)] public void _07_RoundtripExchangeKeyPkcs8EncryptedPem(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.FromOid.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.FromOid.html",
+    "title": "Method FromOid | KemBasedNet",
+    "summary": "Method FromOid Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll FromOid(string) Get algorithm definition from OID public static CompositeMLKemAlgorithm? FromOid(string oid) Parameters oid string Algorithm OID Returns CompositeMLKemAlgorithm Algorithm definition or null, if the oid can not be resolved"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestCompositeMLKem.html",
-    "title": "Class TestCompositeMLKem | KemBasedNetTest",
-    "summary": "Class TestCompositeMLKem Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll [TestClass] public sealed class TestCompositeMLKem Inheritance object TestCompositeMLKem Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.ReferenceEquals(object, object) object.ToString() Methods Init() _01_DecapsulateByTestVectors(CompositeMLKemAlgorithm) _02_ExportPkcs8PrivateKeyByTestVectors(CompositeMLKemAlgorithm) _03_ImportPkcs8PrivateKeyByTestVectors(CompositeMLKemAlgorithm) _04_ExportEncapsulationKeyByVectors(CompositeMLKemAlgorithm) _05_EncapsulateVectors(CompositeMLKemAlgorithm) _06_RoundtripExchangeKeyPkcs8Der(CompositeMLKemAlgorithm) _07_RoundtripExchangeKeyPkcs8EncryptedPem(CompositeMLKemAlgorithm)"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.GetHashCode.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.GetHashCode.html",
+    "title": "Method GetHashCode | KemBasedNet",
+    "summary": "Method GetHashCode Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll GetHashCode() Serves as the default hash function. public override int GetHashCode() Returns int A hash code for the current object."
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._01_ExportComposite.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._01_ExportComposite.html",
-    "title": "Method _01_ExportComposite | KemBasedNetTest",
-    "summary": "Method _01_ExportComposite Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _01_ExportComposite(CompositeMLKemAlgorithm) [TestMethod] [DynamicData(\"CompositeMlKemAlgorithms\", DynamicDataSourceType.Property)] public void _01_ExportComposite(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP384Sha3.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP384Sha3.html",
+    "title": "Property KMKem1024WithECDhP384Sha3 | KemBasedNet",
+    "summary": "Property KMKem1024WithECDhP384Sha3 Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll KMKem1024WithECDhP384Sha3 MLKEM1024-ECDH-P384-SHA3-256 public static CompositeMLKemAlgorithm KMKem1024WithECDhP384Sha3 { get; } Property Value CompositeMLKemAlgorithm"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._01_ExportMlKem.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._01_ExportMlKem.html",
-    "title": "Method _01_ExportMlKem | KemBasedNetTest",
-    "summary": "Method _01_ExportMlKem Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _01_ExportMlKem(MLKemAlgorithm) [TestMethod] [DynamicData(\"MlKemAlgorithms\", DynamicDataSourceType.Property)] public void _01_ExportMlKem(MLKemAlgorithm algorithm) Parameters algorithm MLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3.html",
+    "title": "Property KMKem1024WithECDhP521Sha3 | KemBasedNet",
+    "summary": "Property KMKem1024WithECDhP521Sha3 Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll KMKem1024WithECDhP521Sha3 MLKEM1024-ECDH-P521-SHA3-256 public static CompositeMLKemAlgorithm KMKem1024WithECDhP521Sha3 { get; } Property Value CompositeMLKemAlgorithm"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._02_ImportComposite.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._02_ImportComposite.html",
-    "title": "Method _02_ImportComposite | KemBasedNetTest",
-    "summary": "Method _02_ImportComposite Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _02_ImportComposite(CompositeMLKemAlgorithm) [TestMethod] [DynamicData(\"CompositeMlKemAlgorithms\", DynamicDataSourceType.Property)] public void _02_ImportComposite(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP256Sha3.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP256Sha3.html",
+    "title": "Property KMKem768WithECDhP256Sha3 | KemBasedNet",
+    "summary": "Property KMKem768WithECDhP256Sha3 Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll KMKem768WithECDhP256Sha3 MLKEM768-ECDH-P256-SHA3-256 public static CompositeMLKemAlgorithm KMKem768WithECDhP256Sha3 { get; } Property Value CompositeMLKemAlgorithm"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._02_ImportMlKem.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._02_ImportMlKem.html",
-    "title": "Method _02_ImportMlKem | KemBasedNetTest",
-    "summary": "Method _02_ImportMlKem Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _02_ImportMlKem(MLKemAlgorithm) [TestMethod] [DynamicData(\"MlKemAlgorithms\", DynamicDataSourceType.Property)] public void _02_ImportMlKem(MLKemAlgorithm algorithm) Parameters algorithm MLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP384Sha3.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP384Sha3.html",
+    "title": "Property KMKem768WithECDhP384Sha3 | KemBasedNet",
+    "summary": "Property KMKem768WithECDhP384Sha3 Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll KMKem768WithECDhP384Sha3 MLKEM768-ECDH-P384-SHA3-256 public static CompositeMLKemAlgorithm KMKem768WithECDhP384Sha3 { get; } Property Value CompositeMLKemAlgorithm"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._03_CipherData.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._03_CipherData.html",
-    "title": "Method _03_CipherData | KemBasedNetTest",
-    "summary": "Method _03_CipherData Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _03_CipherData() [TestMethod] public void _03_CipherData()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.Name.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.Name.html",
+    "title": "Property Name | KemBasedNet",
+    "summary": "Property Name Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Name Algorithm Name public string Name { get; } Property Value string"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._04_RoundTripComposite.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._04_RoundTripComposite.html",
-    "title": "Method _04_RoundTripComposite | KemBasedNetTest",
-    "summary": "Method _04_RoundTripComposite Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _04_RoundTripComposite(CompositeMLKemAlgorithm) [TestMethod] [DynamicData(\"CompositeMlKemAlgorithms\", DynamicDataSourceType.Property)] public void _04_RoundTripComposite(CompositeMLKemAlgorithm algorithm) Parameters algorithm CompositeMLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.Oid.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.Oid.html",
+    "title": "Property Oid | KemBasedNet",
+    "summary": "Property Oid Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Oid Algorithm OID public string Oid { get; } Property Value string"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._04_RoundTripMlKem.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem._04_RoundTripMlKem.html",
-    "title": "Method _04_RoundTripMlKem | KemBasedNetTest",
-    "summary": "Method _04_RoundTripMlKem Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll _04_RoundTripMlKem(MLKemAlgorithm) [TestMethod] [DynamicData(\"MlKemAlgorithms\", DynamicDataSourceType.Property)] public void _04_RoundTripMlKem(MLKemAlgorithm algorithm) Parameters algorithm MLKemAlgorithm"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ToString.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ToString.html",
+    "title": "Method ToString | KemBasedNet",
+    "summary": "Method ToString Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ToString() Returns a string that represents the current object. public override string ToString() Returns string A string that represents the current object."
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestHybridMlKem.html",
-    "title": "Class TestHybridMlKem | KemBasedNetTest",
-    "summary": "Class TestHybridMlKem Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll [TestClass] public sealed class TestHybridMlKem Inheritance object TestHybridMlKem Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.ReferenceEquals(object, object) object.ToString() Methods _01_ExportComposite(CompositeMLKemAlgorithm) _01_ExportMlKem(MLKemAlgorithm) _02_ImportComposite(CompositeMLKemAlgorithm) _02_ImportMlKem(MLKemAlgorithm) _03_CipherData() _04_RoundTripComposite(CompositeMLKemAlgorithm) _04_RoundTripMlKem(MLKemAlgorithm)"
+  "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.html",
+    "title": "Class CompositeMLKemAlgorithm | KemBasedNet",
+    "summary": "Class CompositeMLKemAlgorithm Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Definition of CompositeMLKem algorithms, a combination of traditional KEM- and Post Quantum ML-Kem Algorithm. See: Composite ML-KEM for use in X.509 Public Key Infrastructure public sealed class CompositeMLKemAlgorithm Inheritance object CompositeMLKemAlgorithm Inherited Members object.Equals(object) object.Equals(object, object) object.GetType() object.ReferenceEquals(object, object) Properties KMKem1024WithECDhP384Sha3 MLKEM1024-ECDH-P384-SHA3-256 KMKem1024WithECDhP521Sha3 MLKEM1024-ECDH-P521-SHA3-256 KMKem768WithECDhP256Sha3 MLKEM768-ECDH-P256-SHA3-256 KMKem768WithECDhP384Sha3 MLKEM768-ECDH-P384-SHA3-256 Name Algorithm Name Oid Algorithm OID Methods FromOid(string) Get algorithm definition from OID GetHashCode() Serves as the default hash function. ToString() Returns a string that represents the current object."
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestVector.cacert.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestVector.cacert.html",
-    "title": "Property cacert | KemBasedNetTest",
-    "summary": "Property cacert Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll cacert [AllowNull] public string cacert { get; set; } Property Value string"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.-ctor.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.-ctor.html",
+    "title": "Constructor HybridMLKem | KemBasedNet",
+    "summary": "Constructor HybridMLKem Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll HybridMLKem(MLKem, bool) Construct encryptor / decryptor using ML-KEM public HybridMLKem(MLKem mlKem, bool dontDispose = false) Parameters mlKem MLKem ML-KKEM instance dontDispose bool Avoid disposing the Key-Exchange class, if attached to an external managed instance HybridMLKem(CompositeMLKem, bool) Construct encryptor / decryptor using CompositeMLKKEM public HybridMLKem(CompositeMLKem compositeMLKem, bool dontDispose = false) Parameters compositeMLKem CompositeMLKem dontDispose bool Avoid disposing the Key-Exchange class, if attached to an external managed instance"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestVector.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestVector.html",
-    "title": "Class TestVector | KemBasedNetTest",
-    "summary": "Class TestVector Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll public class TestVector Inheritance object TestVector Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Properties cacert tests testsJson"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Decrypt.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Decrypt.html",
+    "title": "Method Decrypt | KemBasedNet",
+    "summary": "Method Decrypt Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Decrypt(HybridMLKemCipherData) Decrypt encrypted data using, the active key exchange algorithm, as private asymmetric key component public byte[] Decrypt(HybridMLKemCipherData cipherData) Parameters cipherData HybridMLKemCipherData Encrypted data and all public parameters required for decryption Returns byte[] plain text data"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestVector.tests.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestVector.tests.html",
-    "title": "Property tests | KemBasedNetTest",
-    "summary": "Property tests Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll tests [JsonIgnore] public Dictionary<string, Test> tests { get; } Property Value Dictionary<string, Test>"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Dispose.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Dispose.html",
+    "title": "Method Dispose | KemBasedNet",
+    "summary": "Method Dispose Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Dispose() Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. public void Dispose()"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.TestVector.testsJson.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.TestVector.testsJson.html",
-    "title": "Property testsJson | KemBasedNetTest",
-    "summary": "Property testsJson Namespace Rotherprivat.KemBasedNetTest.Cryptography Assembly KemBasedNetTest.dll testsJson [JsonPropertyName(\"tests\")] public Test[]? testsJson { get; set; } Property Value Test[]"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Encrypt.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Encrypt.html",
+    "title": "Method Encrypt | KemBasedNet",
+    "summary": "Method Encrypt Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Encrypt(byte[]) Encrypt plaintext data, using the active key exchange algorithm, as public asymmetric key component public HybridMLKemCipherData? Encrypt(byte[] plaintext) Parameters plaintext byte[] plain text data Returns HybridMLKemCipherData Encrypted data and all public parameters required for decryption"
   },
-  "api/Rotherprivat.KemBasedNetTest.Cryptography.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Cryptography.html",
-    "title": "Namespace Rotherprivat.KemBasedNetTest.Cryptography | KemBasedNetTest",
-    "summary": "Namespace Rotherprivat.KemBasedNetTest.Cryptography Classes Test TestAlgorithms TestCompositeMLKem TestHybridMlKem TestVector"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey.html",
+    "title": "Method ExportEncapsulationKey | KemBasedNet",
+    "summary": "Method ExportEncapsulationKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportEncapsulationKey() Export public / encapsulation key public byte[] ExportEncapsulationKey() Returns byte[] native public / encapsulation key Exceptions CryptographicException ExportEncapsulationKey(Span<byte>) Export public / encapsulation key public void ExportEncapsulationKey(Span<byte> keyBuffer) Parameters keyBuffer Span<byte> native public / encapsulation key"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesCompositeMLDsa.CompositeMLDsaSignVerifyOriginal.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesCompositeMLDsa.CompositeMLDsaSignVerifyOriginal.html",
-    "title": "Method CompositeMLDsaSignVerifyOriginal | KemBasedNetTest",
-    "summary": "Method CompositeMLDsaSignVerifyOriginal Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll CompositeMLDsaSignVerifyOriginal() [TestMethod] public void CompositeMLDsaSignVerifyOriginal()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncryptedPkcs8PrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncryptedPkcs8PrivateKey.html",
+    "title": "Method ExportEncryptedPkcs8PrivateKey | KemBasedNet",
+    "summary": "Method ExportEncryptedPkcs8PrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte>, PbeParameters) Export private key public byte[] ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordbytes, PbeParameters pbeParameters) Parameters passwordbytes ReadOnlySpan<byte> Password pbeParameters PbeParameters Password-based encryption (PBE) parameters Returns byte[] PKCS#8 encoded private key Exceptions CryptographicException ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<char>, PbeParameters) Export private key public byte[] ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, PbeParameters pbeParameters) Parameters password ReadOnlySpan<char> Password pbeParameters PbeParameters Password-based encryption (PBE) parameters Returns byte[] PKCS#8 encoded private key Exceptions CryptographicException ExportEncryptedPkcs8PrivateKey(string, PbeParameters) Export private key public byte[] ExportEncryptedPkcs8PrivateKey(string password, PbeParameters pbeParameters) Parameters password string Password pbeParameters PbeParameters Password-based encryption (PBE) parameters Returns byte[] PKCS#8 encoded private key"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesCompositeMLDsa.CompositeMLDsaSignVerifyTamperedWith.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesCompositeMLDsa.CompositeMLDsaSignVerifyTamperedWith.html",
-    "title": "Method CompositeMLDsaSignVerifyTamperedWith | KemBasedNetTest",
-    "summary": "Method CompositeMLDsaSignVerifyTamperedWith Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll CompositeMLDsaSignVerifyTamperedWith() [TestMethod] public void CompositeMLDsaSignVerifyTamperedWith()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPkcs8PrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPkcs8PrivateKey.html",
+    "title": "Method ExportPkcs8PrivateKey | KemBasedNet",
+    "summary": "Method ExportPkcs8PrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportPkcs8PrivateKey() Export private key public byte[] ExportPkcs8PrivateKey() Returns byte[] PKCS#8 encoded private key Exceptions CryptographicException"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesCompositeMLDsa.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesCompositeMLDsa.html",
-    "title": "Class ExamplesCompositeMLDsa | KemBasedNetTest",
-    "summary": "Class ExamplesCompositeMLDsa Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll [TestClass] public sealed class ExamplesCompositeMLDsa Inheritance object ExamplesCompositeMLDsa Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.ReferenceEquals(object, object) object.ToString() Methods CompositeMLDsaSignVerifyOriginal() CompositeMLDsaSignVerifyTamperedWith()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey.html",
+    "title": "Method ExportPrivateKey | KemBasedNet",
+    "summary": "Method ExportPrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportPrivateKey() Export private key public byte[] ExportPrivateKey() Returns byte[] native private key Exceptions CryptographicException ExportPrivateKey(Span<byte>) Export private key public void ExportPrivateKey(Span<byte> privateKey) Parameters privateKey Span<byte> native private key"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLDsa.MLDsaSignVerifyOriginal.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLDsa.MLDsaSignVerifyOriginal.html",
-    "title": "Method MLDsaSignVerifyOriginal | KemBasedNetTest",
-    "summary": "Method MLDsaSignVerifyOriginal Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll MLDsaSignVerifyOriginal() [TestMethod] public void MLDsaSignVerifyOriginal()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfo.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfo.html",
+    "title": "Method ExportSubjectPublicKeyInfo | KemBasedNet",
+    "summary": "Method ExportSubjectPublicKeyInfo Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportSubjectPublicKeyInfo() Export public / encapsulation key public byte[] ExportSubjectPublicKeyInfo() Returns byte[] DER encoded public / encapsulation key Exceptions CryptographicException"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLDsa.MLDsaSignVerifyTamperedWith.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLDsa.MLDsaSignVerifyTamperedWith.html",
-    "title": "Method MLDsaSignVerifyTamperedWith | KemBasedNetTest",
-    "summary": "Method MLDsaSignVerifyTamperedWith Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll MLDsaSignVerifyTamperedWith() [TestMethod] public void MLDsaSignVerifyTamperedWith()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfoPem.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfoPem.html",
+    "title": "Method ExportSubjectPublicKeyInfoPem | KemBasedNet",
+    "summary": "Method ExportSubjectPublicKeyInfoPem Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ExportSubjectPublicKeyInfoPem() Export public / encapsulation key public string ExportSubjectPublicKeyInfoPem() Returns string PEM encoded public / encapsulation key"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLDsa.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLDsa.html",
-    "title": "Class ExamplesMLDsa | KemBasedNetTest",
-    "summary": "Class ExamplesMLDsa Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll [TestClass] public sealed class ExamplesMLDsa Inheritance object ExamplesMLDsa Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.ReferenceEquals(object, object) object.ToString() Methods MLDsaSignVerifyOriginal() MLDsaSignVerifyTamperedWith()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.GenerateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.GenerateKey.html",
+    "title": "Method GenerateKey | KemBasedNet",
+    "summary": "Method GenerateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll GenerateKey(MLKemAlgorithm) Generate keys for ML-KEM algorithm and create the encryptor / decryptor public static HybridMLKem GenerateKey(MLKemAlgorithm mLKemAlgorithm) Parameters mLKemAlgorithm MLKemAlgorithm ML-KEM algorithm Returns HybridMLKem encryptor / decryptor instance GenerateKey(CompositeMLKemAlgorithm) Generate keys for CompositeMLKKEM algorithm and create the encryptor / decryptor public static HybridMLKem GenerateKey(CompositeMLKemAlgorithm compositeMLKemAlgorithm) Parameters compositeMLKemAlgorithm CompositeMLKemAlgorithm CompositeMLKKEM algorithm Returns HybridMLKem encryptor / decryptor instance"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLKem.MLKemExchangeKey_persistent.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLKem.MLKemExchangeKey_persistent.html",
-    "title": "Method MLKemExchangeKey_persistent | KemBasedNetTest",
-    "summary": "Method MLKemExchangeKey_persistent Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll MLKemExchangeKey_persistent() [TestMethod] public void MLKemExchangeKey_persistent()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncapsulationKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncapsulationKey.html",
+    "title": "Method ImportEncapsulationKey | KemBasedNet",
+    "summary": "Method ImportEncapsulationKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportEncapsulationKey(MLKemAlgorithm, byte[]) Import public / encapsulation key and create the encryptor / decryptor public static HybridMLKem ImportEncapsulationKey(MLKemAlgorithm algorithm, byte[] encapsulationKey) Parameters algorithm MLKemAlgorithm ML-KEM algorithm encapsulationKey byte[] public / encapsulation key Returns HybridMLKem encryptor / decryptor ImportEncapsulationKey(CompositeMLKemAlgorithm, byte[]) Import public / encapsulation key and create the encryptor / decryptor public static HybridMLKem ImportEncapsulationKey(CompositeMLKemAlgorithm algorithm, byte[] encapsulationKey) Parameters algorithm CompositeMLKemAlgorithm CompositeMLKem algorithm encapsulationKey byte[] public / encapsulation key Returns HybridMLKem encryptor / decryptor"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLKem.MLKemExchangeKey_temp.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLKem.MLKemExchangeKey_temp.html",
-    "title": "Method MLKemExchangeKey_temp | KemBasedNetTest",
-    "summary": "Method MLKemExchangeKey_temp Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll MLKemExchangeKey_temp() [TestMethod] public void MLKemExchangeKey_temp()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncryptedPkcs8PrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncryptedPkcs8PrivateKey.html",
+    "title": "Method ImportEncryptedPkcs8PrivateKey | KemBasedNet",
+    "summary": "Method ImportEncryptedPkcs8PrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte>, byte[]) Import private key and create the encryptor / decryptor public static HybridMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, byte[] pkcs8) Parameters passwordBytes ReadOnlySpan<byte> Password pkcs8 byte[] PKCS#8 encoded private key Returns HybridMLKem encryptor / decryptor instance Exceptions CryptographicException ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char>, byte[]) Import private key and create the encryptor / decryptor public static HybridMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, byte[] pkcs8) Parameters password ReadOnlySpan<char> Password pkcs8 byte[] PKCS#8 encoded private key Returns HybridMLKem encryptor / decryptor instance Exceptions CryptographicException ImportEncryptedPkcs8PrivateKey(string, byte[]) Import private key and create the encryptor / decryptor public static HybridMLKem ImportEncryptedPkcs8PrivateKey(string password, byte[] pkcs8) Parameters password string Password pkcs8 byte[] PKCS#8 encoded private key Returns HybridMLKem encryptor / decryptor instance"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLKem.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.ExamplesMLKem.html",
-    "title": "Class ExamplesMLKem | KemBasedNetTest",
-    "summary": "Class ExamplesMLKem Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll [TestClass] public sealed class ExamplesMLKem Inheritance object ExamplesMLKem Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.ReferenceEquals(object, object) object.ToString() Methods MLKemExchangeKey_persistent() MLKemExchangeKey_temp()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportFromPem.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportFromPem.html",
+    "title": "Method ImportFromPem | KemBasedNet",
+    "summary": "Method ImportFromPem Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportFromPem(string) Import public / encapsulation key and create the encryptor / decryptor public static HybridMLKem ImportFromPem(string pemKey) Parameters pemKey string PEM encoded public key Returns HybridMLKem encryptor / decryptor instance Exceptions CryptographicException ImportFromPem(ReadOnlySpan<char>) Import public / encapsulation key and create the encryptor / decryptor public static HybridMLKem ImportFromPem(ReadOnlySpan<char> pemKey) Parameters pemKey ReadOnlySpan<char> PEM encoded public key Returns HybridMLKem encryptor / decryptor instance Exceptions CryptographicException"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.TestReadmeExamples.CompositeMLKemExample.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.TestReadmeExamples.CompositeMLKemExample.html",
-    "title": "Method CompositeMLKemExample | KemBasedNetTest",
-    "summary": "Method CompositeMLKemExample Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll CompositeMLKemExample() [TestMethod] public void CompositeMLKemExample()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPkcs8PrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPkcs8PrivateKey.html",
+    "title": "Method ImportPkcs8PrivateKey | KemBasedNet",
+    "summary": "Method ImportPkcs8PrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportPkcs8PrivateKey(byte[]) Import private key and create the encryptor / decryptor public static HybridMLKem ImportPkcs8PrivateKey(byte[] pkcs8) Parameters pkcs8 byte[] Returns HybridMLKem encryptor / decryptor instance Exceptions CryptographicException ImportPkcs8PrivateKey(ReadOnlySpan<byte>) Import private key and create the encryptor / decryptor public static HybridMLKem ImportPkcs8PrivateKey(ReadOnlySpan<byte> pkcs8) Parameters pkcs8 ReadOnlySpan<byte> PKCS#8 encoded private key Returns HybridMLKem encryptor / decryptor instance"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.TestReadmeExamples.HybridMLKemExample.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.TestReadmeExamples.HybridMLKemExample.html",
-    "title": "Method HybridMLKemExample | KemBasedNetTest",
-    "summary": "Method HybridMLKemExample Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll HybridMLKemExample() [TestMethod] public void HybridMLKemExample()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPrivateKey.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPrivateKey.html",
+    "title": "Method ImportPrivateKey | KemBasedNet",
+    "summary": "Method ImportPrivateKey Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportPrivateKey(MLKemAlgorithm, byte[]) Import private key and create the encryptor / decryptor public static HybridMLKem ImportPrivateKey(MLKemAlgorithm algorithm, byte[] privateKey) Parameters algorithm MLKemAlgorithm ML-KEM algorithm privateKey byte[] native private key Returns HybridMLKem encryptor / decryptor instance ImportPrivateKey(CompositeMLKemAlgorithm, byte[]) Import private key and create the encryptor / decryptor public static HybridMLKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, byte[] privateKey) Parameters algorithm CompositeMLKemAlgorithm CompositeMLKem algorithm privateKey byte[] native private key Returns HybridMLKem encryptor / decryptor instance"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.TestReadmeExamples.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.TestReadmeExamples.html",
-    "title": "Class TestReadmeExamples | KemBasedNetTest",
-    "summary": "Class TestReadmeExamples Namespace Rotherprivat.KemBasedNetTest.Examples Assembly KemBasedNetTest.dll [TestClass] public sealed class TestReadmeExamples Inheritance object TestReadmeExamples Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.ReferenceEquals(object, object) object.ToString() Methods CompositeMLKemExample() HybridMLKemExample()"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportSubjectPublicKeyInfo.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportSubjectPublicKeyInfo.html",
+    "title": "Method ImportSubjectPublicKeyInfo | KemBasedNet",
+    "summary": "Method ImportSubjectPublicKeyInfo Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll ImportSubjectPublicKeyInfo(byte[]) Import public / encapsulation key and create the encryptor / decryptor public static HybridMLKem ImportSubjectPublicKeyInfo(byte[] publicKey) Parameters publicKey byte[] DER encoded public key Returns HybridMLKem encryptor / decryptor instance Exceptions CryptographicException ImportSubjectPublicKeyInfo(ReadOnlySpan<byte>) Import public / encapsulation key and create the encryptor / decryptor public static HybridMLKem ImportSubjectPublicKeyInfo(ReadOnlySpan<byte> publicKey) Parameters publicKey ReadOnlySpan<byte> DER encoded public key Returns HybridMLKem encryptor / decryptor instance Exceptions CryptographicException"
   },
-  "api/Rotherprivat.KemBasedNetTest.Examples.html": {
-    "href": "api/Rotherprivat.KemBasedNetTest.Examples.html",
-    "title": "Namespace Rotherprivat.KemBasedNetTest.Examples | KemBasedNetTest",
-    "summary": "Namespace Rotherprivat.KemBasedNetTest.Examples Classes ExamplesCompositeMLDsa ExamplesMLDsa ExamplesMLKem TestReadmeExamples"
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.html",
+    "title": "Class HybridMLKem | KemBasedNet",
+    "summary": "Class HybridMLKem Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Keys and algorithm implementation for encrypting and decrypting data, based on Post Quantum Key exchange algorithms. ML-KEM: FIPS 203 CombinedMLKem: IETF draft public class HybridMLKem : IDisposable Inheritance object HybridMLKem Implements IDisposable Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors HybridMLKem(CompositeMLKem, bool) Construct encryptor / decryptor using CompositeMLKKEM HybridMLKem(MLKem, bool) Construct encryptor / decryptor using ML-KEM Methods Decrypt(HybridMLKemCipherData) Decrypt encrypted data using, the active key exchange algorithm, as private asymmetric key component Dispose() Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. Encrypt(byte[]) Encrypt plaintext data, using the active key exchange algorithm, as public asymmetric key component ExportEncapsulationKey() Export public / encapsulation key ExportEncapsulationKey(Span<byte>) Export public / encapsulation key ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte>, PbeParameters) Export private key ExportEncryptedPkcs8PrivateKey(ReadOnlySpan<char>, PbeParameters) Export private key ExportEncryptedPkcs8PrivateKey(string, PbeParameters) Export private key ExportPkcs8PrivateKey() Export private key ExportPrivateKey() Export private key ExportPrivateKey(Span<byte>) Export private key ExportSubjectPublicKeyInfo() Export public / encapsulation key ExportSubjectPublicKeyInfoPem() Export public / encapsulation key GenerateKey(CompositeMLKemAlgorithm) Generate keys for CompositeMLKKEM algorithm and create the encryptor / decryptor GenerateKey(MLKemAlgorithm) Generate keys for ML-KEM algorithm and create the encryptor / decryptor ImportEncapsulationKey(CompositeMLKemAlgorithm, byte[]) Import public / encapsulation key and create the encryptor / decryptor ImportEncapsulationKey(MLKemAlgorithm, byte[]) Import public / encapsulation key and create the encryptor / decryptor ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte>, byte[]) Import private key and create the encryptor / decryptor ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char>, byte[]) Import private key and create the encryptor / decryptor ImportEncryptedPkcs8PrivateKey(string, byte[]) Import private key and create the encryptor / decryptor ImportFromPem(ReadOnlySpan<char>) Import public / encapsulation key and create the encryptor / decryptor ImportFromPem(string) Import public / encapsulation key and create the encryptor / decryptor ImportPkcs8PrivateKey(byte[]) Import private key and create the encryptor / decryptor ImportPkcs8PrivateKey(ReadOnlySpan<byte>) Import private key and create the encryptor / decryptor ImportPrivateKey(CompositeMLKemAlgorithm, byte[]) Import private key and create the encryptor / decryptor ImportPrivateKey(MLKemAlgorithm, byte[]) Import private key and create the encryptor / decryptor ImportSubjectPublicKeyInfo(byte[]) Import public / encapsulation key and create the encryptor / decryptor ImportSubjectPublicKeyInfo(ReadOnlySpan<byte>) Import public / encapsulation key and create the encryptor / decryptor"
+  },
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.CipherText.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.CipherText.html",
+    "title": "Property CipherText | KemBasedNet",
+    "summary": "Property CipherText Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll CipherText ML-KEM: CipherText public byte[] CipherText { get; set; } Property Value byte[]"
+  },
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.Deserialize.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.Deserialize.html",
+    "title": "Method Deserialize | KemBasedNet",
+    "summary": "Method Deserialize Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Deserialize(byte[]) Deserialize from byte buffer public static HybridMLKemCipherData Deserialize(byte[] buffer) Parameters buffer byte[] byte buffer Returns HybridMLKemCipherData CipherData object Deserialize(Stream) Deserialize from stream public static HybridMLKemCipherData Deserialize(Stream s) Parameters s Stream Readable stream Returns HybridMLKemCipherData CipherData object Exceptions ArgumentException"
+  },
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.EncryptedPlainText.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.EncryptedPlainText.html",
+    "title": "Property EncryptedPlainText | KemBasedNet",
+    "summary": "Property EncryptedPlainText Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll EncryptedPlainText Encrypted PlainText public byte[] EncryptedPlainText { get; set; } Property Value byte[]"
+  },
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.GcmNonce.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.GcmNonce.html",
+    "title": "Property GcmNonce | KemBasedNet",
+    "summary": "Property GcmNonce Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll GcmNonce AES-GCM: Nonce public byte[] GcmNonce { get; set; } Property Value byte[]"
+  },
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.GcmTag.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.GcmTag.html",
+    "title": "Property GcmTag | KemBasedNet",
+    "summary": "Property GcmTag Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll GcmTag AES-GCM: Tag public byte[] GcmTag { get; set; } Property Value byte[]"
+  },
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.Serialize.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.Serialize.html",
+    "title": "Method Serialize | KemBasedNet",
+    "summary": "Method Serialize Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Serialize() Serialize as byte buffer public byte[] Serialize() Returns byte[] serialized bytes Serialize(Stream) Serialize to stream public void Serialize(Stream s) Parameters s Stream Writeable stream Exceptions ArgumentException"
+  },
+  "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.html",
+    "title": "Class HybridMLKemCipherData | KemBasedNet",
+    "summary": "Class HybridMLKemCipherData Namespace Rotherprivat.KemBasedNet.Cryptography Assembly KemBasedNet.dll Encrypted data and parameters for decryption public class HybridMLKemCipherData Inheritance object HybridMLKemCipherData Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Properties CipherText ML-KEM: CipherText EncryptedPlainText Encrypted PlainText GcmNonce AES-GCM: Nonce GcmTag AES-GCM: Tag Methods Deserialize(byte[]) Deserialize from byte buffer Deserialize(Stream) Deserialize from stream Serialize() Serialize as byte buffer Serialize(Stream) Serialize to stream"
+  },
+  "api/Rotherprivat.KemBasedNet.Cryptography.html": {
+    "href": "api/Rotherprivat.KemBasedNet.Cryptography.html",
+    "title": "Namespace Rotherprivat.KemBasedNet.Cryptography | KemBasedNet",
+    "summary": "Namespace Rotherprivat.KemBasedNet.Cryptography Classes CompositeMLKem Keys and algorithm implementation of the CompositeMLKem, a composed traditional and ML-KEM post quantum key exchange algorithm. The Interface and implementation is analog to the System.Security.Cryptography.MLKem class of the .NET platform. See IETF draft documentation and repository on GitHub. CompositeMLKemAlgorithm Definition of CompositeMLKem algorithms, a combination of traditional KEM- and Post Quantum ML-Kem Algorithm. See: Composite ML-KEM for use in X.509 Public Key Infrastructure HybridMLKem Keys and algorithm implementation for encrypting and decrypting data, based on Post Quantum Key exchange algorithms. ML-KEM: FIPS 203 CombinedMLKem: IETF draft HybridMLKemCipherData Encrypted data and parameters for decryption"
   },
   "docs/examples.html": {
     "href": "docs/examples.html",
-    "title": "Examples | KemBasedNetTest",
+    "title": "Examples | KemBasedNet",
     "summary": "Examples These tests provide some examples of how to use the PQC-algorithms offered by the .NET platform and a test of the examples shown in the readme. KemBasedNet.Examles See folder <KemBasedNetTest>/KemBasedNet/Examples Class Purpose ExamplesMLKem Shows the usage of ML-KEM (native PQC key exchange algorithm) using temporary or persistent private keys ExamplesMLDsa Shows the usage of ML-DSA (native PQC signature algorihm) ExamplesCompositeMLDsa Shows the usage of CompositeMLDsa (combined PQC & traditional signature algorithm) TestReadmeExamples Tests for examples shown in the readme."
   },
   "docs/readme.html": {
     "href": "docs/readme.html",
-    "title": "KemBasedNet | KemBasedNetTest",
+    "title": "KemBasedNet | KemBasedNet",
     "summary": "KemBasedNet This project provides a .NET implementation of the Post Quantum Cryptograpy (PQC) algorithm \"CompositeMLKem\" and a hybrid public-/private-key algorithm for encrypting and decrypting data, based on key exchange algorithms. API Documentation Disclaimer This library is provided \"as is\", without warranty of any kind, express or implied. The authors and contributors make no guarantees regarding the accuracy, reliability, security, or fitness for a particular purpose of this software. This project utilizes the official NuGet package System.Security.Cryptography.Pkcs, which is maintained by Microsoft. All cryptographic operations ultimately rely on the underlying implementation provided by the .NET platform. Any vulnerabilities, limitations, or changes in behavior originating from this dependency are outside the control of this project. By using this library, you acknowledge and agree that: You are responsible for validating its suitability for your use case. You assume all risks associated with its use, including but not limited to security, data loss, or system failure. The authors shall not be held liable for any damages arising from the use or misuse of this software. This library is not intended to replace professional security audits or compliance requirements. If you are working in a regulated or high-security environment, ensure proper review and testing before production use. (.NET is a trademark of Microsoft Corporation.) CompositeMLKem The \"CompositeMLKem\" algorithm is specified by the IETF draft and the implementation and interfaces are aligned to the .NET ML-KEM implementation \"System.Security.Cryptograpy.MLKem\". It implements a composition of the PQC-algorithm \"ML-KEM\" and a traditional KEM algorithm. Classes: CompositeMLKem CompositeMLKemAlgorithm Motivation The .NET version 10.0.2 (SDK 10.0.102) provides implementations of the major PQC-algorithms recommended by NIST: Purpose Algorithm Key exchange \"ML-KEM\" FIPS 203 Digital signature \"ML-DSA\" FIPS 204 As well as the \"CompositeMLDsa\" algorithm according to the IETF specification, which is a composition of the \"ML-DSA\"- and a traditional digital signing algorithm. A composite variant of the \"ML-KEM\" algorithm is not available. Why do we need composite algorithms? The PQC-algorithms are very young and not totally trusted and not field proven, therefore it is considered risky to switch totally to new algorithms. Using a composition of PQC- and traditional algorithms in the phase of transition will reduce this risk, an attacker needs to break both algorithms, so things won’t get worse. Some more readings to this on postquantum.com. Restrictions This version only provides the following algorithm combinations: Composite KEM ML-KEM Traditional Combiner MLKEM768-ECDH-P256-SHA3-256 ML-KEM-768 ECDH, secp256r1 SHA3-256 MLKEM768-ECDH-P384-SHA3-256 ML-KEM-768 ECDH, secp384r1 SHA3-256 MLKEM1024-ECDH-P384-SHA3-256 ML-KEM-1024 ECDH, secp384r1 SHA3-256 MLKEM1024-ECDH-P521-SHA3-256 ML-KEM-1024 ECDH, secp521r1 SHA3-256 How to use The \"CompositeMLKem\" class will be used in the same way as the .NET MLKem calss. Roles: Alice: Initiator of communication, owner of private key Bob: Communication partner Workflow: Alice: Generate the key material according to the required combined algorithm (Alice). The private key should be handled confidentially by Alice. Provide Bob, your communication partner, with the encapsulation key (public key) Bob: Generate the local copy of the shared secret and a ciphertext (Encapsulation). The shared key should be handled confidentially by Bob. Forward the ciphertext to Alice. Alice: Generate the local copy of the shared secret by Decapsulating the ciphertext from Bob. Alice and Bob can use the shared secret to encrypt and decrypt exchanged messages. C# code example: // Generate the key material var algorithm = CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3; using var alice = CompositeMLKem.GenerateKey(algorithm); var derPublicKey = alice.ExportSubjectPublicKeyInfo(); // Forward derPublicKey to Bob using var bob = CompositeMLKem.ImportSubjectPublicKeyInfo(derPublicKey); bob.Encapsulate(out var ciphertext, out var bobsSecret); // Bob will use bobsSecret // Forward ciphertext to Alice var aliceSecret = alice.Decapsulate(ciphertext); // Alice will use aliceSecret HybridMLKem This provides a convenient scheme for PQC safe data encryption and decryption using private-/public- keys, like ECIES which is specified for traditional ECDH algorithms. The \"HybridMLKem\" schema is implemented on top of one of the following Key-Exchange algorithms: .NET ML-KEM implementation \"System.Security.Cryptograpy.MLKem\" CompositeMLKem and AES-GCM for data encryption. Classes: HybridMLKem HybridMLKemCipherData Motivation Private-/public-key based data encryption, on top of Key-Exchange algorithms, is a little bit tricky. This class is one way to implement this in an encryption-/decryption-schema. Restrictions The algorithms are standard algorithms, but encryption-/decryption-schema is not aligned with any standard like S/MIME. How to use The \"HybridMLKem\" class is intended to be used as follows: Roles: Alice: Decrypt data, owner of private key Bob: Encrypt data Workflow: Alice: Generate the key material according to the required algorithm (Alice). The private key should be handled confidentially by Alice. Provide Bob with the encapsulation key (public key) Bob: Encrypts the data, by using his encapsulation key Forward the encrypted data and parameters for decryption to Alice. (HybridMLKemCipherData) Alice: Decrypts the encrypted data by using her private key, and the parameters for decryption received from Bob. C# code example: string message = \"The quick brown fox jumps over the lazy dog.\"; // Generate the key material var algorithm = CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3; using var alice = HybridMLKem.GenerateKey(algorithm); var derPublicKey = alice.ExportSubjectPublicKeyInfo(); // Forward derPublicKey to Bob using var bob = HybridMLKem.ImportSubjectPublicKeyInfo(derPublicKey); // Encrypt message by using public key var encryptedDataBlock = bob.Encrypt(Encoding.UTF8.GetBytes(message))?.Serialize(); // Forward encryptedDataBlock (encrypted message and parameters for decryption) to Alice // Decrypt message by using private key var decryptedBuffer = alice.Decrypt(HybridMLKemCipherData.Deserialize(encryptedDataBlock)); var decryptedMessage = Encoding.UTF8.GetString(decryptedBuffer);"
   },
   "docs/tests.html": {
     "href": "docs/tests.html",
-    "title": "Tests | KemBasedNetTest",
+    "title": "Tests | KemBasedNet",
     "summary": "Tests KemBasedNetTest.Cryptography See folder <KemBased>/KemBasedNetTest/Cryptography TestCompositeMLKem Tests for CompositeMLKem class and implementation. Not all methods tests can be covered by test vectors, but we can verify key-import, -export and Decapsulate by test vectors, the remaining functionality is tested by round trips (Encapsulate - Decapsulate => Compare the shared secrets). Test Verifys _01_DecapsulateByTestVectors - ImportPrivateKey - Combining algorithm - Decapsulate _02_ExportPkcs8PrivateKeyByTestVectors - ExportPkcs8PrivateKey _03_ImportPkcs8PrivateKeyByTestVectors - ImportPkcs8PrivateKey _04_ExportEncapsulationKeyByVectors - ExportEncapsulationKey - ExportSubjectPublicKeyInfo - ExportSubjectPublicKeyInfoPem _05_RoundtripVectors - ImportEncapsulationKey - Encapsulate - Decapsulate _06_RoundtripExchangeKeyPkcs8Der - Encapsulate - ImportSubjectPublicKeyInfo _07_RoundtripExchangeKeyPkcs8EncryptedPem - ImportFromPem - ExportEncryptedPkcs8PrivateKey - ImportEncryptedPkcs8PrivateKey TestHybridMlKem Assuming the Key-Exchange algorithms \"MLKem\" and \"CompositeMLKem\" as well as the encryption algorithm \"AES-GCM\" are working well, it should be sufficient to verify key-import/-export and Encapsulate-/Decapsulate-calls are forwarded to the correct key exchange implementation, the CipherData class and the \"AES-GCM\" parameter are properly assigned. Test Verifys _01_Export<...> - ExportPrivateKey - ExportPkcs8PrivateKey - ExportEncapsulationKey - ExportSubjectPublicKeyInfo - ExportSubjectPublicKeyInfoPem _02_Import<...> - ImportPrivateKey - ImportPkcs8PrivateKey - ImportEncapsulationKey - ImportSubjectPublicKeyInfo - ImportSubjectPublicKeyInfoPem _03_CipherData - HybridMlKemCipherData, Serialize/Deserialize - Encrypt, \"HybridMlKemCipherData\" parameter assignment _04_RoundTrip<...> - Decrypt"
   },
   "index.html": {
     "href": "index.html",
-    "title": "KemBasedNet | KemBasedNetTest",
+    "title": "KemBasedNet | KemBasedNet",
     "summary": "KemBasedNet This project provides a .NET implementation of the Post Quantum Cryptography (PQC) algorithm \"CompositeMLKem\" and a hybrid public-/private-key algorithm for encrypting and decrypting data, based on key exchange algorithms. The current implementation specially of the \"CompositeMLKem\" algorithm is in draft state, interfaces behavior and the encoding of the keys may change in future, depending on the changes of the IETF draft and the development of the PQC-algorithm in the .NET platform. See: Overview API Description Source code"
   }
 }
