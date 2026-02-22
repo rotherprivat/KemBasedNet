@@ -1,0 +1,135 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace Rotherprivat.KemBasedNet.Cryptography
+{
+    internal class TraditionalECDH : ITratditonalKem
+    {
+        private AsymmetricAlgorithm? _traditionalECDH = null;
+
+        public ECDiffieHellman? _ECDH 
+        { 
+            get => _traditionalECDH as ECDiffieHellman;
+            set => _traditionalECDH = value;
+        }
+        public CompositeMLKemAlgorithm? Algorithm { get ;  set ; }
+
+        public static ITratditonalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
+        {
+            return new TraditionalECDH()
+            {
+                _traditionalECDH = ECDiffieHellman.Create(algorithm.ECCurve),
+                Algorithm = algorithm
+            };
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _traditionalECDH?.Dispose();
+            }
+            _traditionalECDH = null;
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
+        public static ITratditonalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate)
+        {
+            var ecdh = ECDiffieHellman.Create();
+            ecdh.ImportECPrivateKey(ecdhPrivate, out _);
+
+            return new TraditionalECDH()
+            {
+                _traditionalECDH = ecdh,
+                Algorithm = algorithm
+            };
+        }
+
+        public static ITratditonalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic)
+        {
+            var ecParams = ReadPublicECParameters(algorithm, traditionalPublic);
+            ecParams.Validate();
+
+            return new TraditionalECDH()
+            {
+                _traditionalECDH = ECDiffieHellman.Create(ecParams),
+                Algorithm = algorithm
+            };
+
+        }
+
+        public static ECParameters ReadPublicECParameters(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> tradPk)
+        {
+            if (tradPk[0] != 0x04)
+                throw new CryptographicException("Invalid Ciphertext");
+
+            var x = tradPk.Slice(1, algorithm.ECPointValueSizeInBytes);
+            var y = tradPk.Slice(1 + algorithm.ECPointValueSizeInBytes, algorithm.ECPointValueSizeInBytes);
+
+            return new ECParameters()
+            {
+                Curve = algorithm.ECCurve,
+                D = null,
+                Q = new ECPoint()
+                {
+                    X = x.ToArray(),
+                    Y = y.ToArray()
+                }
+            };
+        }
+
+        public byte[] Encapsulate(Span<byte> tradPK, Span<byte> tradCT)
+        {
+            using var ecEphemeralKey = ECDiffieHellman.Create(Algorithm.ECCurve);
+            var ecKey = ecEphemeralKey.DeriveRawSecretAgreement(_ECDH.PublicKey);
+            var ecParam = ecEphemeralKey.ExportParameters(false);
+
+            // append to ciphertext tradCT = public part of ephemeral key 
+            tradCT[0] = 0x04;
+            var p = tradCT.Slice(1, Algorithm.ECPointValueSizeInBytes);
+            ecParam.Q.X.CopyTo(p);
+            p = tradCT.Slice(Algorithm.ECPointValueSizeInBytes + 1, Algorithm.ECPointValueSizeInBytes);
+            ecParam.Q.Y.CopyTo(p);
+
+            ecParam = _ECDH.ExportParameters(false);
+            ecParam.Validate();
+
+            tradPK[0] = 0x04;
+            p = tradPK.Slice(1, Algorithm.ECPointValueSizeInBytes);
+            ecParam.Q.X.CopyTo(p);
+            p = tradPK.Slice(Algorithm.ECPointValueSizeInBytes + 1, Algorithm.ECPointValueSizeInBytes);
+            ecParam.Q.Y.CopyTo(p);
+
+            return ecKey;
+        }
+
+        public byte[] Decapsulate(Span<byte> tradPK, Span<byte> tradCT)
+        {
+            // get traditional ephemeral key from ciphertext
+            var ecEphemeralParams = ReadPublicECParameters(Algorithm, tradCT);
+            ecEphemeralParams.Validate();
+            using var ecEphemeralKey = ECDiffieHellman.Create(ecEphemeralParams);
+
+            // get traditional shared secret
+            var tradKey = _ECDH.DeriveRawSecretAgreement(ecEphemeralKey.PublicKey);
+            var tradPKParams = _ECDH.ExportParameters(false);
+            tradPKParams.Validate();
+            
+            tradPK[0] = 0x04;
+            var p = tradPK.Slice(1, Algorithm.ECPointValueSizeInBytes);
+            tradPKParams.Q.X.CopyTo(p);
+            p = tradPK.Slice(Algorithm.ECPointValueSizeInBytes + 1, Algorithm.ECPointValueSizeInBytes);
+            tradPKParams.Q.Y.CopyTo(p);
+
+            return tradKey;
+        }
+    }
+}

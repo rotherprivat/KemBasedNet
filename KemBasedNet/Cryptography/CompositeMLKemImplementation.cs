@@ -7,14 +7,19 @@ namespace Rotherprivat.KemBasedNet.Cryptography
     public class CompositeMLKemImplementation : CompositeMLKem
     {
         private MLKem? _MLKem = null;
-        private ECDiffieHellman? _ECDH = null;
+        private ECDiffieHellman? _ECDH
+        {
+            get => _TraditionalKem?._ECDH;
+            set => _TraditionalKem = new TraditionalECDH() { _ECDH = value };
+        }
+        private ITratditonalKem? _TraditionalKem = null;
 
         internal static CompositeMLKem GenerateKeyImplementation(CompositeMLKemAlgorithm algorithm)
         {
             return new CompositeMLKemImplementation(algorithm)
                 {
                     _MLKem = MLKem.GenerateKey(algorithm.MLKemAlgorithm),
-                    _ECDH = ECDiffieHellman.Create(algorithm.ECCurve)
+                    _TraditionalKem = TratditonalKemFactory.GenerateKey(algorithm)
                 };
         }
 
@@ -25,13 +30,10 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
             var ecdhPrivate = privateKey[algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes..];
 
-            var ecdh = ECDiffieHellman.Create();
-            ecdh.ImportECPrivateKey(ecdhPrivate, out _);
-
             return new CompositeMLKemImplementation(algorithm)
             {
                 _MLKem = mlKem,
-                _ECDH = ecdh
+                _TraditionalKem = TratditonalKemFactory.ImportPrivateKey(algorithm, ecdhPrivate),
             };
         }
 
@@ -40,13 +42,10 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             var mlKemEncapsulationKey = encapsulationKey[..algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes];
             var ecDhPublicBytes = encapsulationKey[algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes..];
 
-            var ecParams = ReadPublicECParameters(algorithm, ecDhPublicBytes);
-            ecParams.Validate();
-
             return new CompositeMLKemImplementation(algorithm)
             {
                 _MLKem = MLKem.ImportEncapsulationKey(algorithm.MLKemAlgorithm, mlKemEncapsulationKey),
-                _ECDH = ECDiffieHellman.Create(ecParams)
+                _TraditionalKem = TratditonalKemFactory.ImportPublicKey(algorithm, ecDhPublicBytes)
             };
 
         }
@@ -93,31 +92,19 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         protected override void EncapsulateImplementation(Span<byte> ciphertext, Span<byte> sharedSecret)
         {
             EnsureValid();
-            
-            // generate traditional ephemeral key and traditional shared secret
-            using var ecEphemeralKey = ECDiffieHellman.Create(Algorithm.ECCurve);
-            var ecKey = ecEphemeralKey.DeriveRawSecretAgreement(_ECDH.PublicKey);
 
+            // append to ciphertext tradCT = public part of ephemeral key 
+            var tradCT = ciphertext[Algorithm.MLKemAlgorithm.CiphertextSizeInBytes..];
+            var tradPK = new byte[2* Algorithm.ECPointValueSizeInBytes +1];
+            var tradSecret = _TraditionalKem.Encapsulate(tradPK, tradCT);
+            
             // ML-KEM get ciphertext and KL-KEM shared secret
             byte[] mlKemKey = new byte[Algorithm.MLKemAlgorithm.SharedSecretSizeInBytes];
             var p = ciphertext[..Algorithm.MLKemAlgorithm.CiphertextSizeInBytes];
             _MLKem.Encapsulate(p, mlKemKey);
 
-            var ecParam = ecEphemeralKey.ExportParameters(false);
-
-            // append to ciphertext tradCT = public part of ephemeral key 
-            var tradCT = ciphertext[Algorithm.MLKemAlgorithm.CiphertextSizeInBytes..];
-            tradCT[0] = 0x04;
-            p = tradCT.Slice(1, Algorithm.ECPointValueSizeInBytes);
-            ecParam.Q.X.CopyTo(p);
-            p = tradCT.Slice(Algorithm.ECPointValueSizeInBytes + 1, Algorithm.ECPointValueSizeInBytes);
-            ecParam.Q.Y.CopyTo(p);
-
-            var ecdhParameters = _ECDH.ExportParameters(false);
-            ecdhParameters.Validate();
-
             // combine ML-KEM- and traditional shared secret
-            Combine(mlKemKey, ecKey, ecParam.Q, ecdhParameters.Q, Algorithm.Label).CopyTo(sharedSecret);
+            Combine(mlKemKey, tradSecret, tradCT.ToArray(), tradPK, Algorithm.Label).CopyTo(sharedSecret);
         }
 
         protected override void DecapsulateImplementation(ReadOnlySpan<byte> ciphertext, Span<byte> sharedSecret)
@@ -129,20 +116,14 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             var mlKemKey = new byte[Algorithm.MLKemAlgorithm.SharedSecretSizeInBytes];
             _MLKem.Decapsulate(mlKemCipherText, mlKemKey);
 
+            var tradCT = ciphertext[Algorithm.MLKemAlgorithm.CiphertextSizeInBytes..].ToArray();
+            var tradPK = new byte[tradCT.Length];
 
-            // get traditional ephemeral key from ciphertext
-            var tradCTbytes = ciphertext[Algorithm.MLKemAlgorithm.CiphertextSizeInBytes..];
-            var tradCT = ReadPublicECParameters(Algorithm, tradCTbytes);
-            tradCT.Validate();
-            using var ecEphemeralKey = ECDiffieHellman.Create(tradCT);
+            var tradKey = _TraditionalKem.Decapsulate(tradPK, tradCT);
 
-            // get traditional shared secret
-            var tradKey = _ECDH.DeriveRawSecretAgreement(ecEphemeralKey.PublicKey);
-            var tradPK = _ECDH.ExportParameters(false);
-            tradPK.Validate();
 
             // combine ML-KEM- and traditional shared secret
-            Combine(mlKemKey, tradKey,tradCT.Q, tradPK.Q, Algorithm.Label).CopyTo(sharedSecret);
+            Combine(mlKemKey, tradKey,tradCT, tradPK, Algorithm.Label).CopyTo(sharedSecret);
         }
 
         protected override void Dispose(bool disposing)
@@ -150,10 +131,9 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             if (disposing)
             {
                 _MLKem?.Dispose();
-                _ECDH?.Dispose();
+                _TraditionalKem?.Dispose();
             }
             _MLKem = null;
-            _ECDH = null;
             base.Dispose(disposing);
         }
 
@@ -165,43 +145,16 @@ namespace Rotherprivat.KemBasedNet.Cryptography
                 throw new CryptographicException("Not initialized.");
         }
 
-        private static byte[] Combine(byte[] mlkemKey, byte[] tradKey, ECPoint tradCT, ECPoint tradPK, byte[] label)
+        private static byte[] Combine(byte[] mlkemKey, byte[] tradKey, byte[] tradCT, byte[] tradPK, byte[] label)
         {
             using var sha3 = SHA3_256.Create();
             sha3.TransformBlock(mlkemKey, 0, mlkemKey.Length, null, 0);
             sha3.TransformBlock(tradKey, 0, tradKey.Length, null, 0);
-            TransformEcPoint(sha3, tradCT);
-            TransformEcPoint(sha3, tradPK);
+            sha3.TransformBlock(tradCT, 0, tradCT.Length, null, 0);
+            sha3.TransformBlock(tradPK, 0, tradPK.Length, null, 0);
             sha3.TransformFinalBlock(label, 0, label.Length);
 
             return sha3.Hash ?? throw new CryptographicException("Failed to Combine Keys");
-        }
-
-        private static void TransformEcPoint(HashAlgorithm hash, ECPoint p)
-        {
-            hash.TransformBlock([0x04], 0, 1, null, 0);
-            hash.TransformBlock(p.X!, 0, p.X!.Length, null, 0);
-            hash.TransformBlock(p.Y!, 0, p.Y!.Length, null, 0);
-        }
-
-        private static ECParameters ReadPublicECParameters(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> tradPk)
-        {
-            if (tradPk[0] != 0x04)
-                throw new CryptographicException("Invalid Ciphertext");
-
-            var x = tradPk.Slice(1, algorithm.ECPointValueSizeInBytes);
-            var y = tradPk.Slice(1+ algorithm.ECPointValueSizeInBytes, algorithm.ECPointValueSizeInBytes);
-
-            return new ECParameters()
-            {
-                Curve = algorithm.ECCurve,
-                D = null,
-                Q = new ECPoint()
-                {
-                    X = x.ToArray(),
-                    Y = y.ToArray()
-                }
-            };
         }
     }
 }

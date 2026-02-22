@@ -41,10 +41,18 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             new ("MLKEM1024-ECDH-P384-SHA3-256", "MLKEM1024-P384", "1.3.6.1.5.5.7.6.63", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP384),
             new ("MLKEM1024-ECDH-brainpoolP384r1-SHA3-256", "MLKEM1024-BP384", "1.3.6.1.5.5.7.6.64", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.brainpoolP384r1),
             new ("MLKEM1024-ECDH-P521-SHA3-256", "MLKEM1024-P521", "1.3.6.1.5.5.7.6.66", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP521),
+            new ("MLKEM768-RSA2048-SHA3-256", "bla", "1.3.6.1.5.5.7.6.55", MLKemAlgorithm.MLKem768, rsaKeysize: 2047)
         ];
         #endregion
 
         #region Properties with named algorithms
+
+
+        /// <summary>
+        /// MLKEM768-RSA2048-SHA3-256
+        /// </summary>
+        public static CompositeMLKemAlgorithm KMKem768WithRSA2048Sha3 { get; } = _Algorithms[6];
+
         /// <summary>
         /// MLKEM768-ECDH-P256-SHA3-256
         /// </summary>
@@ -89,6 +97,16 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public string Oid { get; }
         #endregion
 
+        /// <summary>
+        /// Uses tradiional RSA
+        /// </summary>
+        public bool IsTraditionalRSA => RSAKeySize != 0;
+
+        /// <summary>
+        /// Uses traditional ECDH
+        /// </summary>
+        public bool IsTraditionalECDH => RSAKeySize == 0;
+
         #region Public methods and overrides
         /// <summary>
         /// Get algorithm definition from OID
@@ -107,12 +125,14 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
         internal ECCurve ECCurve { get; }
 
+        internal int RSAKeySize { get; }
+
         internal byte[] Label { get; }
 
         internal int ECPointValueSizeInBytes => ECCurve.Oid.FriendlyName switch
         {
             "nistP256" => 32,
-            "brainpoolP256r1" =>32,
+            "brainpoolP256r1" => 32,
             "nistP384" => 48,
             "brainpoolP384r1" => 48,
             "nistP521" => 66,
@@ -140,6 +160,16 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             Oid = oid;
             MLKemAlgorithm = mLKemAlgorithm;
             ECCurve = eCCurve;
+        }
+
+
+        private CompositeMLKemAlgorithm(string name, string label, string oid, MLKemAlgorithm mLKemAlgorithm, int rsaKeysize)
+        {
+            Name = name;
+            Label = Encoding.ASCII.GetBytes(label);
+            Oid = oid;
+            MLKemAlgorithm = mLKemAlgorithm;
+            RSAKeySize = rsaKeysize;
         }
         #endregion
     }

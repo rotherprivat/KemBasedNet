@@ -26,6 +26,7 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             {
                 return
                 [
+                    //[CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3],
                     [CompositeMLKemAlgorithm.KMKem768WithECDhP256Sha3],
                     [CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3],
                     [CompositeMLKemAlgorithm.KMKem768WithECDhP384Sha3],
