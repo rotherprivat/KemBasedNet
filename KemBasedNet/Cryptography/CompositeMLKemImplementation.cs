@@ -95,8 +95,8 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
             // append to ciphertext tradCT = public part of ephemeral key 
             var tradCT = ciphertext[Algorithm.MLKemAlgorithm.CiphertextSizeInBytes..];
-            var tradPK = new byte[2* Algorithm.ECPointValueSizeInBytes +1];
-            var tradSecret = _TraditionalKem.Encapsulate(tradPK, tradCT);
+            var tradPK = _TraditionalKem.ExportPublicKey();
+            var tradSecret = _TraditionalKem.Encapsulate(tradCT);
             
             // ML-KEM get ciphertext and KL-KEM shared secret
             byte[] mlKemKey = new byte[Algorithm.MLKemAlgorithm.SharedSecretSizeInBytes];
@@ -117,9 +117,8 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             _MLKem.Decapsulate(mlKemCipherText, mlKemKey);
 
             var tradCT = ciphertext[Algorithm.MLKemAlgorithm.CiphertextSizeInBytes..].ToArray();
-            var tradPK = new byte[tradCT.Length];
-
-            var tradKey = _TraditionalKem.Decapsulate(tradPK, tradCT);
+            var tradPK = _TraditionalKem.ExportPublicKey();
+            var tradKey = _TraditionalKem.Decapsulate(tradCT);
 
 
             // combine ML-KEM- and traditional shared secret
@@ -138,10 +137,10 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         }
 
 
-        [MemberNotNull(nameof(_MLKem), nameof(_ECDH))]
+        [MemberNotNull(nameof(_MLKem), nameof(_TraditionalKem))]
         private void EnsureValid()
         {
-            if (_MLKem == null || _ECDH == null)
+            if (_MLKem == null || _TraditionalKem == null)
                 throw new CryptographicException("Not initialized.");
         }
 

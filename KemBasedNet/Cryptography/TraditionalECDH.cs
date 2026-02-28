@@ -32,6 +32,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
                 _traditionalECDH?.Dispose();
             }
             _traditionalECDH = null;
+            Algorithm = null;
         }
 
         public void Dispose()
@@ -86,7 +87,13 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             };
         }
 
-        public byte[] Encapsulate(Span<byte> tradPK, Span<byte> tradCT)
+        public byte[] ExportPublicKey()
+        {
+            var parm = ((ECDiffieHellman)_traditionalECDH).ExportParameters(false);
+            return parm.ExportECPublicKeyBytes();
+        }
+
+        public byte[] Encapsulate(Span<byte> tradCT)
         {
             using var ecEphemeralKey = ECDiffieHellman.Create(Algorithm.ECCurve);
             var ecKey = ecEphemeralKey.DeriveRawSecretAgreement(_ECDH.PublicKey);
@@ -99,19 +106,10 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             p = tradCT.Slice(Algorithm.ECPointValueSizeInBytes + 1, Algorithm.ECPointValueSizeInBytes);
             ecParam.Q.Y.CopyTo(p);
 
-            ecParam = _ECDH.ExportParameters(false);
-            ecParam.Validate();
-
-            tradPK[0] = 0x04;
-            p = tradPK.Slice(1, Algorithm.ECPointValueSizeInBytes);
-            ecParam.Q.X.CopyTo(p);
-            p = tradPK.Slice(Algorithm.ECPointValueSizeInBytes + 1, Algorithm.ECPointValueSizeInBytes);
-            ecParam.Q.Y.CopyTo(p);
-
             return ecKey;
         }
 
-        public byte[] Decapsulate(Span<byte> tradPK, Span<byte> tradCT)
+        public byte[] Decapsulate(Span<byte> tradCT)
         {
             // get traditional ephemeral key from ciphertext
             var ecEphemeralParams = ReadPublicECParameters(Algorithm, tradCT);
@@ -120,14 +118,6 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
             // get traditional shared secret
             var tradKey = _ECDH.DeriveRawSecretAgreement(ecEphemeralKey.PublicKey);
-            var tradPKParams = _ECDH.ExportParameters(false);
-            tradPKParams.Validate();
-            
-            tradPK[0] = 0x04;
-            var p = tradPK.Slice(1, Algorithm.ECPointValueSizeInBytes);
-            tradPKParams.Q.X.CopyTo(p);
-            p = tradPK.Slice(Algorithm.ECPointValueSizeInBytes + 1, Algorithm.ECPointValueSizeInBytes);
-            tradPKParams.Q.Y.CopyTo(p);
 
             return tradKey;
         }

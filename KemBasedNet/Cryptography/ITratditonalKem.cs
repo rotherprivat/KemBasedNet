@@ -14,8 +14,10 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         abstract static ITratditonalKem GenerateKey(CompositeMLKemAlgorithm algorithm);
         abstract static ITratditonalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate);
         abstract static ITratditonalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic);
-        public byte[] Encapsulate(Span<byte> tradPK, Span<byte> tradCT);
-        public byte[] Decapsulate(Span<byte> tradPK, Span<byte> tradCT);
+        public byte[] Encapsulate(Span<byte> tradCT);
+        public byte[] Decapsulate(Span<byte> tradCT);
+
+        public byte[] ExportPublicKey();
     }
 
     public abstract class TratditonalKemFactory
@@ -28,7 +30,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             }
             else
             {
-                throw new NotImplementedException();
+                return TraditionalRSA.GenerateKey(algorithm);
             }
         }
 
@@ -40,9 +42,10 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             }
             else
             {
-                throw new NotImplementedException();
+                return TraditionalRSA.ImportPrivateKey(algorithm, ecdhPrivate);
             }
         }
+
         public static ITratditonalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic)
         {
             if (algorithm.IsTraditionalECDH)
@@ -51,7 +54,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             }
             else
             {
-                throw new NotImplementedException();
+                return TraditionalRSA.ImportPublicKey(algorithm, traditionalPublic);
             }
         }
 

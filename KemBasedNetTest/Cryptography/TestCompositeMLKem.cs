@@ -200,6 +200,30 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
         [TestMethod]
         public void ____RsaDev()
         {
+            var algorithm = CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3;
+//            using var kem = CompositeMLKem.GenerateKey(CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3);
+            if (null == _TestVector)
+                throw new InvalidOperationException("NoTestData");
+
+            string id = "id-" + algorithm.Name;
+            var testData = _TestVector.tests[id] ??
+                throw new InvalidOperationException("requested TestData missing");
+
+            var privateKey = Convert.FromBase64String(testData.dk);
+            var encapsulationKey = Convert.FromBase64String(testData.ek);
+
+            using var bob = CompositeMLKem.ImportEncapsulationKey(algorithm, encapsulationKey);
+            Assert.IsNotNull(bob, $"Test vector {testData.tcId} import ImportEncapsulationKey failed.");
+
+            using var alice = CompositeMLKem.ImportPrivateKey(algorithm, privateKey);
+
+            var cyphertext = Convert.FromBase64String(testData.c);
+            var key = Convert.FromBase64String(testData.k);
+
+            var decapsulatedKey = alice.Decapsulate(cyphertext);
+            Assert.IsTrue(key.SequenceEqual(decapsulatedKey), $"Test vector {testData.tcId} compare shared key failed");
+
+
 
         }
 

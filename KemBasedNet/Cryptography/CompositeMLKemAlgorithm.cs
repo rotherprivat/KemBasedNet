@@ -41,7 +41,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             new ("MLKEM1024-ECDH-P384-SHA3-256", "MLKEM1024-P384", "1.3.6.1.5.5.7.6.63", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP384),
             new ("MLKEM1024-ECDH-brainpoolP384r1-SHA3-256", "MLKEM1024-BP384", "1.3.6.1.5.5.7.6.64", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.brainpoolP384r1),
             new ("MLKEM1024-ECDH-P521-SHA3-256", "MLKEM1024-P521", "1.3.6.1.5.5.7.6.66", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP521),
-            new ("MLKEM768-RSA2048-SHA3-256", "bla", "1.3.6.1.5.5.7.6.55", MLKemAlgorithm.MLKem768, rsaKeysize: 2047)
+            new ("MLKEM768-RSA2048-SHA3-256", "MLKEM768-RSAOAEP2048", "1.3.6.1.5.5.7.6.55", MLKemAlgorithm.MLKem768, rsaKeysize: 2048)
         ];
         #endregion
 
