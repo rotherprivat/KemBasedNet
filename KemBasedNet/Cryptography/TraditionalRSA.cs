@@ -55,14 +55,18 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public byte[] Decapsulate(Span<byte> tradCT)
         {
             var key = _traditionalRSA.Decrypt(tradCT, RSAEncryptionPadding.OaepSHA256);
+            if (key.Length != 32)
+                throw new CryptographicException("Traditional shared key is invalid.");
+
             return key;
         }
 
 
         public byte[] Encapsulate(Span<byte> tradCT)
         {
-
-            throw new NotImplementedException();
+            var tradKey = RandomNumberGenerator.GetBytes(32);
+            _traditionalRSA.Encrypt(tradKey, tradCT, RSAEncryptionPadding.OaepSHA256);
+            return tradKey;
         }
 
         protected virtual void Dispose(bool disposing)

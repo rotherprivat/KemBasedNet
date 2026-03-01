@@ -223,7 +223,9 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             var decapsulatedKey = alice.Decapsulate(cyphertext);
             Assert.IsTrue(key.SequenceEqual(decapsulatedKey), $"Test vector {testData.tcId} compare shared key failed");
 
-
+            bob.Encapsulate(out var ct, out var keyB);
+            var keyA = alice.Decapsulate(ct);
+            Assert.AreEqual(keyA, keyB, ByteArrayComparer.Comparer, $"{algorithm.Name}: Encapsulate Decapsulate roundtrip failed.");
 
         }
 

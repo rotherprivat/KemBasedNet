@@ -375,8 +375,8 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// <param name="sharedSecret">Combined shared secret</param>
         public void Encapsulate(out byte[] ciphertext, out byte[] sharedSecret)
         {
-            var cipherTextLen = Algorithm.ECPublicKeySizeInBytes +
-                                Algorithm.MLKemAlgorithm.CiphertextSizeInBytes;
+            var cipherTextLen = Algorithm.IsTraditionalECDH ? Algorithm.ECPublicKeySizeInBytes : Algorithm.RSAKeySize / 8;
+            cipherTextLen +=  Algorithm.MLKemAlgorithm.CiphertextSizeInBytes;
 
             ciphertext = new byte[cipherTextLen];
             sharedSecret = new byte[SHA3_256.HashSizeInBytes];
