@@ -139,11 +139,11 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         #endregion
 
         #region Internal and private propertiies
-        internal MLKemAlgorithm MLKemAlgorithm { get; }
+        public MLKemAlgorithm MLKemAlgorithm { get; }
 
-        internal ECCurve ECCurve { get; }
+        public ECCurve ECCurve { get; }
 
-        internal int RSAKeySize { get; }
+        public int RSAKeySize { get; }
 
         internal byte[] Label { get; }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -83,12 +84,14 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
         public byte[] ExportPublicKey()
         {
+            EnsureValid();
             var parm = _traditionalECDH.ExportParameters(false);
             return parm.ExportECPublicKeyBytes();
         }
 
         public byte[] Encapsulate(Span<byte> tradCT)
         {
+            EnsureValid();
             using var ecEphemeralKey = ECDiffieHellman.Create(Algorithm.ECCurve);
             var ecKey = ecEphemeralKey.DeriveRawSecretAgreement(_traditionalECDH.PublicKey);
             var ecParam = ecEphemeralKey.ExportParameters(false);
@@ -105,6 +108,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
         public byte[] Decapsulate(Span<byte> tradCT)
         {
+            EnsureValid();
             // get traditional ephemeral key from ciphertext
             var ecEphemeralParams = ReadPublicECParameters(Algorithm, tradCT);
             ecEphemeralParams.Validate();
@@ -118,7 +122,16 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
         public byte[] ExportPrivateKey()
         {
+            EnsureValid();
             return _traditionalECDH.ExportECPrivateKeyD();
         }
+
+        [MemberNotNull(nameof(_traditionalECDH), nameof(Algorithm))]
+        private void EnsureValid()
+        {
+            if (_traditionalECDH == null || Algorithm == null)
+                throw new CryptographicException("Not initialized.");
+        }
+
     }
 }

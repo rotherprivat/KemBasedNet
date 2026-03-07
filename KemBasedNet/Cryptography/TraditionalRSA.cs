@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -47,17 +48,20 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
         public byte[] ExportPublicKey()
         {
+            EnsureValid();
             return _traditionalRSA.ExportRSAPublicKey();
         }
 
         public byte[] ExportPrivateKey()
         {
+            EnsureValid();
             return _traditionalRSA.ExportRSAPrivateKey();
         }
 
 
         public byte[] Decapsulate(Span<byte> tradCT)
         {
+            EnsureValid();
             var key = _traditionalRSA.Decrypt(tradCT, RSAEncryptionPadding.OaepSHA256);
             if (key.Length != 32)
                 throw new CryptographicException("Traditional shared key is invalid.");
@@ -68,10 +72,19 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
         public byte[] Encapsulate(Span<byte> tradCT)
         {
+            EnsureValid();
             var tradKey = RandomNumberGenerator.GetBytes(32);
             _traditionalRSA.Encrypt(tradKey, tradCT, RSAEncryptionPadding.OaepSHA256);
             return tradKey;
         }
+
+        [MemberNotNull(nameof(_traditionalRSA), nameof(Algorithm))]
+        private void EnsureValid()
+        {
+            if (_traditionalRSA == null || Algorithm == null)
+                throw new CryptographicException("Not initialized.");
+        }
+
 
         protected virtual void Dispose(bool disposing)
         {
@@ -82,6 +95,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             _traditionalRSA = null;
             Algorithm = null;
         }
+
 
         public void Dispose()
         {
