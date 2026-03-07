@@ -67,8 +67,7 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
 
             using var compositeMLKem = CompositeMLKem.ImportPrivateKey(algorithm, refDk);
             var rawPkcs8 = compositeMLKem.ExportPkcs8PrivateKey();
-
-            Assert.IsTrue(refPkcs8.SequenceEqual(rawPkcs8), $"Test vector {testData.tcId} compare dk_pkcs8 from DK failed");
+            // Vhttps://stackoverflow.com/questions/67588396/d-parameter-of-rsa-change-depending-on-how-you-access-the-private-key-of-a-certi            Assert.IsTrue(refPkcs8.SequenceEqual(rawPkcs8), $"Test vector {testData.tcId} compare dk_pkcs8 from DK failed");
         }
 
         [TestMethod]
@@ -200,7 +199,7 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
         [TestMethod]
         public void ____RsaDev()
         {
-            var algorithm = CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3;
+            var algorithm = CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3;
 //            using var kem = CompositeMLKem.GenerateKey(CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3);
             if (null == _TestVector)
                 throw new InvalidOperationException("NoTestData");
@@ -216,6 +215,7 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             Assert.IsNotNull(bob, $"Test vector {testData.tcId} import ImportEncapsulationKey failed.");
 
             using var alice = CompositeMLKem.ImportPrivateKey(algorithm, privateKey);
+
 
             var cyphertext = Convert.FromBase64String(testData.c);
             var key = Convert.FromBase64String(testData.k);

@@ -7,13 +7,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 {
     internal class TraditionalECDH : ITratditonalKem
     {
-        private AsymmetricAlgorithm? _traditionalECDH = null;
-
-        public ECDiffieHellman? _ECDH 
-        { 
-            get => _traditionalECDH as ECDiffieHellman;
-            set => _traditionalECDH = value;
-        }
+        private ECDiffieHellman? _traditionalECDH = null;
         public CompositeMLKemAlgorithm? Algorithm { get ;  set ; }
 
         public static ITratditonalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
@@ -89,14 +83,14 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
         public byte[] ExportPublicKey()
         {
-            var parm = ((ECDiffieHellman)_traditionalECDH).ExportParameters(false);
+            var parm = _traditionalECDH.ExportParameters(false);
             return parm.ExportECPublicKeyBytes();
         }
 
         public byte[] Encapsulate(Span<byte> tradCT)
         {
             using var ecEphemeralKey = ECDiffieHellman.Create(Algorithm.ECCurve);
-            var ecKey = ecEphemeralKey.DeriveRawSecretAgreement(_ECDH.PublicKey);
+            var ecKey = ecEphemeralKey.DeriveRawSecretAgreement(_traditionalECDH.PublicKey);
             var ecParam = ecEphemeralKey.ExportParameters(false);
 
             // append to ciphertext tradCT = public part of ephemeral key 
@@ -117,9 +111,14 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             using var ecEphemeralKey = ECDiffieHellman.Create(ecEphemeralParams);
 
             // get traditional shared secret
-            var tradKey = _ECDH.DeriveRawSecretAgreement(ecEphemeralKey.PublicKey);
+            var tradKey = _traditionalECDH.DeriveRawSecretAgreement(ecEphemeralKey.PublicKey);
 
             return tradKey;
+        }
+
+        public byte[] ExportPrivateKey()
+        {
+            return _traditionalECDH.ExportECPrivateKeyD();
         }
     }
 }

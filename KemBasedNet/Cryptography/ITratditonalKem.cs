@@ -7,9 +7,6 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 {
     public interface ITratditonalKem: IDisposable
     {
-        // for development
-        public ECDiffieHellman? _ECDH {  get; set; }
-
         public CompositeMLKemAlgorithm? Algorithm { get; set; }
         abstract static ITratditonalKem GenerateKey(CompositeMLKemAlgorithm algorithm);
         abstract static ITratditonalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate);
@@ -18,6 +15,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public byte[] Decapsulate(Span<byte> tradCT);
 
         public byte[] ExportPublicKey();
+        public byte[] ExportPrivateKey();
     }
 
     public abstract class TratditonalKemFactory

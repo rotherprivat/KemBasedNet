@@ -7,11 +7,6 @@ namespace Rotherprivat.KemBasedNet.Cryptography
     public class CompositeMLKemImplementation : CompositeMLKem
     {
         private MLKem? _MLKem = null;
-        private ECDiffieHellman? _ECDH
-        {
-            get => _TraditionalKem?._ECDH;
-            set => _TraditionalKem = new TraditionalECDH() { _ECDH = value };
-        }
         private ITratditonalKem? _TraditionalKem = null;
 
         internal static CompositeMLKem GenerateKeyImplementation(CompositeMLKemAlgorithm algorithm)
@@ -59,36 +54,32 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         {
         }
 
-        protected override void ExportPrivateKeyImplementation(Span<byte> privateKey)
+        protected override byte[] ExportPrivateKeyImplementation()
         {
             EnsureValid();
 
-            var mlKemSeed = privateKey[..Algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes];
-            _MLKem.ExportPrivateSeed(mlKemSeed);
+            var k1 = _MLKem.ExportPrivateSeed();
+            var k2 = _TraditionalKem.ExportPrivateKey();
 
-            var ecPriv = _ECDH.ExportECPrivateKeyD();
-            var p = privateKey[Algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes..];
-            ecPriv.CopyTo(p);
+            var key = new byte[k1.Length + k2.Length];
+            Buffer.BlockCopy(k1, 0, key, 0, k1.Length);
+            Buffer.BlockCopy(k2, 0, key, k1.Length, k2.Length);
+            return key;
+
         }
 
-        protected override void ExportEncapsulationKeyImplementation(Span<byte> keyBuffer)
+        protected override byte[] ExportEncapsulationKeyImplementation()
         {
             EnsureValid();
-            var p = keyBuffer[..Algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes];
 
-            _MLKem.ExportEncapsulationKey(p);
+            var k1 = _MLKem.ExportEncapsulationKey();
+            var k2 = _TraditionalKem.ExportPublicKey();
 
-            var ecdhParameters = _ECDH.ExportParameters(false);
-            ecdhParameters.Validate();
-            var tradPK = keyBuffer[Algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes..];
-            tradPK[0] = 0x04;
-            p = tradPK.Slice(1, Algorithm.ECPointValueSizeInBytes);
-            ecdhParameters.Q.X.CopyTo(p);
-
-            p = tradPK.Slice(Algorithm.ECPointValueSizeInBytes + 1, Algorithm.ECPointValueSizeInBytes);
-            ecdhParameters.Q.Y.CopyTo(p);
+            var key = new byte[k1.Length + k2.Length];
+            Buffer.BlockCopy(k1, 0, key, 0, k1.Length);
+            Buffer.BlockCopy(k2, 0, key, k1.Length, k2.Length);
+            return key;
         }
-
         protected override void EncapsulateImplementation(Span<byte> ciphertext, Span<byte> sharedSecret)
         {
             EnsureValid();

@@ -8,7 +8,6 @@ namespace Rotherprivat.KemBasedNet.Cryptography
     public class TraditionalRSA : ITratditonalKem
     {
         private RSA? _traditionalRSA = null;
-        public ECDiffieHellman? _ECDH { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public CompositeMLKemAlgorithm? Algorithm { get; set; } = null;
 
         public static ITratditonalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
@@ -49,6 +48,11 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public byte[] ExportPublicKey()
         {
             return _traditionalRSA.ExportRSAPublicKey();
+        }
+
+        public byte[] ExportPrivateKey()
+        {
+            return _traditionalRSA.ExportRSAPrivateKey();
         }
 
 

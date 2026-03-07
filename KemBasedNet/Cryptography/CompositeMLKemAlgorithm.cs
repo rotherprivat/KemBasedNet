@@ -41,7 +41,10 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             new ("MLKEM1024-ECDH-P384-SHA3-256", "MLKEM1024-P384", "1.3.6.1.5.5.7.6.63", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP384),
             new ("MLKEM1024-ECDH-brainpoolP384r1-SHA3-256", "MLKEM1024-BP384", "1.3.6.1.5.5.7.6.64", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.brainpoolP384r1),
             new ("MLKEM1024-ECDH-P521-SHA3-256", "MLKEM1024-P521", "1.3.6.1.5.5.7.6.66", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP521),
-            new ("MLKEM768-RSA2048-SHA3-256", "MLKEM768-RSAOAEP2048", "1.3.6.1.5.5.7.6.55", MLKemAlgorithm.MLKem768, rsaKeysize: 2048)
+            new ("MLKEM768-RSA2048-SHA3-256", "MLKEM768-RSAOAEP2048", "1.3.6.1.5.5.7.6.55", MLKemAlgorithm.MLKem768, rsaKeysize: 2048),
+            new ("MLKEM768-RSA3072-SHA3-256", "MLKEM768-RSAOAEP3072", "1.3.6.1.5.5.7.6.56", MLKemAlgorithm.MLKem768, rsaKeysize: 3072),
+            new ("MLKEM768-RSA4096-SHA3-256", "MLKEM768-RSAOAEP4096", "1.3.6.1.5.5.7.6.57", MLKemAlgorithm.MLKem768, rsaKeysize: 4096),
+            new ("MLKEM1024-RSA3072-SHA3-256", "MLKEM1024-RSAOAEP3072", "1.3.6.1.5.5.7.6.62", MLKemAlgorithm.MLKem1024, rsaKeysize: 3072)
         ];
         #endregion
 
@@ -52,6 +55,16 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// MLKEM768-RSA2048-SHA3-256
         /// </summary>
         public static CompositeMLKemAlgorithm KMKem768WithRSA2048Sha3 { get; } = _Algorithms[6];
+
+        /// <summary>
+        /// MLKEM768-RSA3072-SHA3-256
+        /// </summary>
+        public static CompositeMLKemAlgorithm KMKem768WithRSA3072Sha3 { get; } = _Algorithms[7];
+
+        /// <summary>
+        /// MLKEM768-RSA4096-SHA3-256
+        /// </summary>
+        public static CompositeMLKemAlgorithm KMKem768WithRSA4096Sha3 { get; } = _Algorithms[8];
 
         /// <summary>
         /// MLKEM768-ECDH-P256-SHA3-256
@@ -67,6 +80,11 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// MLKEM768-ECDH-brainpoolP256r1-SHA3-256
         /// </summary>
         public static CompositeMLKemAlgorithm KMKem768WithECDhBrainpoolP384Sha3 { get; } = _Algorithms[2];
+
+        /// <summary>
+        /// MLKEM1024-RSA3072-SHA3-256
+        /// </summary>
+        public static CompositeMLKemAlgorithm KMKem1024WithRSA3072Sha3 { get; } = _Algorithms[9];
 
         /// <summary>
         /// MLKEM1024-ECDH-P384-SHA3-256
