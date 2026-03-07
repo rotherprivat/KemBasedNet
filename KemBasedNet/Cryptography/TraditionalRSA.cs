@@ -6,12 +6,12 @@ using System.Text;
 
 namespace Rotherprivat.KemBasedNet.Cryptography
 {
-    public class TraditionalRSA : ITratditonalKem
+    internal class TraditionalRSA : ITraditionalKem
     {
         private RSA? _traditionalRSA = null;
         public CompositeMLKemAlgorithm? Algorithm { get; set; } = null;
 
-        public static ITratditonalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
+        public static ITraditionalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
         {
             return new TraditionalRSA()
             {
@@ -20,7 +20,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             };
         }
 
-        public static ITratditonalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate)
+        public static ITraditionalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate)
         {
             var rsa = RSA.Create();
             rsa.ImportRSAPrivateKey(ecdhPrivate, out _);
@@ -33,7 +33,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
         }
 
-        public static ITratditonalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic)
+        public static ITraditionalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic)
         {
             var rsa = RSA.Create();
             rsa.ImportRSAPublicKey(traditionalPublic, out _);

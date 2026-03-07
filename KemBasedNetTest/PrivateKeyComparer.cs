@@ -8,13 +8,8 @@ using System.Text;
 
 namespace Rotherprivat.KemBasedNetTest
 {
-    internal class PrivateKeyComparer : IEqualityComparer<byte[]>
+    internal class PrivateKeyComparer(CompositeMLKemAlgorithm algorithm) : IEqualityComparer<byte[]>
     {
-        public PrivateKeyComparer(CompositeMLKemAlgorithm algorithm)
-        {
-            _Algorithm = algorithm;
-        }
-
         public static byte[] GetDkFromPkcs8(CompositeMLKemAlgorithm algorithm, byte[] pkcs8)
         {
             var pkcs8Info = Pkcs8PrivateKeyInfo.Decode(pkcs8, out _);
@@ -86,6 +81,6 @@ namespace Rotherprivat.KemBasedNetTest
             return Convert.ToBase64String(obj).GetHashCode();
         }
 
-        private CompositeMLKemAlgorithm _Algorithm;
+        private readonly CompositeMLKemAlgorithm _Algorithm = algorithm;
     }
 }

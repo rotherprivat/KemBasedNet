@@ -7,14 +7,14 @@ namespace Rotherprivat.KemBasedNet.Cryptography
     public class CompositeMLKemImplementation : CompositeMLKem
     {
         private MLKem? _MLKem = null;
-        private ITratditonalKem? _TraditionalKem = null;
+        private ITraditionalKem? _TraditionalKem = null;
 
         internal static CompositeMLKem GenerateKeyImplementation(CompositeMLKemAlgorithm algorithm)
         {
             return new CompositeMLKemImplementation(algorithm)
                 {
                     _MLKem = MLKem.GenerateKey(algorithm.MLKemAlgorithm),
-                    _TraditionalKem = TratditonalKemFactory.GenerateKey(algorithm)
+                    _TraditionalKem = TraditionalKemFactory.GenerateKey(algorithm)
                 };
         }
 
@@ -28,7 +28,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             return new CompositeMLKemImplementation(algorithm)
             {
                 _MLKem = mlKem,
-                _TraditionalKem = TratditonalKemFactory.ImportPrivateKey(algorithm, ecdhPrivate),
+                _TraditionalKem = TraditionalKemFactory.ImportPrivateKey(algorithm, ecdhPrivate),
             };
         }
 
@@ -40,7 +40,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             return new CompositeMLKemImplementation(algorithm)
             {
                 _MLKem = MLKem.ImportEncapsulationKey(algorithm.MLKemAlgorithm, mlKemEncapsulationKey),
-                _TraditionalKem = TratditonalKemFactory.ImportPublicKey(algorithm, ecDhPublicBytes)
+                _TraditionalKem = TraditionalKemFactory.ImportPublicKey(algorithm, ecDhPublicBytes)
             };
 
         }

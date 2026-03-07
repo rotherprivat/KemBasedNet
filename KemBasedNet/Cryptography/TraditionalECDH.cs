@@ -6,12 +6,12 @@ using System.Text;
 
 namespace Rotherprivat.KemBasedNet.Cryptography
 {
-    internal class TraditionalECDH : ITratditonalKem
+    internal class TraditionalECDH : ITraditionalKem
     {
         private ECDiffieHellman? _traditionalECDH = null;
         public CompositeMLKemAlgorithm? Algorithm { get ;  set ; }
 
-        public static ITratditonalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
+        public static ITraditionalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
         {
             return new TraditionalECDH()
             {
@@ -37,7 +37,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             GC.SuppressFinalize(this);
         }
 
-        public static ITratditonalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate)
+        public static ITraditionalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate)
         {
             var ecdh = ECDiffieHellman.Create();
             ecdh.ImportECPrivateKey(ecdhPrivate, out _);
@@ -49,7 +49,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             };
         }
 
-        public static ITratditonalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic)
+        public static ITraditionalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic)
         {
             var ecParams = ReadPublicECParameters(algorithm, traditionalPublic);
             ecParams.Validate();
@@ -85,8 +85,8 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public byte[] ExportPublicKey()
         {
             EnsureValid();
-            var parm = _traditionalECDH.ExportParameters(false);
-            return parm.ExportECPublicKeyBytes();
+            var param = _traditionalECDH.ExportParameters(false);
+            return param.ExportECPublicKeyBytes();
         }
 
         public byte[] Encapsulate(Span<byte> tradCT)

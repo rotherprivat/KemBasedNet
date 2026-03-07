@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Rotherprivat.KemBasedNet.Cryptography
 {
-    public interface ITratditonalKem: IDisposable
+    internal interface ITraditionalKem: IDisposable
     {
         public CompositeMLKemAlgorithm? Algorithm { get; set; }
-        abstract static ITratditonalKem GenerateKey(CompositeMLKemAlgorithm algorithm);
-        abstract static ITratditonalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate);
-        abstract static ITratditonalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic);
+        abstract static ITraditionalKem GenerateKey(CompositeMLKemAlgorithm algorithm);
+        abstract static ITraditionalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate);
+        abstract static ITraditionalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic);
         public byte[] Encapsulate(Span<byte> tradCT);
         public byte[] Decapsulate(Span<byte> tradCT);
 
@@ -18,9 +18,9 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public byte[] ExportPrivateKey();
     }
 
-    public abstract class TratditonalKemFactory
+    internal abstract class TraditionalKemFactory
     {
-        public static ITratditonalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
+        public static ITraditionalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
         {
             if (algorithm.IsTraditionalECDH)
             {
@@ -32,7 +32,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             }
         }
 
-        public static ITratditonalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate)
+        public static ITraditionalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate)
         {
             if (algorithm.IsTraditionalECDH)
             {
@@ -44,7 +44,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             }
         }
 
-        public static ITratditonalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic)
+        public static ITraditionalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic)
         {
             if (algorithm.IsTraditionalECDH)
             {
