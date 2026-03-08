@@ -24,5 +24,17 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             }
             return asn1.Encode();
         }
+
+        public static byte[] ExportECPublicKeyBytes (this ECParameters ecParams)
+        {   
+            ecParams.Validate();
+            using MemoryStream s = new();
+            using BinaryWriter w = new(s);
+            w.Write((byte)0x04);
+            w.Write(ecParams.Q.X!);
+            w.Write(ecParams.Q.Y!);
+            w.Close();
+            return s.ToArray();
+        }
     }
 }

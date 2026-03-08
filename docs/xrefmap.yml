@@ -91,15 +91,6 @@ references:
   commentId: M:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey
   fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey()
   nameWithType: CompositeMLKem.ExportEncapsulationKey()
-- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey(System.Span{System.Byte})
-  name: ExportEncapsulationKey(Span<byte>)
-  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKem_ExportEncapsulationKey_System_Span_System_Byte__
-  commentId: M:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey(System.Span{System.Byte})
-  name.vb: ExportEncapsulationKey(Span(Of Byte))
-  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey(System.Span<byte>)
-  fullName.vb: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey(System.Span(Of Byte))
-  nameWithType: CompositeMLKem.ExportEncapsulationKey(Span<byte>)
-  nameWithType.vb: CompositeMLKem.ExportEncapsulationKey(Span(Of Byte))
 - uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey*
   name: ExportEncapsulationKey
   href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey.html
@@ -157,15 +148,6 @@ references:
   commentId: M:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey
   fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey()
   nameWithType: CompositeMLKem.ExportPrivateKey()
-- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey(System.Span{System.Byte})
-  name: ExportPrivateKey(Span<byte>)
-  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKem_ExportPrivateKey_System_Span_System_Byte__
-  commentId: M:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey(System.Span{System.Byte})
-  name.vb: ExportPrivateKey(Span(Of Byte))
-  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey(System.Span<byte>)
-  fullName.vb: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey(System.Span(Of Byte))
-  nameWithType: CompositeMLKem.ExportPrivateKey(Span<byte>)
-  nameWithType.vb: CompositeMLKem.ExportPrivateKey(Span(Of Byte))
 - uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey*
   name: ExportPrivateKey
   href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey.html
@@ -352,12 +334,36 @@ references:
   commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportSubjectPublicKeyInfo
   fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportSubjectPublicKeyInfo
   nameWithType: CompositeMLKem.ImportSubjectPublicKeyInfo
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported
+  name: IsSupported
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKem_IsSupported
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported
+  nameWithType: CompositeMLKem.IsSupported
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported*
+  name: IsSupported
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported
+  nameWithType: CompositeMLKem.IsSupported
 - uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm
   name: CompositeMLKemAlgorithm
   href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.html
   commentId: T:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm
   fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm
   nameWithType: CompositeMLKemAlgorithm
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve
+  name: ECCurve
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_ECCurve
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve
+  nameWithType: CompositeMLKemAlgorithm.ECCurve
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve*
+  name: ECCurve
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve
+  nameWithType: CompositeMLKemAlgorithm.ECCurve
 - uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.FromOid(System.String)
   name: FromOid(string)
   href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.FromOid.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_FromOid_System_String_
@@ -385,6 +391,42 @@ references:
   commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.GetHashCode
   fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.GetHashCode
   nameWithType: CompositeMLKemAlgorithm.GetHashCode
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH
+  name: IsTraditionalECDH
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_IsTraditionalECDH
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH
+  nameWithType: CompositeMLKemAlgorithm.IsTraditionalECDH
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH*
+  name: IsTraditionalECDH
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH
+  nameWithType: CompositeMLKemAlgorithm.IsTraditionalECDH
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalRSA
+  name: IsTraditionalRSA
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalRSA.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_IsTraditionalRSA
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalRSA
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalRSA
+  nameWithType: CompositeMLKemAlgorithm.IsTraditionalRSA
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalRSA*
+  name: IsTraditionalRSA
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalRSA.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalRSA
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalRSA
+  nameWithType: CompositeMLKemAlgorithm.IsTraditionalRSA
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3
+  name: KMKem1024WithECDhBrainpoolP384Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_KMKem1024WithECDhBrainpoolP384Sha3
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3*
+  name: KMKem1024WithECDhBrainpoolP384Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3
 - uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP384Sha3
   name: KMKem1024WithECDhP384Sha3
   href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP384Sha3.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_KMKem1024WithECDhP384Sha3
@@ -409,6 +451,30 @@ references:
   commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3
   fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3
   nameWithType: CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3
+  name: KMKem1024WithRSA3072Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_KMKem1024WithRSA3072Sha3
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3*
+  name: KMKem1024WithRSA3072Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3
+  name: KMKem768WithECDhBrainpoolP384Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_KMKem768WithECDhBrainpoolP384Sha3
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3*
+  name: KMKem768WithECDhBrainpoolP384Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3
 - uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP256Sha3
   name: KMKem768WithECDhP256Sha3
   href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP256Sha3.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_KMKem768WithECDhP256Sha3
@@ -433,6 +499,54 @@ references:
   commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP384Sha3
   fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP384Sha3
   nameWithType: CompositeMLKemAlgorithm.KMKem768WithECDhP384Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3
+  name: KMKem768WithRSA2048Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_KMKem768WithRSA2048Sha3
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3*
+  name: KMKem768WithRSA2048Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3
+  name: KMKem768WithRSA3072Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_KMKem768WithRSA3072Sha3
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3*
+  name: KMKem768WithRSA3072Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3
+  name: KMKem768WithRSA4096Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_KMKem768WithRSA4096Sha3
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3*
+  name: KMKem768WithRSA4096Sha3
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3
+  nameWithType: CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm
+  name: MLKemAlgorithm
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_MLKemAlgorithm
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm
+  nameWithType: CompositeMLKemAlgorithm.MLKemAlgorithm
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm*
+  name: MLKemAlgorithm
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm
+  nameWithType: CompositeMLKemAlgorithm.MLKemAlgorithm
 - uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.Name
   name: Name
   href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.Name.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_Name
@@ -457,6 +571,18 @@ references:
   commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.Oid
   fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.Oid
   nameWithType: CompositeMLKemAlgorithm.Oid
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.RSAKeySize
+  name: RSAKeySize
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.RSAKeySize.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_RSAKeySize
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.RSAKeySize
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.RSAKeySize
+  nameWithType: CompositeMLKemAlgorithm.RSAKeySize
+- uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.RSAKeySize*
+  name: RSAKeySize
+  href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.RSAKeySize.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.RSAKeySize
+  fullName: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.RSAKeySize
+  nameWithType: CompositeMLKemAlgorithm.RSAKeySize
 - uid: Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ToString
   name: ToString()
   href: api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ToString.html#Rotherprivat_KemBasedNet_Cryptography_CompositeMLKemAlgorithm_ToString
@@ -547,15 +673,6 @@ references:
   commentId: M:Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey
   fullName: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey()
   nameWithType: HybridMLKem.ExportEncapsulationKey()
-- uid: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey(System.Span{System.Byte})
-  name: ExportEncapsulationKey(Span<byte>)
-  href: api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey.html#Rotherprivat_KemBasedNet_Cryptography_HybridMLKem_ExportEncapsulationKey_System_Span_System_Byte__
-  commentId: M:Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey(System.Span{System.Byte})
-  name.vb: ExportEncapsulationKey(Span(Of Byte))
-  fullName: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey(System.Span<byte>)
-  fullName.vb: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey(System.Span(Of Byte))
-  nameWithType: HybridMLKem.ExportEncapsulationKey(Span<byte>)
-  nameWithType.vb: HybridMLKem.ExportEncapsulationKey(Span(Of Byte))
 - uid: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey*
   name: ExportEncapsulationKey
   href: api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey.html
@@ -613,15 +730,6 @@ references:
   commentId: M:Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey
   fullName: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey()
   nameWithType: HybridMLKem.ExportPrivateKey()
-- uid: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey(System.Span{System.Byte})
-  name: ExportPrivateKey(Span<byte>)
-  href: api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey.html#Rotherprivat_KemBasedNet_Cryptography_HybridMLKem_ExportPrivateKey_System_Span_System_Byte__
-  commentId: M:Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey(System.Span{System.Byte})
-  name.vb: ExportPrivateKey(Span(Of Byte))
-  fullName: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey(System.Span<byte>)
-  fullName.vb: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey(System.Span(Of Byte))
-  nameWithType: HybridMLKem.ExportPrivateKey(Span<byte>)
-  nameWithType.vb: HybridMLKem.ExportPrivateKey(Span(Of Byte))
 - uid: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey*
   name: ExportPrivateKey
   href: api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey.html
@@ -823,6 +931,18 @@ references:
   commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportSubjectPublicKeyInfo
   fullName: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportSubjectPublicKeyInfo
   nameWithType: HybridMLKem.ImportSubjectPublicKeyInfo
+- uid: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported
+  name: IsSupported
+  href: api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported.html#Rotherprivat_KemBasedNet_Cryptography_HybridMLKem_IsSupported
+  commentId: P:Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported
+  fullName: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported
+  nameWithType: HybridMLKem.IsSupported
+- uid: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported*
+  name: IsSupported
+  href: api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported.html
+  commentId: Overload:Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported
+  fullName: Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported
+  nameWithType: HybridMLKem.IsSupported
 - uid: Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData
   name: HybridMLKemCipherData
   href: api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.html

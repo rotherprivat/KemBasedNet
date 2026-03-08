@@ -38,6 +38,13 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         }
         #endregion
 
+        #region Properties
+        /// <summary>
+        /// Indicates if the algorithm supported by the current platform
+        /// </summary>
+        public static bool IsSupported => MLKem.IsSupported;
+        #endregion
+
         #region Public methods: Key handling
         /// <summary>
         /// Generate keys for ML-KEM algorithm and create the encryptor / decryptor
@@ -320,19 +327,6 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// <summary>
         /// Export private key
         /// </summary>
-        /// <param name="privateKey">native private key</param>
-        public void ExportPrivateKey(Span<byte> privateKey)
-        {
-            EnsureValid();
-
-            _PlainMlKem?.ExportPrivateSeed(privateKey);
-
-            _CompositeMlKem?.ExportPrivateKey(privateKey);
-        }
-
-        /// <summary>
-        /// Export private key
-        /// </summary>
         /// <param name="passwordbytes">Password</param>
         /// <param name="pbeParameters">Password-based encryption (PBE) parameters</param>
         /// <returns>PKCS#8 encoded private key</returns>
@@ -401,19 +395,6 @@ namespace Rotherprivat.KemBasedNet.Cryptography
                 return _CompositeMlKem.ExportEncapsulationKey();
 
             throw new CryptographicException("Invalid key configuration");
-        }
-
-        /// <summary>
-		/// Export public / encapsulation key
-        /// </summary>
-        /// <param name="keyBuffer">native public / encapsulation key</param>
-        public void ExportEncapsulationKey(Span<byte> keyBuffer)
-        {
-            EnsureValid();
-
-            _PlainMlKem?.ExportEncapsulationKey(keyBuffer);
-
-            _CompositeMlKem?.ExportEncapsulationKey(keyBuffer);
         }
 
         /// <summary>

@@ -12,6 +12,7 @@ is tested by round trips (Encapsulate - Decapsulate => Compare the shared secret
 
 | Test | Verifys |
 | --- | --- |
+| _00_IsSupported | - IsSupported (PQC-Algorithms supported by platform) |
 | _01_DecapsulateByTestVectors | - ImportPrivateKey<br>- Combining algorithm<br>- Decapsulate |
 | _02_ExportPkcs8PrivateKeyByTestVectors | - ExportPkcs8PrivateKey |
 | _03_ImportPkcs8PrivateKeyByTestVectors | - ImportPkcs8PrivateKey |
@@ -29,6 +30,7 @@ assigned.
 
 | Test | Verifys |
 | --- | --- |
+| _00_IsSupported | - IsSupported (PQC-Algorithms supported by platform) |
 | _01_Export&lt;...&gt; | - ExportPrivateKey<br>- ExportPkcs8PrivateKey<br>- ExportEncapsulationKey<br>- ExportSubjectPublicKeyInfo<br>- ExportSubjectPublicKeyInfoPem |
 | _02_Import&lt;...&gt; | - ImportPrivateKey<br>- ImportPkcs8PrivateKey<br>- ImportEncapsulationKey<br>- ImportSubjectPublicKeyInfo<br>- ImportSubjectPublicKeyInfoPem |
 | _03_CipherData | - HybridMlKemCipherData, Serialize/Deserialize<br>- Encrypt, "HybridMlKemCipherData" parameter assignment |

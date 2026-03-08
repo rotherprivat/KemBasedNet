@@ -24,6 +24,13 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
         }
 
         [TestMethod]
+        public void _00_IsSupported()
+        {
+            Assert.IsTrue(CompositeMLKem.IsSupported, "PQC-Algorithms not supported by your platform.");
+        }
+
+
+        [TestMethod]
         [DynamicData(nameof(CompositeMlKemAlgorithms))]
         public void _01_DecapsulateByTestVectors(CompositeMLKemAlgorithm algorithm)
         {
@@ -61,7 +68,18 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             using var compositeMLKem = CompositeMLKem.ImportPrivateKey(algorithm, refDk);
             var rawPkcs8 = compositeMLKem.ExportPkcs8PrivateKey();
 
-            Assert.IsTrue(refPkcs8.SequenceEqual(rawPkcs8), $"Test vector {testData.tcId} compare dk_pkcs8 from DK failed");
+            if (algorithm.IsTraditionalECDH)
+            {
+                Assert.AreEqual(refPkcs8, rawPkcs8, ByteArrayComparer.Comparer, $"Test vector {testData.tcId} compare exported PKCS#8 failed");
+            }
+            else
+            {
+                // extract native private key from PKCS#8
+                // https://stackoverflow.com/questions/67588396/d-parameter-of-rsa-change-depending-on-how-you-access-the-private-key-of-a-certi            Assert.IsTrue(refPkcs8.SequenceEqual(rawPkcs8), $"Test vector {testData.tcId} compare dk_pkcs8 from DK failed");
+                var dk = PrivateKeyComparer.GetDkFromPkcs8(algorithm, rawPkcs8);
+                var refDKconverted = PrivateKeyComparer.GetDkFromPkcs8(algorithm, refPkcs8);
+                Assert.AreEqual(refDKconverted, dk, new PrivateKeyComparer(algorithm), $"Test vector {testData.tcId} compare exported PKCS#8 failed");
+            }
         }
 
         [TestMethod]
@@ -81,7 +99,8 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             using var compositeMLKem = CompositeMLKem.ImportPkcs8PrivateKey(pkcs8);
             var rawDk = compositeMLKem.ExportPrivateKey();
 
-            Assert.IsTrue(refDk.SequenceEqual(rawDk), $"Test vector {testData.tcId} compare DK from PKCS#8 failed");
+            // No different handling for ECDH and RSA
+            Assert.AreEqual(refDk, rawDk, new PrivateKeyComparer(algorithm), $"Test vector {testData.tcId} compare DK from PKCS#8 failed");
         }
 
         [TestMethod]

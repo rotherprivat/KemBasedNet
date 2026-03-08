@@ -37,12 +37,35 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         [
             new ("MLKEM768-ECDH-P256-SHA3-256", "MLKEM768-P256", "1.3.6.1.5.5.7.6.59", MLKemAlgorithm.MLKem768, ECCurve.NamedCurves.nistP256),
             new ("MLKEM768-ECDH-P384-SHA3-256", "MLKEM768-P384", "1.3.6.1.5.5.7.6.60", MLKemAlgorithm.MLKem768, ECCurve.NamedCurves.nistP384),
+            new ("MLKEM768-ECDH-brainpoolP256r1-SHA3-256", "MLKEM768-BP256", "1.3.6.1.5.5.7.6.61", MLKemAlgorithm.MLKem768, ECCurve.NamedCurves.brainpoolP256r1),
             new ("MLKEM1024-ECDH-P384-SHA3-256", "MLKEM1024-P384", "1.3.6.1.5.5.7.6.63", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP384),
-            new ("MLKEM1024-ECDH-P521-SHA3-256", "MLKEM1024-P521", "1.3.6.1.5.5.7.6.66", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP521)
+            new ("MLKEM1024-ECDH-brainpoolP384r1-SHA3-256", "MLKEM1024-BP384", "1.3.6.1.5.5.7.6.64", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.brainpoolP384r1),
+            new ("MLKEM1024-ECDH-P521-SHA3-256", "MLKEM1024-P521", "1.3.6.1.5.5.7.6.66", MLKemAlgorithm.MLKem1024, ECCurve.NamedCurves.nistP521),
+            new ("MLKEM768-RSA2048-SHA3-256", "MLKEM768-RSAOAEP2048", "1.3.6.1.5.5.7.6.55", MLKemAlgorithm.MLKem768, rsaKeySize: 2048),
+            new ("MLKEM768-RSA3072-SHA3-256", "MLKEM768-RSAOAEP3072", "1.3.6.1.5.5.7.6.56", MLKemAlgorithm.MLKem768, rsaKeySize: 3072),
+            new ("MLKEM768-RSA4096-SHA3-256", "MLKEM768-RSAOAEP4096", "1.3.6.1.5.5.7.6.57", MLKemAlgorithm.MLKem768, rsaKeySize: 4096),
+            new ("MLKEM1024-RSA3072-SHA3-256", "MLKEM1024-RSAOAEP3072", "1.3.6.1.5.5.7.6.62", MLKemAlgorithm.MLKem1024, rsaKeySize: 3072)
         ];
         #endregion
 
         #region Properties with named algorithms
+
+
+        /// <summary>
+        /// MLKEM768-RSA2048-SHA3-256
+        /// </summary>
+        public static CompositeMLKemAlgorithm KMKem768WithRSA2048Sha3 { get; } = _Algorithms[6];
+
+        /// <summary>
+        /// MLKEM768-RSA3072-SHA3-256
+        /// </summary>
+        public static CompositeMLKemAlgorithm KMKem768WithRSA3072Sha3 { get; } = _Algorithms[7];
+
+        /// <summary>
+        /// MLKEM768-RSA4096-SHA3-256
+        /// </summary>
+        public static CompositeMLKemAlgorithm KMKem768WithRSA4096Sha3 { get; } = _Algorithms[8];
+
         /// <summary>
         /// MLKEM768-ECDH-P256-SHA3-256
         /// </summary>
@@ -54,14 +77,30 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public static CompositeMLKemAlgorithm KMKem768WithECDhP384Sha3 { get; } = _Algorithms[1];
 
         /// <summary>
+        /// MLKEM768-ECDH-brainpoolP256r1-SHA3-256
+        /// </summary>
+        public static CompositeMLKemAlgorithm KMKem768WithECDhBrainpoolP384Sha3 { get; } = _Algorithms[2];
+
+        /// <summary>
+        /// MLKEM1024-RSA3072-SHA3-256
+        /// </summary>
+        public static CompositeMLKemAlgorithm KMKem1024WithRSA3072Sha3 { get; } = _Algorithms[9];
+
+        /// <summary>
         /// MLKEM1024-ECDH-P384-SHA3-256
         /// </summary>
-        public static CompositeMLKemAlgorithm KMKem1024WithECDhP384Sha3 { get; } = _Algorithms[2];
+        public static CompositeMLKemAlgorithm KMKem1024WithECDhP384Sha3 { get; } = _Algorithms[3];
+
+
+        /// <summary>
+        /// MLKEM1024-ECDH-brainpoolP384r1-SHA3-256
+        /// </summary>
+        public static CompositeMLKemAlgorithm KMKem1024WithECDhBrainpoolP384Sha3 { get; } = _Algorithms[4];
 
         /// <summary>
         /// MLKEM1024-ECDH-P521-SHA3-256
         /// </summary>
-        public static CompositeMLKemAlgorithm KMKem1024WithECDhP521Sha3 { get; } = _Algorithms[3];
+        public static CompositeMLKemAlgorithm KMKem1024WithECDhP521Sha3 { get; } = _Algorithms[5];
         #endregion
 
         #region Public properies
@@ -75,6 +114,16 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// </summary>
         public string Oid { get; }
         #endregion
+
+        /// <summary>
+        /// Uses traditional RSA
+        /// </summary>
+        public bool IsTraditionalRSA => RSAKeySize != 0;
+
+        /// <summary>
+        /// Uses traditional ECDH
+        /// </summary>
+        public bool IsTraditionalECDH => RSAKeySize == 0;
 
         #region Public methods and overrides
         /// <summary>
@@ -90,16 +139,20 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         #endregion
 
         #region Internal and private propertiies
-        internal MLKemAlgorithm MLKemAlgorithm { get; }
+        public MLKemAlgorithm MLKemAlgorithm { get; }
 
-        internal ECCurve ECCurve { get; }
+        public ECCurve ECCurve { get; }
+
+        public int RSAKeySize { get; }
 
         internal byte[] Label { get; }
 
         internal int ECPointValueSizeInBytes => ECCurve.Oid.FriendlyName switch
         {
             "nistP256" => 32,
+            "brainpoolP256r1" => 32,
             "nistP384" => 48,
+            "brainpoolP384r1" => 48,
             "nistP521" => 66,
             _ => throw new CryptographicException("Invalid EC-Curve")
         };
@@ -109,7 +162,9 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         internal int ECPrivateKeyDSizeInBytes => ECCurve.Oid.FriendlyName switch
         {
             "nistP256" => 51,
+            "brainpoolP256r1" => 52,
             "nistP384" => 64,
+            "brainpoolP384r1" => 68,
             "nistP521" => 82,
             _ => throw new CryptographicException("Invalid EC-Curve")
         };
@@ -123,6 +178,16 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             Oid = oid;
             MLKemAlgorithm = mLKemAlgorithm;
             ECCurve = eCCurve;
+        }
+
+
+        private CompositeMLKemAlgorithm(string name, string label, string oid, MLKemAlgorithm mLKemAlgorithm, int rsaKeySize)
+        {
+            Name = name;
+            Label = Encoding.ASCII.GetBytes(label);
+            Oid = oid;
+            MLKemAlgorithm = mLKemAlgorithm;
+            RSAKeySize = rsaKeySize;
         }
         #endregion
     }

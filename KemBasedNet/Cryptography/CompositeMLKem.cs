@@ -27,6 +27,11 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// Algorithm description
         /// </summary>
         public CompositeMLKemAlgorithm  Algorithm { get; }
+
+        /// <summary>
+        /// Indicates if the algorithm supported by the current platform
+        /// </summary>
+        public static bool IsSupported => MLKem.IsSupported;
         #endregion
 
         #region Public methods: Key handling
@@ -248,18 +253,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// <returns>private key</returns>
         public byte[] ExportPrivateKey()
         {
-            var privateKey = new byte[Algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes + Algorithm.ECPrivateKeyDSizeInBytes];
-            ExportPrivateKeyImplementation(privateKey);
-            return privateKey;
-        }
-
-        /// <summary>
-        /// Export private keys of ML-KEM and traditional key exchange algorithms
-        /// </summary>
-        /// <param name="privateKey">private key</param>
-        public void ExportPrivateKey(Span<byte> privateKey)
-        {
-            ExportPrivateKeyImplementation(privateKey);
+            return ExportPrivateKeyImplementation();
         }
 
         /// <summary>
@@ -318,29 +312,9 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// <returns>Encapsulation- /public- key</returns>
         public byte[] ExportEncapsulationKey()
         {
-            int keyLength = Algorithm.ECPublicKeySizeInBytes +
-                            Algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes;
-
-            byte[] keyBuffer = new byte[keyLength];
-            ExportEncapsulationKeyImplementation(keyBuffer);
-            return keyBuffer;
+            return ExportEncapsulationKeyImplementation();
         }
 
-        /// <summary>
-        /// Export encapsulation keys of ML-KEM and traditional key exchange algorithms
-        /// </summary>
-        /// <param name="keyBuffer">encapsulation- /public- key</param>
-        /// <exception cref="CryptographicException"></exception>
-        public void ExportEncapsulationKey(Span<byte> keyBuffer)
-        {
-            int keyLength = Algorithm.ECPublicKeySizeInBytes +
-                            Algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes;
-
-            if (keyBuffer.Length < keyLength)
-                throw new CryptographicException("Invalid buffer size.");
-
-            ExportEncapsulationKeyImplementation(keyBuffer);
-        }
 
         /// <summary>
         /// Export encapsulation keys of ML-KEM and traditional key exchange algorithms
@@ -370,8 +344,8 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// <param name="sharedSecret">Combined shared secret</param>
         public void Encapsulate(out byte[] ciphertext, out byte[] sharedSecret)
         {
-            var cipherTextLen = Algorithm.ECPublicKeySizeInBytes +
-                                Algorithm.MLKemAlgorithm.CiphertextSizeInBytes;
+            var cipherTextLen = Algorithm.IsTraditionalECDH ? Algorithm.ECPublicKeySizeInBytes : Algorithm.RSAKeySize / 8;
+            cipherTextLen +=  Algorithm.MLKemAlgorithm.CiphertextSizeInBytes;
 
             ciphertext = new byte[cipherTextLen];
             sharedSecret = new byte[SHA3_256.HashSizeInBytes];
@@ -418,14 +392,14 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// </summary>
         /// <param name="privateKey"></param>
         /// <exclude/>
-        protected abstract void ExportPrivateKeyImplementation(Span<byte> privateKey);
+        protected abstract byte[] ExportPrivateKeyImplementation();
 
         /// <summary>
         /// Implementation of ExportEncapsulationKey logic in derived class
         /// </summary>
         /// <param name="keyBuffer"></param>
         /// <exclude/>
-        protected abstract void ExportEncapsulationKeyImplementation(Span<byte> keyBuffer);
+        protected abstract byte[] ExportEncapsulationKeyImplementation();
 
         /// <summary>
         /// Implementation of Encapsulate logic in derived class
@@ -461,11 +435,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 #pragma warning restore IDE0290
         private AsnWriter ExportSubjectPublicKeyInfoAsAsn()
         {
-            int keyLength = Algorithm.ECPublicKeySizeInBytes +
-                            Algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes;
-
-            byte[] keyBuffer = new byte[keyLength];
-            ExportEncapsulationKeyImplementation(keyBuffer);
+            byte[] keyBuffer = ExportEncapsulationKeyImplementation();
 
             var asn1 = new AsnWriter(AsnEncodingRules.DER);
             using (asn1.PushSequence())
