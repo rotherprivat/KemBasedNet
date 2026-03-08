@@ -67,11 +67,19 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
 
             using var compositeMLKem = CompositeMLKem.ImportPrivateKey(algorithm, refDk);
             var rawPkcs8 = compositeMLKem.ExportPkcs8PrivateKey();
-            // https://stackoverflow.com/questions/67588396/d-parameter-of-rsa-change-depending-on-how-you-access-the-private-key-of-a-certi            Assert.IsTrue(refPkcs8.SequenceEqual(rawPkcs8), $"Test vector {testData.tcId} compare dk_pkcs8 from DK failed");
 
-            var dk = PrivateKeyComparer.GetDkFromPkcs8(algorithm, rawPkcs8);
-            var refDKconverted = PrivateKeyComparer.GetDkFromPkcs8(algorithm, refPkcs8);
-            Assert.AreEqual(refDKconverted, dk, new PrivateKeyComparer(algorithm), $"Test vector {testData.tcId} compare exported PKCS#8 failed");
+            if (algorithm.IsTraditionalECDH)
+            {
+                Assert.AreEqual(refPkcs8, rawPkcs8, ByteArrayComparer.Comparer, $"Test vector {testData.tcId} compare exported PKCS#8 failed");
+            }
+            else
+            {
+                // extract native private key from PKCS#8
+                // https://stackoverflow.com/questions/67588396/d-parameter-of-rsa-change-depending-on-how-you-access-the-private-key-of-a-certi            Assert.IsTrue(refPkcs8.SequenceEqual(rawPkcs8), $"Test vector {testData.tcId} compare dk_pkcs8 from DK failed");
+                var dk = PrivateKeyComparer.GetDkFromPkcs8(algorithm, rawPkcs8);
+                var refDKconverted = PrivateKeyComparer.GetDkFromPkcs8(algorithm, refPkcs8);
+                Assert.AreEqual(refDKconverted, dk, new PrivateKeyComparer(algorithm), $"Test vector {testData.tcId} compare exported PKCS#8 failed");
+            }
         }
 
         [TestMethod]
@@ -91,8 +99,8 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             using var compositeMLKem = CompositeMLKem.ImportPkcs8PrivateKey(pkcs8);
             var rawDk = compositeMLKem.ExportPrivateKey();
 
+            // No different handling for ECDH and RSA
             Assert.AreEqual(refDk, rawDk, new PrivateKeyComparer(algorithm), $"Test vector {testData.tcId} compare DK from PKCS#8 failed");
-            //Assert.IsTrue(refDk.SequenceEqual(rawDk), $"Test vector {testData.tcId} compare DK from PKCS#8 failed");
         }
 
         [TestMethod]
@@ -201,38 +209,5 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
 
             Assert.IsTrue(bobsSecret.SequenceEqual(aliceSecret), "Key exchange failed, the shared keys are different");
         }
-        [TestMethod]
-        public void ____RsaDev()
-        {
-            var algorithm = CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3;
-//            using var kem = CompositeMLKem.GenerateKey(CompositeMLKemAlgorithm.KMKem768WithRSA2048Sha3);
-            if (null == _TestVector)
-                throw new InvalidOperationException("NoTestData");
-
-            string id = "id-" + algorithm.Name;
-            var testData = _TestVector.tests[id] ??
-                throw new InvalidOperationException("requested TestData missing");
-
-            var privateKey = Convert.FromBase64String(testData.dk);
-            var encapsulationKey = Convert.FromBase64String(testData.ek);
-
-            using var bob = CompositeMLKem.ImportEncapsulationKey(algorithm, encapsulationKey);
-            Assert.IsNotNull(bob, $"Test vector {testData.tcId} import ImportEncapsulationKey failed.");
-
-            using var alice = CompositeMLKem.ImportPrivateKey(algorithm, privateKey);
-
-
-            var cyphertext = Convert.FromBase64String(testData.c);
-            var key = Convert.FromBase64String(testData.k);
-
-            var decapsulatedKey = alice.Decapsulate(cyphertext);
-            Assert.IsTrue(key.SequenceEqual(decapsulatedKey), $"Test vector {testData.tcId} compare shared key failed");
-
-            bob.Encapsulate(out var ct, out var keyB);
-            var keyA = alice.Decapsulate(ct);
-            Assert.AreEqual(keyA, keyB, ByteArrayComparer.Comparer, $"{algorithm.Name}: Encapsulate Decapsulate roundtrip failed.");
-
-        }
-
     }
 }
