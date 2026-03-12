@@ -11,11 +11,13 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 
         internal static CompositeMLKem GenerateKeyImplementation(CompositeMLKemAlgorithm algorithm)
         {
+            var traditionalKem = TraditionalKem.Create(algorithm);
+            traditionalKem.GenerateKey();
             return new CompositeMLKemImplementation(algorithm)
-                {
-                    _MLKem = MLKem.GenerateKey(algorithm.MLKemAlgorithm),
-                    _TraditionalKem = TraditionalKemFactory.GenerateKey(algorithm)
-                };
+            {
+                _MLKem = MLKem.GenerateKey(algorithm.MLKemAlgorithm),
+                _TraditionalKem = traditionalKem
+            };
         }
 
         internal static CompositeMLKem ImportPrivateKeyImplementation(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> privateKey)
@@ -23,26 +25,30 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             var mlKemSeed = privateKey[..algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes];
             var mlKem = MLKem.ImportPrivateSeed(algorithm.MLKemAlgorithm, mlKemSeed);
 
-            var ecdhPrivate = privateKey[algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes..];
+            var traditionalPrivateKey = privateKey[algorithm.MLKemAlgorithm.PrivateSeedSizeInBytes..];
+            var traditionalKem = TraditionalKem.Create(algorithm);
+            traditionalKem.ImportPrivateKey(traditionalPrivateKey);
 
             return new CompositeMLKemImplementation(algorithm)
             {
                 _MLKem = mlKem,
-                _TraditionalKem = TraditionalKemFactory.ImportPrivateKey(algorithm, ecdhPrivate),
+                _TraditionalKem = traditionalKem
             };
         }
 
         internal static CompositeMLKem ImportEncapsulationKeyImplementation(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> encapsulationKey)
         {
             var mlKemEncapsulationKey = encapsulationKey[..algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes];
-            var ecDhPublicBytes = encapsulationKey[algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes..];
+            var traditionalPublicKey = encapsulationKey[algorithm.MLKemAlgorithm.EncapsulationKeySizeInBytes..];
+
+            var traditionalKem = TraditionalKem.Create(algorithm);
+            traditionalKem.ImportPublicKey(traditionalPublicKey);
 
             return new CompositeMLKemImplementation(algorithm)
             {
                 _MLKem = MLKem.ImportEncapsulationKey(algorithm.MLKemAlgorithm, mlKemEncapsulationKey),
-                _TraditionalKem = TraditionalKemFactory.ImportPublicKey(algorithm, ecDhPublicBytes)
+                _TraditionalKem = traditionalKem
             };
-
         }
 
         /// <summary>
