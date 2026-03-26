@@ -5,7 +5,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
 {
     internal static class ECAlgorithmExtension
     {
-        public static byte[] ExportECPrivateKeyD(this ECAlgorithm ecdh)
+        public static byte[] ExportECPrivateKeyD(this ECDiffieHellman ecdh)
         {
             var ecParams = ecdh.ExportParameters(true);
             ecParams.Validate();

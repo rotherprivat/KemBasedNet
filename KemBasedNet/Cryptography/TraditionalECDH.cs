@@ -6,60 +6,33 @@ using System.Text;
 
 namespace Rotherprivat.KemBasedNet.Cryptography
 {
-    internal class TraditionalECDH : ITraditionalKem
+    internal class TraditionalECDH : TraditionalKem
     {
         private ECDiffieHellman? _traditionalECDH = null;
-        public CompositeMLKemAlgorithm? Algorithm { get ;  set ; }
-
-        public static ITraditionalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
+ 
+        public override void GenerateKey()
         {
-            return new TraditionalECDH()
-            {
-                _traditionalECDH = ECDiffieHellman.Create(algorithm.ECCurve),
-                Algorithm = algorithm
-            };
+            if (Algorithm == null)
+                throw new CryptographicException("Not initialized.");
+            _traditionalECDH = ECDiffieHellman.Create(Algorithm.ECCurve);
         }
 
-        protected virtual void Dispose(bool disposing)
+        public override void ImportPrivateKey(ReadOnlySpan<byte> ecdhPrivate)
         {
-            if (disposing)
-            {
-                _traditionalECDH?.Dispose();
-            }
-            _traditionalECDH = null;
-            Algorithm = null;
-        }
-
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
-
-        public static ITraditionalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate)
-        {
+            if (Algorithm == null)
+                throw new CryptographicException("Not initialized.");
             var ecdh = ECDiffieHellman.Create();
             ecdh.ImportECPrivateKey(ecdhPrivate, out _);
-
-            return new TraditionalECDH()
-            {
-                _traditionalECDH = ecdh,
-                Algorithm = algorithm
-            };
+            _traditionalECDH = ecdh;
         }
 
-        public static ITraditionalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic)
+        public override void ImportPublicKey(ReadOnlySpan<byte> traditionalPublic)
         {
-            var ecParams = ReadPublicECParameters(algorithm, traditionalPublic);
+            if (Algorithm == null)
+                throw new CryptographicException("Not initialized.");
+            var ecParams = ReadPublicECParameters(Algorithm, traditionalPublic);
             ecParams.Validate();
-
-            return new TraditionalECDH()
-            {
-                _traditionalECDH = ECDiffieHellman.Create(ecParams),
-                Algorithm = algorithm
-            };
-
+            _traditionalECDH = ECDiffieHellman.Create(ecParams);
         }
 
         public static ECParameters ReadPublicECParameters(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> tradPk)
@@ -82,14 +55,14 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             };
         }
 
-        public byte[] ExportPublicKey()
+        public override byte[] ExportPublicKey()
         {
             EnsureValid();
             var param = _traditionalECDH.ExportParameters(false);
             return param.ExportECPublicKeyBytes();
         }
 
-        public byte[] Encapsulate(Span<byte> tradCT)
+        public override byte[] Encapsulate(Span<byte> tradCT)
         {
             EnsureValid();
             using var ecEphemeralKey = ECDiffieHellman.Create(Algorithm.ECCurve);
@@ -106,7 +79,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             return ecKey;
         }
 
-        public byte[] Decapsulate(Span<byte> tradCT)
+        public override byte[] Decapsulate(Span<byte> tradCT)
         {
             EnsureValid();
             // get traditional ephemeral key from ciphertext
@@ -120,17 +93,27 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             return tradKey;
         }
 
-        public byte[] ExportPrivateKey()
+        public override byte[] ExportPrivateKey()
         {
             EnsureValid();
             return _traditionalECDH.ExportECPrivateKeyD();
         }
 
-        [MemberNotNull(nameof(_traditionalECDH), nameof(Algorithm))]
-        private void EnsureValid()
+        [MemberNotNull(nameof(_traditionalECDH))]
+        protected override void EnsureValid()
         {
-            if (_traditionalECDH == null || Algorithm == null)
+            base.EnsureValid();
+            if (_traditionalECDH == null)
                 throw new CryptographicException("Not initialized.");
+        }
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            if (disposing)
+            {
+                _traditionalECDH?.Dispose();
+            }
+            _traditionalECDH = null;
         }
 
     }

@@ -20,8 +20,11 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
-          
+          dotnet-version: [ '8.0.x', '10.0.x']
+          source-url: https://nuget.pkg.github.com/rotherprivat/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+ 
       - name: Restore dependencies
         run: dotnet restore
 
@@ -31,9 +34,18 @@ jobs:
       - name: Run tests
         run: dotnet test --configuration Release --no-build
 
-      - name: Publish only the library
-        run: dotnet publish "./KemBasedNET/KemBasedNet.csproj" --configuration Release --no-build --output ./publish
+      - name: Publish only the library dotNET10.0
+        run: dotnet publish "./KemBasedNET/KemBasedNet.csproj" --configuration Release --no-build --framework "net10.0" --output ./publish/net10.0
 
+      - name: Publish only the library dotNET8.0
+        run: dotnet publish "./KemBasedNET/KemBasedNet.csproj" --configuration Release --no-build --framework "net8.0" --output ./publish/net8.0
+
+      - name: Build Nuget-Package
+        run: dotnet pack --configuration Release --output ./nupkg
+
+      - name: Publish the package to GPR
+        run: dotnet nuget push ./nupkg/*.nupkg
+        
       - name: Upload binaries
         uses: actions/upload-artifact@v4
         with:

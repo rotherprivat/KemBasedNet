@@ -1,0 +1,6 @@
+- Refactoring ITraditionalKem ... done
+- Multitarget ... done
+- Nuget Package
+=> Update from IETF
+=> V1.0 Github
+- S/MIME support

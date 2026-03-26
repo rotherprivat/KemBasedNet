@@ -6,60 +6,52 @@ using System.Text;
 
 namespace Rotherprivat.KemBasedNet.Cryptography
 {
-    internal class TraditionalRSA : ITraditionalKem
+    internal class TraditionalRSA : TraditionalKem
     {
         private RSA? _traditionalRSA = null;
-        public CompositeMLKemAlgorithm? Algorithm { get; set; } = null;
 
-        public static ITraditionalKem GenerateKey(CompositeMLKemAlgorithm algorithm)
+        public override void GenerateKey()
         {
-            return new TraditionalRSA()
-            {
-                Algorithm = algorithm,
-                _traditionalRSA = RSA.Create(algorithm.RSAKeySize)
-            };
+            if (Algorithm == null)
+                throw new CryptographicException("Not initialized.");
+            _traditionalRSA = RSA.Create(Algorithm.RSAKeySize);
         }
 
-        public static ITraditionalKem ImportPrivateKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> ecdhPrivate)
+        public override void ImportPrivateKey(ReadOnlySpan<byte> ecdhPrivate)
         {
+            if (Algorithm == null)
+                throw new CryptographicException("Not initialized.");
+
             var rsa = RSA.Create();
             rsa.ImportRSAPrivateKey(ecdhPrivate, out _);
 
-            return new TraditionalRSA()
-            {
-                Algorithm = algorithm,
-                _traditionalRSA = rsa
-            };
-
+            _traditionalRSA = rsa;
         }
 
-        public static ITraditionalKem ImportPublicKey(CompositeMLKemAlgorithm algorithm, ReadOnlySpan<byte> traditionalPublic)
+        public override void ImportPublicKey(ReadOnlySpan<byte> traditionalPublic)
         {
+            if (Algorithm == null)
+                throw new CryptographicException("Not initialized.");
+
             var rsa = RSA.Create();
             rsa.ImportRSAPublicKey(traditionalPublic, out _);
-
-            return new TraditionalRSA()
-            {
-                Algorithm = algorithm,
-                _traditionalRSA = rsa
-            };
-
+            _traditionalRSA = rsa;
         }
 
-        public byte[] ExportPublicKey()
+        public override byte[] ExportPublicKey()
         {
             EnsureValid();
             return _traditionalRSA.ExportRSAPublicKey();
         }
 
-        public byte[] ExportPrivateKey()
+        public override byte[] ExportPrivateKey()
         {
             EnsureValid();
             return _traditionalRSA.ExportRSAPrivateKey();
         }
 
 
-        public byte[] Decapsulate(Span<byte> tradCT)
+        public override byte[] Decapsulate(Span<byte> tradCT)
         {
             EnsureValid();
             var key = _traditionalRSA.Decrypt(tradCT, RSAEncryptionPadding.OaepSHA256);
@@ -70,7 +62,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         }
 
 
-        public byte[] Encapsulate(Span<byte> tradCT)
+        public override byte[] Encapsulate(Span<byte> tradCT)
         {
             EnsureValid();
             var tradKey = RandomNumberGenerator.GetBytes(32);
@@ -78,31 +70,24 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             return tradKey;
         }
 
-        [MemberNotNull(nameof(_traditionalRSA), nameof(Algorithm))]
-        private void EnsureValid()
+        [MemberNotNull(nameof(_traditionalRSA))]
+        protected override void EnsureValid()
         {
-            if (_traditionalRSA == null || Algorithm == null)
+            base.EnsureValid();
+
+            if (_traditionalRSA == null)
                 throw new CryptographicException("Not initialized.");
         }
 
 
-        protected virtual void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
+            base.Dispose(disposing);
             if (disposing)
             {
                 _traditionalRSA?.Dispose();
             }
             _traditionalRSA = null;
-            Algorithm = null;
         }
-
-
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
-
     }
 }

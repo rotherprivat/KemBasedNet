@@ -2,17 +2,22 @@
 
   <PropertyGroup>
     <NoWarn>NETSDK1233</NoWarn>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFrameworks>net10.0;net8.0</TargetFrameworks>
+    <LangVersion>14.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Rotherprivat.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     <AssemblyTitle>KemBasedNet - PQC-algorithms CompositeMLKem for key exchange and HybridMLKem for data-encryption/-decryption</AssemblyTitle>
-    <FileVersion>0.9.2.0</FileVersion>
-    <AssemblyVersion>0.9.2.0</AssemblyVersion>
-    <Version>0.9.2</Version> 
+    <FileVersion>0.9.3.0</FileVersion>
+    <AssemblyVersion>0.9.3.0</AssemblyVersion>
+    <Version>0.9.3</Version>
+    <Authors>Rotherprivat</Authors>
+    <PackageId>Rotherprivat.KemBasedNet</PackageId>
+    <Description>PQC-algorithms CompositeMLKem for key exchange and HybridMLKem for data-encryption/-decryption</Description>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.Cryptography" Version="10.0.2" Condition="'$(TargetFramework)' == 'net8.0'" />
     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.2" />
   </ItemGroup>
 
