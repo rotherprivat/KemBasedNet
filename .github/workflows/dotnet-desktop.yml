@@ -49,7 +49,7 @@ jobs:
         shell: pwsh
         run: |
           Get-ChildItem ./nupkg/*.nupkg | ForEach-Object {
-            dotnet nuget push $_.FullName
+            dotnet nuget push $_.FullName --api-key "${{ secrets.GITHUB_TOKEN }}"
           }
         
       - name: Upload binaries
