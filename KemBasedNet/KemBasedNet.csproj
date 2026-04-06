@@ -13,10 +13,12 @@
     <Version>0.9.4</Version>
     <Authors>Rotherprivat</Authors>
     <PackageId>Rotherprivat.KemBasedNet</PackageId>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
     <Description>PQC-algorithms CompositeMLKem for key exchange and HybridMLKem for data-encryption/-decryption</Description>
   </PropertyGroup>
 
   <ItemGroup>
+	<None Include="../README.md" Pack="true" PackagePath="/"/>
     <PackageReference Include="Microsoft.Bcl.Cryptography" Version="10.0.5" Condition="'$(TargetFramework)' == 'net8.0'" />
     <PackageReference Include="System.Formats.Asn1" Version="10.0.5" Condition="'$(TargetFramework)' == 'net8.0'" />
     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.5" />
