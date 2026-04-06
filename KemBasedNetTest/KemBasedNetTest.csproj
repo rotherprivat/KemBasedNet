@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <NoWarn>NETSDK1233</NoWarn>
@@ -10,9 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Bcl.Cryptography" Version="10.0.5" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-    <PackageReference Include="MSTest" Version="3.6.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
+    <PackageReference Include="MSTest" Version="4.1.0" />
+    <PackageReference Include="Microsoft.Bcl.Cryptography" Version="10.0.5" Condition="'$(TargetFramework)' == 'net8.0'" />
+    <PackageReference Include="System.Formats.Asn1" Version="10.0.5" Condition="'$(TargetFramework)' == 'net8.0'" />
     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.5" />
   </ItemGroup>
 

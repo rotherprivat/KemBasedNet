@@ -1,6 +1,4 @@
 ﻿using Rotherprivat.KemBasedNet.Cryptography;
-using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Rotherprivat.KemBasedNetTest.Examples

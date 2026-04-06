@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
-
-namespace Rotherprivat.KemBasedNet.Cryptography
+﻿namespace Rotherprivat.KemBasedNet.Cryptography
 {
     internal interface ITraditionalKem: IDisposable
     {
