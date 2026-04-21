@@ -13,7 +13,9 @@
     <Version>0.9.4</Version>
     <Authors>Rotherprivat</Authors>
     <PackageId>Rotherprivat.KemBasedNet</PackageId>
+	<PackageTags>PQC Post Quantum Cryptography Composite ML-KEM CompositeMLKem Hybrid Encryption Hybrid-Encryption Key Exchange Key-Exchange</PackageTags>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>PQC-algorithms CompositeMLKem for key exchange and HybridMLKem for data-encryption/-decryption</Description>
   </PropertyGroup>
 
