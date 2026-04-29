@@ -8,17 +8,22 @@
     <Nullable>enable</Nullable>
     <RootNamespace>Rotherprivat.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     <AssemblyTitle>KemBasedNet - PQC-algorithms CompositeMLKem for key exchange and HybridMLKem for data-encryption/-decryption</AssemblyTitle>
-    <FileVersion>0.9.4.0</FileVersion>
-    <AssemblyVersion>0.9.4.0</AssemblyVersion>
-    <Version>0.9.4</Version>
+    <FileVersion>0.9.5.0</FileVersion>
+    <AssemblyVersion>0.9.5.0</AssemblyVersion>
+    <Version>0.9.5</Version>
     <Authors>Rotherprivat</Authors>
     <PackageId>Rotherprivat.KemBasedNet</PackageId>
+	<PackageTags>PQC Post Quantum Cryptography Composite ML-KEM CompositeMLKem Hybrid Encryption Hybrid-Encryption Key Exchange Key-Exchange</PackageTags>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Description>PQC-algorithms CompositeMLKem for key exchange and HybridMLKem for data-encryption/-decryption</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Bcl.Cryptography" Version="10.0.5" Condition="'$(TargetFramework)' == 'net8.0'" />
-    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.5" />
+	<None Include="../README.md" Pack="true" PackagePath="/" />
+    <PackageReference Include="Microsoft.Bcl.Cryptography" Version="10.0.7" Condition="'$(TargetFramework)' == 'net8.0'" />
+    <PackageReference Include="System.Formats.Asn1" Version="10.0.7" Condition="'$(TargetFramework)' == 'net8.0'" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.7" />
   </ItemGroup>
 
 </Project>

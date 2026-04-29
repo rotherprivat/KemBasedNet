@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  id-token: write
+    
+
+
 jobs:
   build:
     runs-on: windows-latest  # For a list of available runner types, refer to
@@ -45,11 +50,18 @@ jobs:
       - name: Build Nuget-Package
         run: dotnet pack --configuration Release --output ./nupkg
 
-      - name: Publish the package to GPR
+
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Publish the package to nuget.org
         shell: pwsh
         run: |
           Get-ChildItem ./nupkg/*.nupkg | ForEach-Object {
-            dotnet nuget push $_.FullName --api-key "${{ secrets.NUGET_API_KEY }}"
+            dotnet nuget push $_.FullName --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
           }
         
       - name: Upload binaries
