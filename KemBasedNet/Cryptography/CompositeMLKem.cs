@@ -1,6 +1,7 @@
 ﻿using System.Formats.Asn1;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Pkcs;
+using Rotherprivat.KemBasedNet.Cryptography.Internal;
 
 // standards:
 // doc: https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html

@@ -3,6 +3,8 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Formats.Asn1;
 using System.Text.Json;
+using System.Security.Cryptography.Pkcs;
+using Rotherprivat.KemBasedNet.Cryptography.Internal;
 
 namespace Rotherprivat.KemBasedNetTest.Cryptography
 {
@@ -119,8 +121,8 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             Assert.IsTrue(refEk.SequenceEqual(rawEk), $"Test vector {testData.tcId} compare EK from DK failed");
 
             // Get DER encoded public key from certificate in in test vector.
-
-            var refDerEk = ExportSubjectPublicKeyInfoFromCertBytes(Convert.FromBase64String(testData.x5c));
+            using var refCer = X509CertificateLoader.LoadCertificate(Convert.FromBase64String(testData.x5c));
+            var refDerEk = refCer.ExportSubjectPublicKeyInfo();
 
             var derEk = compositeMLKem.ExportSubjectPublicKeyInfo();
 
@@ -203,32 +205,6 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             var aliceSecret = alice.Decapsulate(ciphertext);
 
             Assert.IsTrue(bobsSecret.SequenceEqual(aliceSecret), "Key exchange failed, the shared keys are different");
-        }
-
-        private static byte[] ExportSubjectPublicKeyInfoFromCertBytes(byte[] certBytes)
-        {
-#if NET10_0_OR_GREATER
-            using var cer = X509CertificateLoader.LoadCertificate(certBytes);
-            return cer.PublicKey.ExportSubjectPublicKeyInfo();
-#else
-            //This is a workaround of a bug in .NET versions before V10.0 
-            // https://github.com/dotnet/runtime/issues/110715
-            //
-            // Parsing publicKeyInfo manually
-            var asn1 = new AsnReader(certBytes, AsnEncodingRules.DER);
-            var content = asn1.ReadSequence();
-            var certData = content.ReadSequence();
-            var version = certData.ReadSequence(new Asn1Tag(TagClass.ContextSpecific, 0));
-            var serial = certData.ReadInteger();
-            var signingAlg = certData.ReadSequence();
-            var issuer = certData.ReadSequence();
-            var validity = certData.ReadSequence();
-            var subject = certData.ReadSequence();
-            var publicKeyInfo = certData.ReadEncodedValue();
-
-            // That's all we need
-            return publicKeyInfo.ToArray();
-#endif
         }
     }
 }

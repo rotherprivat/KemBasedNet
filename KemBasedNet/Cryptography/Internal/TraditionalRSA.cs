@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 
-namespace Rotherprivat.KemBasedNet.Cryptography
+namespace Rotherprivat.KemBasedNet.Cryptography.Internal
 {
     internal class TraditionalRSA : TraditionalKem
     {

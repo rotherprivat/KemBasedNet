@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 
-namespace Rotherprivat.KemBasedNet.Cryptography
+namespace Rotherprivat.KemBasedNet.Cryptography.Internal
 {
     /// <exclude />
-    public class CompositeMLKemImplementation : CompositeMLKem
+    internal class CompositeMLKemImplementation : CompositeMLKem
     {
         private MLKem? _MLKem = null;
         private ITraditionalKem? _TraditionalKem = null;

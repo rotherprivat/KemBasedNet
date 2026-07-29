@@ -1,12 +1,13 @@
 ﻿using System.Formats.Asn1;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Pkcs;
+using Rotherprivat.KemBasedNet.Cryptography.Internal;
 
 namespace Rotherprivat.KemBasedNet.Cryptography
 {
     /// <summary>
     /// Keys and algorithm implementation for encrypting and decrypting data,
-    /// based on Post Quantum Key exchange algorithms.
+    /// based on Post Quantum Key exchange algorithms. Intended for one to one usecases.
     /// <list type="bullet">
     /// <item><description>ML-KEM: <a href="https://csrc.nist.gov/pubs/fips/203/final">FIPS 203</a></description></item>
     /// <item><description>CombinedMLKem: <a href="https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html">IETF draft</a></description></item>
@@ -75,7 +76,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public static HybridMLKem ImportSubjectPublicKeyInfo(byte[] publicKey)
         {
 #pragma warning disable SYSLIB5006
-            return GetKemTypeFromSubjectPublicKeyInfo(publicKey) switch
+            return KemTypeHelper.GetKemTypeFromSubjectPublicKeyInfo(publicKey) switch
             {
                 KemType.MLKem => new HybridMLKem(MLKem.ImportSubjectPublicKeyInfo(publicKey)),
                 KemType.CompositeMLKem => new HybridMLKem(CompositeMLKem.ImportSubjectPublicKeyInfo(publicKey)),
@@ -115,7 +116,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public static HybridMLKem ImportPkcs8PrivateKey(byte[] pkcs8)
         {
 #pragma warning disable SYSLIB5006
-            return GetKemTypeFromPkcs8PrivateKey(pkcs8) switch
+            return KemTypeHelper.GetKemTypeFromPkcs8PrivateKey(pkcs8) switch
             {
                 KemType.MLKem => new HybridMLKem(MLKem.ImportPkcs8PrivateKey(pkcs8)),
                 KemType.CompositeMLKem => new HybridMLKem(CompositeMLKem.ImportPkcs8PrivateKey(pkcs8)),
@@ -144,7 +145,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public static HybridMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, byte[] pkcs8)
         {
 #pragma warning disable SYSLIB5006
-            return GetKemTypeFromPkcs8PrivateKey(passwordBytes, pkcs8) switch
+            return KemTypeHelper.GetKemTypeFromPkcs8PrivateKey(passwordBytes, pkcs8) switch
             {
                 KemType.MLKem => new HybridMLKem(MLKem.ImportEncryptedPkcs8PrivateKey(passwordBytes, pkcs8)),
                 KemType.CompositeMLKem => new HybridMLKem(CompositeMLKem.ImportEncryptedPkcs8PrivateKey(passwordBytes, pkcs8)),
@@ -164,7 +165,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public static HybridMLKem ImportEncryptedPkcs8PrivateKey(ReadOnlySpan<char> password, byte[] pkcs8)
         {
 #pragma warning disable SYSLIB5006
-            return GetKemTypeFromPkcs8PrivateKey(password, pkcs8) switch
+            return KemTypeHelper.GetKemTypeFromPkcs8PrivateKey(password, pkcs8) switch
             {
                 KemType.MLKem => new HybridMLKem(MLKem.ImportEncryptedPkcs8PrivateKey(password, pkcs8)),
                 KemType.CompositeMLKem => new HybridMLKem(CompositeMLKem.ImportEncryptedPkcs8PrivateKey(password, pkcs8)),
@@ -217,7 +218,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         public static HybridMLKem ImportSubjectPublicKeyInfo(ReadOnlySpan<byte> publicKey)
         {
 #pragma warning disable SYSLIB5006
-            return GetKemTypeFromSubjectPublicKeyInfo(publicKey.ToArray()) switch
+            return KemTypeHelper.GetKemTypeFromSubjectPublicKeyInfo(publicKey.ToArray()) switch
             {
                 KemType.MLKem => new HybridMLKem(MLKem.ImportSubjectPublicKeyInfo(publicKey)),
                 KemType.CompositeMLKem => new HybridMLKem(CompositeMLKem.ImportSubjectPublicKeyInfo(publicKey)),
@@ -483,59 +484,6 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         #endregion
 
         #region Private implementation, types and fields
-        private enum KemType
-        {
-            MLKem,
-            CompositeMLKem
-        };
-
-        private static KemType GetKemTypeFromSubjectPublicKeyInfo(byte[] publicKey)
-        {
-            var asn1 = new AsnReader(publicKey, AsnEncodingRules.DER);
-            var asnPk = asn1.ReadSequence();
-            var ObjectId = asnPk.ReadSequence();
-            var oid = ObjectId.ReadObjectIdentifier();
-
-            if (CompositeMLKemAlgorithm.FromOid(oid) != null)
-                return KemType.CompositeMLKem;
-            else
-                return KemType.MLKem;
-        }
-
-        private static KemType GetKemTypeFromPkcs8PrivateKey(byte[] pkcs8)
-        {
-            var pkcs8Info = Pkcs8PrivateKeyInfo.Decode(pkcs8, out _) ??
-                throw new CryptographicException("Invalid PKCS#8 data");
-
-            return GetKemTypeFromPkcs8Info(pkcs8Info);
-        }
-
-        private static KemType GetKemTypeFromPkcs8PrivateKey(ReadOnlySpan<byte> passwordBytes, byte[] pkcs8)
-        {
-            var pkcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(passwordBytes, pkcs8, out _) ??
-                throw new CryptographicException("Invalid PKCS#8 data");
-
-            return GetKemTypeFromPkcs8Info(pkcs8Info);
-        }
-
-        private static KemType GetKemTypeFromPkcs8PrivateKey(ReadOnlySpan<char> password, byte[] pkcs8)
-        {
-            var pkcs8Info = Pkcs8PrivateKeyInfo.DecryptAndDecode(password, pkcs8, out _) ??
-                           throw new CryptographicException("Invalid PKCS#8 data");
-
-            return GetKemTypeFromPkcs8Info(pkcs8Info);
-        }
-
-        private static KemType GetKemTypeFromPkcs8Info(Pkcs8PrivateKeyInfo pkcs8Info)
-        {
-            var oid = pkcs8Info.AlgorithmId.Value ??
-                throw new CryptographicException("Invalid PKCS#8 data");
-
-            if (CompositeMLKemAlgorithm.FromOid(oid) != null)
-                return KemType.CompositeMLKem;
-            else
-                return KemType.MLKem;
-        }
 
         private void EnsureValid()
         {

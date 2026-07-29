@@ -1,7 +1,7 @@
 ﻿using System.Formats.Asn1;
 using System.Security.Cryptography;
 
-namespace Rotherprivat.KemBasedNet.Cryptography
+namespace Rotherprivat.KemBasedNet.Cryptography.Internal
 {
     internal static class ECAlgorithmExtension
     {

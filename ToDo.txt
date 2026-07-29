@@ -1,0 +1,25 @@
+HybridMLKemAuthEnveloped
+
+Public Properties:
+  int Version
+  Recipients
+  byte[]? Content
+
+Private Properties:
+  HybridMLKemCipherData EncryptedContent 
+
+  
+Methods:
+  Encrypt (X509Recipient)
+  Encrypt (X509Recipients)
+  Encrypt (RecipientKey)
+  Encrypt (RecipientKeys)
+  Decrypt ()
+  Decrypt (X509extraStore)
+  Decrypt (SubjectKeyIdentifier, Key)
+
+  Encode ()
+  Decode (encodedMessage)
+  
+  
+https://www.rfc-editor.org/info/rfc5083/

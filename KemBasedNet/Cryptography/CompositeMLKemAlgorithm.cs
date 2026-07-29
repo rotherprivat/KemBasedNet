@@ -113,7 +113,6 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// Algorithm OID
         /// </summary>
         public string Oid { get; }
-        #endregion
 
         /// <summary>
         /// Uses traditional RSA
@@ -124,6 +123,23 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// Uses traditional ECDH
         /// </summary>
         public bool IsTraditionalECDH => RSAKeySize == 0;
+
+        /// <summary>
+        /// Used ML-KEM algorithm
+        /// </summary>
+        public MLKemAlgorithm MLKemAlgorithm { get; }
+
+        /// <summary>
+        /// Used EC-Curve, if traditional algorithm is ECDH
+        /// </summary>
+        public ECCurve ECCurve { get; }
+
+        /// <summary>
+        /// RSA keysize, if traditional algorithm is RSA
+        /// </summary>
+        public int RSAKeySize { get; }
+
+        #endregion
 
         #region Public methods and overrides
         /// <summary>
@@ -139,12 +155,6 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         #endregion
 
         #region Internal and private propertiies
-        public MLKemAlgorithm MLKemAlgorithm { get; }
-
-        public ECCurve ECCurve { get; }
-
-        public int RSAKeySize { get; }
-
         internal byte[] Label { get; }
 
         internal int ECPointValueSizeInBytes => ECCurve.Oid.FriendlyName switch

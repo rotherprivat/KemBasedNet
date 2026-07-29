@@ -1,4 +1,4 @@
-﻿namespace Rotherprivat.KemBasedNet.Cryptography
+﻿namespace Rotherprivat.KemBasedNet.Cryptography.Internal
 {
     internal static class PemLabels
     {
