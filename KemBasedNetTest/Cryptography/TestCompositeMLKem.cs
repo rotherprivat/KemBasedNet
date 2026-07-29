@@ -68,15 +68,17 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
 
             if (algorithm.IsTraditionalECDH)
             {
-                Assert.AreEqual(refPkcs8, rawPkcs8, ByteArrayComparer.Comparer, $"Test vector {testData.tcId} compare exported PKCS#8 failed");
+                Assert.AreSequenceEqual(refPkcs8, rawPkcs8, $"Test vector {testData.tcId} compare exported PKCS#8 failed");
             }
             else
             {
                 // extract native private key from PKCS#8
                 // https://stackoverflow.com/questions/67588396/d-parameter-of-rsa-change-depending-on-how-you-access-the-private-key-of-a-certi            Assert.IsTrue(refPkcs8.SequenceEqual(rawPkcs8), $"Test vector {testData.tcId} compare dk_pkcs8 from DK failed");
                 var dk = PrivateKeyComparer.GetDkFromPkcs8(algorithm, rawPkcs8);
-                var refDKconverted = PrivateKeyComparer.GetDkFromPkcs8(algorithm, refPkcs8);
-                Assert.AreEqual(refDKconverted, dk, new PrivateKeyComparer(algorithm), $"Test vector {testData.tcId} compare exported PKCS#8 failed");
+                var refDkConverted = PrivateKeyComparer.GetDkFromPkcs8(algorithm, refPkcs8);
+#pragma warning disable MSTEST0065
+                Assert.AreEqual(refDkConverted, dk, new PrivateKeyComparer(algorithm), $"Test vector {testData.tcId} compare exported PKCS#8 failed");
+#pragma warning restore MSTEST0065
             }
         }
 
@@ -98,7 +100,9 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             var rawDk = compositeMLKem.ExportPrivateKey();
 
             // No different handling for ECDH and RSA
+#pragma warning disable MSTEST0065
             Assert.AreEqual(refDk, rawDk, new PrivateKeyComparer(algorithm), $"Test vector {testData.tcId} compare DK from PKCS#8 failed");
+#pragma warning restore MSTEST0065
         }
 
         [TestMethod]

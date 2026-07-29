@@ -21,9 +21,9 @@
 
   <ItemGroup>
 	  <None Include="../README.md" Pack="true" PackagePath="/" />
-    <PackageReference Include="Microsoft.Bcl.Cryptography" Version="10.0.7" Condition="'$(TargetFramework)' == 'net8.0'" />
-    <PackageReference Include="System.Formats.Asn1" Version="10.0.7" Condition="'$(TargetFramework)' == 'net8.0'" />
-    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.7" />
+    <PackageReference Include="Microsoft.Bcl.Cryptography" Version="10.0.10" Condition="'$(TargetFramework)' == 'net8.0'" />
+    <PackageReference Include="System.Formats.Asn1" Version="10.0.10" Condition="'$(TargetFramework)' == 'net8.0'" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.10" />
     <InternalsVisibleTo Include="KemBasedNetTest" />
   </ItemGroup>
 

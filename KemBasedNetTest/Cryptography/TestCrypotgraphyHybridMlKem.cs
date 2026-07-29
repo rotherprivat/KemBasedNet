@@ -31,19 +31,19 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
 
             expectedBuffer = kem.ExportPrivateKey();
             actualBuffer = hybridMlKem.ExportPrivateKey();
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ExportPrivateKey failed.");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ExportPrivateKey failed.");
 
             expectedBuffer = kem.ExportPkcs8PrivateKey();
             actualBuffer = hybridMlKem.ExportPkcs8PrivateKey();
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ExportPkcs8PrivateKey failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ExportPkcs8PrivateKey failed");
 
             expectedBuffer = kem.ExportEncapsulationKey();
             actualBuffer = hybridMlKem.ExportEncapsulationKey();
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ExportEncapsulationKey failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ExportEncapsulationKey failed");
 
             expectedBuffer = kem.ExportSubjectPublicKeyInfo();
             actualBuffer = hybridMlKem.ExportSubjectPublicKeyInfo();
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ExportSubjectPublicKeyInfo failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ExportSubjectPublicKeyInfo failed");
 
             var expectedPem = kem.ExportSubjectPublicKeyInfoPem();
             var actualPem = hybridMlKem.ExportSubjectPublicKeyInfoPem();
@@ -65,19 +65,19 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
 
             expectedBuffer =  kem.ExportPrivateSeed();
             actualBuffer = hybridMlKem.ExportPrivateKey();
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ExportPrivateKey failed.");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ExportPrivateKey failed.");
 
             expectedBuffer = kem.ExportPkcs8PrivateKey();
             actualBuffer = hybridMlKem.ExportPkcs8PrivateKey();
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ExportPkcs8PrivateKey failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ExportPkcs8PrivateKey failed");
 
             expectedBuffer = kem.ExportEncapsulationKey();
             actualBuffer = hybridMlKem.ExportEncapsulationKey();
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ExportEncapsulationKey failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ExportEncapsulationKey failed");
 
             expectedBuffer = kem.ExportSubjectPublicKeyInfo();
             actualBuffer = hybridMlKem.ExportSubjectPublicKeyInfo();
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ExportSubjectPublicKeyInfo failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ExportSubjectPublicKeyInfo failed");
 
             var expectedPem = kem.ExportSubjectPublicKeyInfoPem();
             var actualPem = hybridMlKem.ExportSubjectPublicKeyInfoPem();
@@ -102,14 +102,14 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             {
                 actualBuffer = hybrid.ExportPrivateKey();
             }
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportPrivateKey failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ImportPrivateKey failed");
 
             buffer = kem.ExportPkcs8PrivateKey();
             using (var hybrid = HybridMLKem.ImportPkcs8PrivateKey(buffer))
             {
                 actualBuffer = hybrid.ExportPrivateKey();
             }
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportPkcs8PrivateKey failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ImportPkcs8PrivateKey failed");
 
             // Public key
             expectedBuffer = kem.ExportEncapsulationKey();
@@ -117,21 +117,21 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportEncapsulationKey failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ImportEncapsulationKey failed");
 
             buffer = kem.ExportSubjectPublicKeyInfo();
             using (var hybrid = HybridMLKem.ImportSubjectPublicKeyInfo(buffer))
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportSubjectPublicKeyInfo failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ImportSubjectPublicKeyInfo failed");
 
             var pem = kem.ExportSubjectPublicKeyInfoPem();
             using (var hybrid = HybridMLKem.ImportFromPem(pem))
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportFromPem failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ImportFromPem failed");
         }
 
         [TestMethod]
@@ -152,14 +152,14 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             {
                 actualBuffer = hybrid.ExportPrivateKey();
             }
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportPrivateKey failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ImportPrivateKey failed");
 
             buffer = kem.ExportPkcs8PrivateKey();
             using (var hybrid = HybridMLKem.ImportPkcs8PrivateKey(buffer))
             {
                 actualBuffer = hybrid.ExportPrivateKey();
             }
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportPkcs8PrivateKey failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ImportPkcs8PrivateKey failed");
 
             // Public key
             expectedBuffer = kem.ExportEncapsulationKey();
@@ -167,21 +167,21 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportEncapsulationKey failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ImportEncapsulationKey failed");
 
             buffer = kem.ExportSubjectPublicKeyInfo();
             using (var hybrid = HybridMLKem.ImportSubjectPublicKeyInfo(buffer))
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportSubjectPublicKeyInfo failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ImportSubjectPublicKeyInfo failed");
 
             var pem = kem.ExportSubjectPublicKeyInfoPem();
             using (var hybrid = HybridMLKem.ImportFromPem(pem))
             {
                 actualBuffer = hybrid.ExportEncapsulationKey();
             }
-            Assert.AreEqual(expectedBuffer, actualBuffer, ByteArrayComparer.Comparer, $"{algorithm.Name}: ImportFromPem failed");
+            Assert.AreSequenceEqual(expectedBuffer, actualBuffer, $"{algorithm.Name}: ImportFromPem failed");
 #pragma warning restore SYSLIB5006
         }
 
@@ -214,10 +214,10 @@ namespace Rotherprivat.KemBasedNetTest.Cryptography
             // Serialize / Deserialize and compare
             var actualCipher = HybridMLKemCipherData.Deserialize(buffer);
 
-            Assert.AreEqual(cipher.CipherText, actualCipher.CipherText, ByteArrayComparer.Comparer, "CipherText differs.");
-            Assert.AreEqual(cipher.GcmNonce, actualCipher.GcmNonce, ByteArrayComparer.Comparer, "GcmNonce differs.");
-            Assert.AreEqual(cipher.GcmTag, actualCipher.GcmTag, ByteArrayComparer.Comparer, "GcmTag differs.");
-            Assert.AreEqual(cipher.EncryptedPlainText, actualCipher.EncryptedPlainText, ByteArrayComparer.Comparer, "CipherText differs.");
+            Assert.AreSequenceEqual(cipher.CipherText, actualCipher.CipherText, "CipherText differs.");
+            Assert.AreSequenceEqual(cipher.GcmNonce, actualCipher.GcmNonce, "GcmNonce differs.");
+            Assert.AreSequenceEqual(cipher.GcmTag, actualCipher.GcmTag, "GcmTag differs.");
+            Assert.AreSequenceEqual(cipher.EncryptedPlainText, actualCipher.EncryptedPlainText, "CipherText differs.");
         }
 
         [TestMethod]
