@@ -1,7 +1,8 @@
 ﻿# KemBasedNet
 
-This project provides a .NET implementation of the Post Quantum Cryptograpy (**PQC**) algorithm "CompositeMLKem" and 
-a hybrid public-/private-key algorithm for encrypting and decrypting data, based on key exchange algorithms.
+This project provides a .NET implementation of the Post Quantum Cryptography (**PQC**) algorithm "CompositeMLKem". 
+In addition it provides KEM-based (ML-KEM and CompositeMLKem), hybrid public-/private-key algorithms for encrypting and decrypting data,
+targeted to one or multiple recipients.
 
 [API Documentation](https://rotherprivat.github.io/KemBasedNet/)
 
@@ -30,7 +31,7 @@ before production use.
 
 ## CompositeMLKem
 
-The "CompositeMLKem" algorithm is specified by the [IETF draft](https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html) and the implementation and interfaces are aligned to the [.NET ML-KEM implementation "System.Security.Cryptograpy.MLKem"](https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem).
+The "CompositeMLKem" algorithm is specified by the [IETF draft](https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html) and the implementation and interfaces are aligned to the [.NET ML-KEM implementation "System.Security.Cryptography.MLKem"](https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem).
 It implements a composition of the PQC-algorithm "ML-KEM" and a traditional KEM algorithm.
 
 Classes:
@@ -82,7 +83,7 @@ This version only provides the following algorithm combinations:
 
 ### How to use
 
-The "CompositeMLKem" class will be used in the same way as the .NET MLKem calss.
+The "CompositeMLKem" class will be used in the same way as the .NET MLKem ^class^.
 
 Roles:
 - Alice: Initiator of communication, owner of private key
@@ -118,12 +119,12 @@ var aliceSecret = alice.Decapsulate(ciphertext);
 
 ## HybridMLKem
 
-This provides a convenient scheme for PQC safe data encryption and decryption using private-/public- keys, 
+This provides a convenient scheme, targeted to one recipient, for PQC safe data encryption and decryption using private-/public- keys, 
 like [ECIES]( https://en.wikipedia.org/wiki/Integrated_Encryption_Scheme#Formal_description_of_ECIES) which 
 is specified for traditional ECDH algorithms.
 
 The "HybridMLKem" schema is implemented on top of one of the following Key-Exchange algorithms:
-- [.NET ML-KEM implementation "System.Security.Cryptograpy.MLKem"](https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem)
+- [.NET ML-KEM implementation "System.Security.Cryptography.MLKem"](https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem)
 - [CompositeMLKem](#compositemlkem)
 
 and [AES-GCM]( https://datatracker.ietf.org/doc/html/rfc5288) for data encryption.
@@ -179,4 +180,60 @@ var encryptedDataBlock = bob.Encrypt(Encoding.UTF8.GetBytes(message))?.Serialize
 // Decrypt message by using private key
 var decryptedBuffer = alice.Decrypt(HybridMLKemCipherData.Deserialize(encryptedDataBlock));
 var decryptedMessage = Encoding.UTF8.GetString(decryptedBuffer);
+```
+
+## HybridMLKemAuthEnveloped
+
+This provides a convenient scheme, targeted to multiple recipients for PQC safe data encryption and decryption using private-/public- keys. 
+The workflow is similar to the S/MIME (CMS) encryption- and decryption workflow, but the encoding is proprietary and incompatible. 
+
+The "HybridMLKemAuthEnveloped" schema is using the same primitives as [HybridMLKem](#hybridmlkem)
+
+
+Classes:
+- HybridMLKemAuthEnveloped
+- HybridMLKemRecipient
+- HybridMLKemCipherData
+
+### Motivation
+
+See [HybridMLKem](#hybridmlkem)
+
+### Restrictions
+
+See [HybridMLKem](#hybridmlkem)
+
+### How to use
+
+The "HybridMLKemAuthEnveloped" class is intended to be used as follows:
+
+Roles:
+- Sender: Encrypts a message for multiple recipients, by using the encapsulation keys or certificates of the recipients
+- Recipient 1: Decrypt the message using his/her private key
+- Recipient 2: Decrypt the message using his/her private key
+- ...
+- Recipient n: Decrypt the message using his/her private key
+
+Workflow:
+
+1. Sender: Knows all encapsulation keys of the recipients
+    - either the plain encapsulation keys (make sure only to use key from trusted sources)or 
+    - or the certificates (make sure to validate the certificates according to the policies for your use case)
+2. Sender: 
+	- create an instance of HybridMLKemAuthEnveloped
+	- add unencrypted content to the Content property
+	- create a "HybridMLKemRecipient collection" and add an objects for each recipient
+	- call Encrypt (list of recipients) 
+	- call Encode () to get the encrypted data.
+3. Forward the encrypted data to all recipients
+4. Recipient 1 - n: Knows his/her private key
+5. Recipient 1 - n:
+	- create an instance of HybridMLKemAuthEnveloped
+	- call Decode(encrypted data)
+	- call Decrypt(private key)
+	- Get decrypted content from the Content property
+
+C# code example:
+
+```C#
 ```

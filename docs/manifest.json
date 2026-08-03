@@ -15,6 +15,48 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
       "output": {
         ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncapsulationKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncapsulationKey",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncryptedPkcs8PrivateKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncryptedPkcs8PrivateKey",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportPkcs8PrivateKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportPkcs8PrivateKey",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
+      "output": {
+        ".html": {
           "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncryptedPkcs8PrivateKey.html"
         }
       },
@@ -50,20 +92,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportPrivateKey",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportFromPem.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportFromPem",
       "Summary": null
     },
     {
@@ -113,6 +141,20 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
       "output": {
         ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
+      "output": {
+        ".html": {
           "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Algorithm.html"
         }
       },
@@ -120,48 +162,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Algorithm",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncapsulationKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncapsulationKey",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncryptedPkcs8PrivateKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportEncryptedPkcs8PrivateKey",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportPkcs8PrivateKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportPkcs8PrivateKey",
       "Summary": null
     },
     {
@@ -197,13 +197,13 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportFromPem.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.IsSupported",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ImportFromPem",
       "Summary": null
     },
     {
@@ -211,13 +211,13 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Encapsulate.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Encapsulate",
       "Summary": null
     },
     {
@@ -253,20 +253,6 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Encapsulate.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Encapsulate",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Decapsulate.html"
         }
       },
@@ -274,6 +260,34 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.Decapsulate",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.ExportEncapsulationKey",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3",
       "Summary": null
     },
     {
@@ -295,14 +309,98 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm",
-      "Summary": "<p>\n  Definition of CompositeMLKem algorithms, a combination of traditional KEM- and Post Quantum ML-Kem Algorithm.\n</p>\n<p>\n  See: <a href=\"https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html\">Composite ML-KEM for use in X.509 Public Key Infrastructure</a>\n</p>\n"
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP384Sha3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP384Sha3",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP384Sha3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP384Sha3",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP256Sha3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP256Sha3",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -351,13 +449,27 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm",
+      "Summary": "<p>\n  Definition of CompositeMLKem algorithms, a combination of traditional KEM- and Post Quantum ML-Kem Algorithm.\n</p>\n<p>\n  See: <a href=\"https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html\">Composite ML-KEM for use in X.509 Public Key Infrastructure</a>\n</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ToString.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ToString",
       "Summary": null
     },
     {
@@ -365,41 +477,13 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.GetHashCode.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP521Sha3",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.GetHashCode",
       "Summary": null
     },
     {
@@ -421,20 +505,6 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA4096Sha3",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
-      "output": {
-        ".html": {
           "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.RSAKeySize.html"
         }
       },
@@ -449,13 +519,13 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP256Sha3.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP256Sha3",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ECCurve",
       "Summary": null
     },
     {
@@ -463,13 +533,13 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithRSA3072Sha3",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.MLKemAlgorithm",
       "Summary": null
     },
     {
@@ -477,41 +547,13 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ToString.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.ToString",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP384Sha3.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhP384Sha3",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem768WithECDhBrainpoolP384Sha3",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.IsTraditionalECDH",
       "Summary": null
     },
     {
@@ -526,230 +568,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithRSA3072Sha3",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP384Sha3.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhP384Sha3",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.KMKem1024WithECDhBrainpoolP384Sha3",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.GetHashCode.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.CompositeMLKemAlgorithm.GetHashCode",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportFromPem.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportFromPem",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfo.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfo",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPkcs8PrivateKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPkcs8PrivateKey",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportSubjectPublicKeyInfo.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportSubjectPublicKeyInfo",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Encrypt.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Encrypt",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfoPem.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfoPem",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPrivateKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPrivateKey",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPkcs8PrivateKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPkcs8PrivateKey",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncryptedPkcs8PrivateKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncryptedPkcs8PrivateKey",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncryptedPkcs8PrivateKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncryptedPkcs8PrivateKey",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.GenerateKey.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.GenerateKey",
       "Summary": null
     },
     {
@@ -771,13 +589,41 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncapsulationKey.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncapsulationKey",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.GenerateKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.GenerateKey",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportSubjectPublicKeyInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportSubjectPublicKeyInfo",
       "Summary": null
     },
     {
@@ -799,13 +645,13 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Dispose.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.IsSupported",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Dispose",
       "Summary": null
     },
     {
@@ -827,70 +673,168 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Dispose.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncryptedPkcs8PrivateKey.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Dispose",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncryptedPkcs8PrivateKey",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.GcmTag.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncryptedPkcs8PrivateKey.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.GcmTag",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncryptedPkcs8PrivateKey",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.CipherText.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPrivateKey.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.CipherText",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPrivateKey",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.Deserialize.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfoPem.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.Deserialize",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfoPem",
       "Summary": null
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData",
-      "Summary": "<p sourcefile=\"api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml\" sourcestartlinenumber=\"1\">Encrypted data and parameters for decryption</p>\n"
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportEncapsulationKey",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncapsulationKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportEncapsulationKey",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPrivateKey",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPkcs8PrivateKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportPkcs8PrivateKey",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Encrypt.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.Encrypt",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfo.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ExportSubjectPublicKeyInfo",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportFromPem.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportFromPem",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPkcs8PrivateKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKem.ImportPkcs8PrivateKey",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -925,6 +869,62 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml",
       "output": {
         ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData",
+      "Summary": "<p sourcefile=\"api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml\" sourcestartlinenumber=\"1\">Encrypted data and parameters for decryption</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.Deserialize.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.Deserialize",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.CipherText.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.CipherText",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.GcmTag.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.GcmTag",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.yml",
+      "output": {
+        ".html": {
           "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.GcmNonce.html"
         }
       },
@@ -932,34 +932,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemCipherData.GcmNonce",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemAuthEnveloped.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.IdTag.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.IdTag",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemAuthEnveloped.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Decrypt.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Decrypt",
       "Summary": null
     },
     {
@@ -981,13 +953,13 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemAuthEnveloped.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Content.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.IsSupported.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Content",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.IsSupported",
       "Summary": null
     },
     {
@@ -995,27 +967,13 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemAuthEnveloped.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Encode.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.IdTag.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Encode",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemAuthEnveloped.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Decode.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Decode",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.IdTag",
       "Summary": null
     },
     {
@@ -1037,13 +995,13 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemAuthEnveloped.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.IsSupported.html"
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Decode.html"
         }
       },
       "version": "",
       "Uid": null,
       "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.IsSupported",
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Decode",
       "Summary": null
     },
     {
@@ -1065,6 +1023,48 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemAuthEnveloped.yml",
       "output": {
         ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Encode.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Encode",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemAuthEnveloped.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Decrypt.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Decrypt",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemAuthEnveloped.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Content.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Content",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemAuthEnveloped.yml",
+      "output": {
+        ".html": {
           "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Recipients.html"
         }
       },
@@ -1072,48 +1072,6 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemAuthEnveloped.Recipients",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.CipherText.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.CipherText",
-      "Summary": null
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient",
-      "Summary": "<p sourcefile=\"api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.yml\" sourcestartlinenumber=\"1\">Recipient for HybridMlKemAuthEnveloped encryption and decryption</p>\n"
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.-ctor.html"
-        }
-      },
-      "version": "",
-      "Uid": null,
-      "IsMRef": true,
-      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.HybridMLKemRecipient",
       "Summary": null
     },
     {
@@ -1135,6 +1093,20 @@
       "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.yml",
       "output": {
         ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient",
+      "Summary": "<p sourcefile=\"api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.yml\" sourcestartlinenumber=\"1\">Recipient for HybridMlKemAuthEnveloped encryption and decryption</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.yml",
+      "output": {
+        ".html": {
           "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.SubjectKeyId.html"
         }
       },
@@ -1142,6 +1114,34 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.SubjectKeyId",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.CipherText.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.CipherText",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMlKemRecipient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.-ctor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.HybridMLKemRecipient",
       "Summary": null
     },
     {

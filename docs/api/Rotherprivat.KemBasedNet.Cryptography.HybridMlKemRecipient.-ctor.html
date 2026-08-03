@@ -91,7 +91,7 @@
 
 
 <h1 id="Rotherprivat_KemBasedNet_Cryptography_HybridMLKemRecipient__ctor_" data-uid="Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.#ctor*" class="text-break">
-Constructor HybridMLKemRecipient  <a class="header-action link-secondary" title="View source" href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L43"><i class="bi bi-code-slash"></i></a>
+Constructor HybridMLKemRecipient  <a class="header-action link-secondary" title="View source" href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L46"><i class="bi bi-code-slash"></i></a>
 </h1>
 
 <div class="facts text-secondary">
@@ -121,7 +121,7 @@ Constructor HybridMLKemRecipient  <a class="header-action link-secondary" title=
 
 <h3 id="Rotherprivat_KemBasedNet_Cryptography_HybridMLKemRecipient__ctor_System_Security_Cryptography_X509Certificates_X509Certificate2_" data-uid="Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)">
   HybridMLKemRecipient(X509Certificate2)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L46"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Create recipient</p>
@@ -135,7 +135,8 @@ Constructor HybridMLKemRecipient  <a class="header-action link-secondary" title=
 <h4 class="section">Parameters</h4>
 <dl class="parameters">
   <dt><code>cer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2">X509Certificate2</a></dt>
-  <dd><p>X509 Certificate with ML-KEM or Composite-ML-KEM key material</p>
+  <dd><p>X509 Certificate with ML-KEM or Composite-ML-KEM key material.
+Make sure to validate the certificate according to the policies for your use case.</p>
 </dd>
 </dl>
 
@@ -159,7 +160,7 @@ Constructor HybridMLKemRecipient  <a class="header-action link-secondary" title=
 
 <h3 id="Rotherprivat_KemBasedNet_Cryptography_HybridMLKemRecipient__ctor_System_Security_Cryptography_MLKem_" data-uid="Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.#ctor(System.Security.Cryptography.MLKem)">
   HybridMLKemRecipient(MLKem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L60"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Create recipient</p>
@@ -173,7 +174,7 @@ Constructor HybridMLKemRecipient  <a class="header-action link-secondary" title=
 <h4 class="section">Parameters</h4>
 <dl class="parameters">
   <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.mlkem">MLKem</a></dt>
-  <dd><p>public key of ML-KEM</p>
+  <dd><p>Public key of ML-KEM</p>
 </dd>
 </dl>
 
@@ -192,7 +193,7 @@ Constructor HybridMLKemRecipient  <a class="header-action link-secondary" title=
 
 <h3 id="Rotherprivat_KemBasedNet_Cryptography_HybridMLKemRecipient__ctor_Rotherprivat_KemBasedNet_Cryptography_CompositeMLKem_" data-uid="Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.#ctor(Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem)">
   HybridMLKemRecipient(CompositeMLKem)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L72"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Create recipient</p>
@@ -206,7 +207,7 @@ Constructor HybridMLKemRecipient  <a class="header-action link-secondary" title=
 <h4 class="section">Parameters</h4>
 <dl class="parameters">
   <dt><code>key</code> <a class="xref" href="Rotherprivat.KemBasedNet.Cryptography.CompositeMLKem.html">CompositeMLKem</a></dt>
-  <dd><p>public key of Composite-ML-KEM</p>
+  <dd><p>Public key of Composite-ML-KEM</p>
 </dd>
 </dl>
 
@@ -225,7 +226,7 @@ Constructor HybridMLKemRecipient  <a class="header-action link-secondary" title=
 
 <h3 id="Rotherprivat_KemBasedNet_Cryptography_HybridMLKemRecipient__ctor_System_Byte___" data-uid="Rotherprivat.KemBasedNet.Cryptography.HybridMLKemRecipient.#ctor(System.Byte[])">
   HybridMLKemRecipient(byte[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L83"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Create recipient</p>
@@ -262,7 +263,7 @@ Constructor HybridMLKemRecipient  <a class="header-action link-secondary" title=
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L43" class="edit-link">Edit this page</a>
+          <a href="https://github.com/rotherprivat/KemBasedNet/blob/MultipleRecipients/KemBasedNet/Cryptography/HybridMLKemRecipient.cs/#L46" class="edit-link">Edit this page</a>
         </div>
 
 

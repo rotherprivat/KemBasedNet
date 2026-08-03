@@ -87,8 +87,9 @@
         <article data-uid="">
 <h1 id="kembasednet">KemBasedNet</h1>
 
-<p>This project provides a .NET implementation of the Post Quantum Cryptograpy (<strong>PQC</strong>) algorithm &quot;CompositeMLKem&quot; and
-a hybrid public-/private-key algorithm for encrypting and decrypting data, based on key exchange algorithms.</p>
+<p>This project provides a .NET implementation of the Post Quantum Cryptography (<strong>PQC</strong>) algorithm &quot;CompositeMLKem&quot;.
+In addition it provides KEM-based (ML-KEM and CompositeMLKem), hybrid public-/private-key algorithms for encrypting and decrypting data,
+targeted to one or multiple recipients.</p>
 <p><a href="https://rotherprivat.github.io/KemBasedNet/">API Documentation</a></p>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>This library is provided &quot;<strong>as is</strong>&quot;, without warranty of any kind, express or implied. The authors
@@ -109,7 +110,7 @@ you are working in a regulated or high-security environment, ensure proper revie
 before production use.</p>
 <p>(<strong>.NET</strong> is a trademark of Microsoft Corporation.)</p>
 <h2 id="compositemlkem">CompositeMLKem</h2>
-<p>The &quot;CompositeMLKem&quot; algorithm is specified by the <a href="https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html">IETF draft</a> and the implementation and interfaces are aligned to the <a href="https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem">.NET ML-KEM implementation &quot;System.Security.Cryptograpy.MLKem&quot;</a>.
+<p>The &quot;CompositeMLKem&quot; algorithm is specified by the <a href="https://lamps-wg.github.io/draft-composite-kem/draft-ietf-lamps-pq-composite-kem.html">IETF draft</a> and the implementation and interfaces are aligned to the <a href="https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem">.NET ML-KEM implementation &quot;System.Security.Cryptography.MLKem&quot;</a>.
 It implements a composition of the PQC-algorithm &quot;ML-KEM&quot; and a traditional KEM algorithm.</p>
 <p>Classes:</p>
 <ul>
@@ -221,7 +222,7 @@ algorithms, so things won’t get worse.</p>
 </tbody>
 </table>
 <h3 id="how-to-use">How to use</h3>
-<p>The &quot;CompositeMLKem&quot; class will be used in the same way as the .NET MLKem calss.</p>
+<p>The &quot;CompositeMLKem&quot; class will be used in the same way as the .NET MLKem ^class^.</p>
 <p>Roles:</p>
 <ul>
 <li>Alice: Initiator of communication, owner of private key</li>
@@ -254,12 +255,12 @@ var aliceSecret = alice.Decapsulate(ciphertext);
 // Alice will use aliceSecret
 </code></pre>
 <h2 id="hybridmlkem">HybridMLKem</h2>
-<p>This provides a convenient scheme for PQC safe data encryption and decryption using private-/public- keys,
+<p>This provides a convenient scheme, targeted to one recipient, for PQC safe data encryption and decryption using private-/public- keys,
 like <a href="https://en.wikipedia.org/wiki/Integrated_Encryption_Scheme#Formal_description_of_ECIES">ECIES</a> which
 is specified for traditional ECDH algorithms.</p>
 <p>The &quot;HybridMLKem&quot; schema is implemented on top of one of the following Key-Exchange algorithms:</p>
 <ul>
-<li><a href="https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem">.NET ML-KEM implementation &quot;System.Security.Cryptograpy.MLKem&quot;</a></li>
+<li><a href="https://learn.microsoft.com/de-de/dotnet/api/system.security.cryptography.mlkem">.NET ML-KEM implementation &quot;System.Security.Cryptography.MLKem&quot;</a></li>
 <li><a href="#compositemlkem">CompositeMLKem</a></li>
 </ul>
 <p>and <a href="https://datatracker.ietf.org/doc/html/rfc5288">AES-GCM</a> for data encryption.</p>
@@ -310,6 +311,60 @@ var encryptedDataBlock = bob.Encrypt(Encoding.UTF8.GetBytes(message))?.Serialize
 var decryptedBuffer = alice.Decrypt(HybridMLKemCipherData.Deserialize(encryptedDataBlock));
 var decryptedMessage = Encoding.UTF8.GetString(decryptedBuffer);
 </code></pre>
+<h2 id="hybridmlkemauthenveloped">HybridMLKemAuthEnveloped</h2>
+<p>This provides a convenient scheme, targeted to multiple recipients for PQC safe data encryption and decryption using private-/public- keys.
+The workflow is similar to the S/MIME (CMS) encryption- and decryption workflow, but the encoding is proprietary and incompatible.</p>
+<p>The &quot;HybridMLKemAuthEnveloped&quot; schema is using the same primitives as <a href="#hybridmlkem">HybridMLKem</a></p>
+<p>Classes:</p>
+<ul>
+<li>HybridMLKemAuthEnveloped</li>
+<li>HybridMLKemRecipient</li>
+<li>HybridMLKemCipherData</li>
+</ul>
+<h3 id="motivation-2">Motivation</h3>
+<p>See <a href="#hybridmlkem">HybridMLKem</a></p>
+<h3 id="restrictions-2">Restrictions</h3>
+<p>See <a href="#hybridmlkem">HybridMLKem</a></p>
+<h3 id="how-to-use-2">How to use</h3>
+<p>The &quot;HybridMLKemAuthEnveloped&quot; class is intended to be used as follows:</p>
+<p>Roles:</p>
+<ul>
+<li>Sender: Encrypts a message for multiple recipients, by using the encapsulation keys or certificates of the recipients</li>
+<li>Recipient 1: Decrypt the message using his/her private key</li>
+<li>Recipient 2: Decrypt the message using his/her private key</li>
+<li>...</li>
+<li>Recipient n: Decrypt the message using his/her private key</li>
+</ul>
+<p>Workflow:</p>
+<ol>
+<li>Sender: Knows all encapsulation keys of the recipients
+<ul>
+<li>either the plain encapsulation keys (make sure only to use key from trusted sources)or</li>
+<li>or the certificates (make sure to validate the certificates according to the policies for your use case)</li>
+</ul>
+</li>
+<li>Sender:
+<ul>
+<li>create an instance of HybridMLKemAuthEnveloped</li>
+<li>add unencrypted content to the Content property</li>
+<li>create a &quot;HybridMLKemRecipient collection&quot; and add an objects for each recipient</li>
+<li>call Encrypt (list of recipients)</li>
+<li>call Encode () to get the encrypted data.</li>
+</ul>
+</li>
+<li>Forward the encrypted data to all recipients</li>
+<li>Recipient 1 - n: Knows his/her private key</li>
+<li>Recipient 1 - n:
+<ul>
+<li>create an instance of HybridMLKemAuthEnveloped</li>
+<li>call Decode(encrypted data)</li>
+<li>call Decrypt(private key)</li>
+<li>Get decrypted content from the Content property</li>
+</ul>
+</li>
+</ol>
+<p>C# code example:</p>
+<pre><code class="lang-C#"></code></pre>
 
 </article>
 

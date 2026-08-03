@@ -37,7 +37,10 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// <summary>
         /// Create recipient
         /// </summary>
-        /// <param name="cer">X509 Certificate with ML-KEM or Composite-ML-KEM key material</param>
+        /// <param name="cer">
+        /// X509 Certificate with ML-KEM or Composite-ML-KEM key material. 
+        /// Make sure to validate the certificate according to the policies for your use case.
+        /// </param>
         /// <exception cref="CryptographicException"></exception>
 
         public HybridMLKemRecipient(X509Certificate2 cer)
@@ -53,7 +56,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// <summary>
         /// Create recipient
         /// </summary>
-        /// <param name="key">public key of ML-KEM</param>
+        /// <param name="key">Public key of ML-KEM</param>
         public HybridMLKemRecipient(MLKem key)
         {
 #pragma warning disable SYSLIB5006
@@ -65,7 +68,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         /// <summary>
         /// Create recipient
         /// </summary>
-        /// <param name="key">public key of Composite-ML-KEM</param>
+        /// <param name="key">Public key of Composite-ML-KEM</param>
         public HybridMLKemRecipient(CompositeMLKem key)
         {
             var publicKey = key.ExportSubjectPublicKeyInfo();
