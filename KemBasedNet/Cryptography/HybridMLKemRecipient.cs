@@ -92,7 +92,9 @@ namespace Rotherprivat.KemBasedNet.Cryptography
         #region Internal methods
         internal void Encrypt(ReadOnlySpan<byte> cek)
         {
-            Encapsulate(out var cipherText, out var kek);
+            Encapsulate(out var cipherText, out var ikm);
+
+            var kek = DeriveKek(ikm);
             CipherText = cipherText;
 
             EncryptedCek = Rfc3394.Wrap(kek, cek);
@@ -104,7 +106,9 @@ namespace Rotherprivat.KemBasedNet.Cryptography
                 EncryptedCek == null)
                 throw new CryptographicException("Incomplete Recipient data.");
 
-            var kek = privateKey.Decapsulate(CipherText);
+            var ikm = privateKey.Decapsulate(CipherText);
+            var kek = DeriveKek(ikm);
+
             return Rfc3394.Unwrap(kek, EncryptedCek);
         }
 
@@ -114,7 +118,9 @@ namespace Rotherprivat.KemBasedNet.Cryptography
                 EncryptedCek == null)
                 throw new CryptographicException("Incomplete Recipient data.");
 
-            var kek = privateKey.Decapsulate(CipherText);
+            var ikm = privateKey.Decapsulate(CipherText);
+            var kek = DeriveKek(ikm);
+
             return Rfc3394.Unwrap(kek, EncryptedCek);
         }
 
@@ -206,10 +212,22 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             }
 #pragma warning restore SYSLIB5006
         }
+
+        private byte[] DeriveKek(byte[] ikm)
+        {
+            // KDF aligned to RFC 9629
+            //            CMSORIforKEMOtherInfo::= SEQUENCE {
+            //                wrap KeyEncryptionAlgorithmIdentifier,  => "2.16.840.1.101.3.4.1.45" Id_Algorithm_AES256_Wrap
+            //                kekLength INTEGER(1..65535),  => 0400
+            //                ukm[0] EXPLICIT UserKeyingMaterial OPTIONAL }
+
+            return HKDF.DeriveKey(HashAlgorithmName.SHA256, ikm, 32, null, _AES256Wrap_CMSORIforKEMOtherInfo); ;
+        }
         #endregion
 
         #region Private fields
         private byte[]? _SubjectPublicKeyInfo = default;
+        private static readonly byte[] _AES256Wrap_CMSORIforKEMOtherInfo = [0x30, 0x0E, 0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x01, 0x2D, 0x02, 0x01, 0x20];
         #endregion
     }
 }

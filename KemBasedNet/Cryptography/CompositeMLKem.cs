@@ -73,7 +73,7 @@ namespace Rotherprivat.KemBasedNet.Cryptography
             var algorithm = CompositeMLKemAlgorithm.FromOid(oid) ??
                 throw new CryptographicException("Invalid algorithm ID.");
 
-            var privateKey = pkcs8Info!.PrivateKeyBytes;
+            var privateKey = pkcs8Info.PrivateKeyBytes;
 
             return CompositeMLKemImplementation.ImportPrivateKeyImplementation(algorithm, privateKey.Span);
         }
