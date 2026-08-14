@@ -37,6 +37,12 @@ Classes:
 - CompositeMLKem
 - CompositeMLKemAlgorithm
 
+### Please note
+
+A package containing only the CompositeMLKem algorithm is available on
+- NuGet: [Rotherprivat.CompositeMLKem](https://www.nuget.org/packages/Rotherprivat.CompositeMLKem)
+- GitHub: [rotherprivat / CompositeMLKem](https://github.com/rotherprivat/CompositeMLKem)
+
 ### Motivation
 
 The .NET version 10.0.2 (SDK 10.0.102) provides implementations of the major PQC-algorithms
